@@ -1,0 +1,29 @@
+
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Environment variables file
+.env
+.env.*
+
+# IDE/editor settings
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Data directories (generated)
+data/
+articles/
+images/
+
+# OS files
+.DS_Store
+Thumbs.db
