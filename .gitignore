@@ -42,4 +42,7 @@ freeclaude.bat
 
 # OS files
 .DS_Store
-Thumbs.dbfreeclaude.bat
+Thumbs.db
+
+# Claude Code local settings (machine-specific, not shared)
+.claude/settings.local.json
