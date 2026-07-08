@@ -25,6 +25,15 @@ class Settings:
     playwright_user_data_dir: str = "./playwright_profile"
     log_level: str = "INFO"
     sqlite_path: str = "./data/app.sqlite3"
+    # Дзен/Playwright настройки
+    flux_model: str = "black-forest-labs/flux.2-pro"
+    flux_output_format: str = "png"
+    # Дзен/Playwright настройки
+    dzen_editor_url: str = "https://dzen.ru/"
+    dzen_headless: bool = False
+    dzen_default_timeout_ms: int = 30000
+    dzen_publish_timeout_ms: int = 180000
+
 
     @property
     def project_root(self) -> Path:
@@ -93,5 +102,11 @@ def get_settings() -> Settings:
             openai_base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
             openai_image_model=os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1"),
             openai_image_size=os.getenv("OPENAI_IMAGE_SIZE", "1024x1024"),
+            flux_model=os.getenv("FLUX_MODEL", "black-forest-labs/flux.2-pro"),
+            flux_output_format=os.getenv("FLUX_OUTPUT_FORMAT", "png"),
+            dzen_editor_url=os.getenv("DZEN_EDITOR_URL", "https://dzen.ru/publisher/editor"),
+            dzen_headless=os.getenv("DZEN_HEADLESS", "0") == "1",
+            dzen_default_timeout_ms=int(os.getenv("DZEN_DEFAULT_TIMEOUT_MS", "30000")),
+            dzen_publish_timeout_ms=int(os.getenv("DZEN_PUBLISH_TIMEOUT_MS", "180000")),
         )
     return _settings

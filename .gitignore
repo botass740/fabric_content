@@ -1,5 +1,3 @@
-
-
 # Virtual environments
 .venv/
 env/
@@ -7,7 +5,11 @@ venv/
 
 # Environment variables file
 .env
-.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
 
 # IDE/editor settings
 .idea/
@@ -18,12 +20,26 @@ venv/
 # Logs
 *.log
 logs/
+data/logs/
 
 # Data directories (generated)
-data/
-articles/
-images/
+data/images/
+data/articles/
+data/app.sqlite3
+
+# Playwright profile
+playwright_profile/
+
+# Debug files
+debug_*.png
+debug_*.py
+after_publish_click.png
+debug_cover.py
+step*.png
+
+# Local scripts
+freeclaude.bat
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.dbfreeclaude.bat

@@ -3,11 +3,23 @@ from app.generators.openrouter_client import OpenRouterClient
 from app.generators.utils import load_prompt, parse_json_list
 
 
-def generate_titles(settings, *, topic: str, n: int = 8) -> list[str]:
+def generate_titles(
+    settings,
+    *,
+    topic: str,
+    hook_type: str,
+    hero: str,
+    n: int = 8,
+) -> list[str]:
     logger = logging.getLogger(__name__)
 
     prompt_text = load_prompt(settings, "title_prompt.txt")
-    user_prompt = prompt_text.format(topic=topic, n=n)
+    user_prompt = prompt_text.format(
+        topic=topic,
+        hook_type=hook_type,
+        hero=hero,
+        n=n,
+    )
 
     client = OpenRouterClient(
         api_key=settings.openrouter_api_key,

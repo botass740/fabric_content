@@ -3,4 +3,4 @@ python-telegram-bot
 requests
 openai
 playwright
-Pillow
+Pillowpyperclip

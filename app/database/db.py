@@ -45,9 +45,94 @@ class Database:
 
                 CREATE INDEX IF NOT EXISTS idx_articles_created_at
                     ON articles(created_at);
+
+                CREATE TABLE IF NOT EXISTS used_combinations (
+                    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                    hero       TEXT NOT NULL,
+                    emotion    TEXT NOT NULL,
+                    format     TEXT NOT NULL,
+                    trigger    TEXT NOT NULL,
+                    hook_type  TEXT NOT NULL,
+                    topic      TEXT,
+                    article_id INTEGER,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE INDEX IF NOT EXISTS idx_used_combinations_created_at
+                    ON used_combinations(created_at);
+
+                CREATE TABLE IF NOT EXISTS used_topics (
+                    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                    topic      TEXT NOT NULL,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE INDEX IF NOT EXISTS idx_used_topics_created_at
+                    ON used_topics(created_at);
             """)
             conn.commit()
             self.logger.info("Database schema initialized")
+        finally:
+            conn.close()
+
+    def register_combination(
+        self,
+        *,
+        hero: str,
+        emotion: str,
+        format: str,
+        trigger: str,
+        hook_type: str,
+        topic: str | None = None,
+        article_id: int | None = None,
+    ) -> int:
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                """INSERT INTO used_combinations
+                   (hero, emotion, format, trigger, hook_type, topic, article_id)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (hero, emotion, format, trigger, hook_type, topic, article_id),
+            )
+            conn.commit()
+            combo_id = cursor.lastrowid
+            self.logger.info(
+                f"Registered combination #{combo_id}: {hero} / {emotion} / {format} / {trigger} / {hook_type}"
+            )
+            if topic:
+                cursor.execute(
+                    "INSERT INTO used_topics (topic) VALUES (?)",
+                    (topic,),
+                )
+                conn.commit()
+            return combo_id
+        finally:
+            conn.close()
+
+    def recent_combinations(self, days: int = 30) -> list[dict]:
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                """SELECT hero, emotion, format, trigger, hook_type, created_at
+                   FROM used_combinations
+                   WHERE created_at >= datetime('now', ?)""",
+                (f"-{int(days)} days",),
+            )
+            return [dict(row) for row in cursor.fetchall()]
+        finally:
+            conn.close()
+
+    def recent_topics(self, limit: int = 30) -> list[str]:
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT topic FROM used_topics ORDER BY created_at DESC LIMIT ?",
+                (limit,),
+            )
+            return [row["topic"] for row in cursor.fetchall() if row["topic"]]
         finally:
             conn.close()
 

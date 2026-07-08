@@ -6,6 +6,10 @@ from app.database.db import Database
 
 
 def main() -> None:
+    # Отключаем системный прокси (SOCKS4) для httpx
+    os.environ["NO_PROXY"] = "*"
+    os.environ["no_proxy"] = "*"
+
     settings = get_settings()
     setup_logging(settings)
 
@@ -32,8 +36,10 @@ def main() -> None:
     # Запуск Telegram бота
     if os.getenv("RUN_BOT") == "1":
         from app.telegram.bot import run_bot
+        from app.publishers.dzen_publisher import DzenPublisher
         logger.info("Starting Telegram bot...")
-        run_bot(settings, db)
+        publisher = DzenPublisher(settings, logger=logger)
+        run_bot(settings, db, publisher)
         return
 
     # DEV: тест генерации
@@ -42,27 +48,69 @@ def main() -> None:
 
         from app.generators.topics import generate_topics
         from app.generators.titles import generate_titles
+        from app.generators.article_plan import generate_article_plan
         from app.generators.articles import generate_article
+        from app.generators.topic_matrix import pick_combination
+
+        combination = pick_combination(db, logger=logger)
+        logger.info(f"Combination: {combination}")
 
         # Генерация тем
-        topics = generate_topics(settings, n=5)
+        topics = generate_topics(
+            settings,
+            combination=combination,
+            recent_topics=db.recent_topics(limit=30),
+            n=3,
+        )
         logger.info(f"Topics: {topics}")
 
         # Генерация заголовков
         topic = topics[0] if topics else "финансовые ошибки в быту"
-        titles = generate_titles(settings, topic=topic, n=5)
+        titles = generate_titles(
+            settings,
+            topic=topic,
+            hook_type=combination["hook_type"],
+            hero=combination["hero"],
+            n=5,
+        )
         logger.info(f"Titles: {titles}")
 
-        # Генерация статьи
+        # План + статья
         title = titles[0] if titles else topic
-        article = generate_article(settings, topic=topic, title=title)
+        plan = generate_article_plan(
+            settings,
+            topic=topic,
+            title=title,
+            hero=combination["hero"],
+            emotion=combination["emotion"],
+            format=combination["format"],
+        )
+        article = generate_article(
+            settings,
+            topic=topic,
+            title=title,
+            plan=plan,
+            hero=combination["hero"],
+            emotion=combination["emotion"],
+            format=combination["format"],
+        )
+
+        db.register_combination(
+            hero=combination["hero"],
+            emotion=combination["emotion"],
+            format=combination["format"],
+            trigger=combination["trigger"],
+            hook_type=combination["hook_type"],
+            topic=topic,
+        )
 
         logger.info(f"Article length: {len(article)} chars")
         print("\n" + "="*60)
+        print(f"COMBINATION: {combination}")
         print(f"TOPIC: {topic}")
         print(f"TITLE: {title}")
         print("="*60)
-        print(article[:500] + "...")
+        print(article[:800] + "...")
         print("="*60)
 
     # DEV: тест генерации изображений
@@ -74,7 +122,7 @@ def main() -> None:
         topic = os.getenv("DEV_IMAGE_TOPIC", "финансовые ошибки в быту")
         title = os.getenv("DEV_IMAGE_TITLE", "Как я перестал тратить и начал жить")
 
-        cover_path = generate_cover(settings, topic=topic, title=title)
+        cover_path = generate_cover(settings, topic=topic, title=title, content=title)
         if cover_path:
             logger.info(f"Обложка сохранена: {cover_path}")
         else:
