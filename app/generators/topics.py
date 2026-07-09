@@ -8,12 +8,14 @@ def generate_topics(
     settings,
     *,
     combination: dict,
+    live_triggers: str,
     recent_topics: list[str] | None = None,
     n: int = 3,
 ) -> list[str]:
     """
     Генерирует темы в рамках заданной комбинации осей.
     combination: dict с ключами hero, emotion, format, trigger, hook_type
+    live_triggers: готовый форматированный блок актуальных триггеров (см. app.context.trends.load_trend_context)
     recent_topics: список ранее использованных тем для передачи в промт
     """
     logger = logging.getLogger(__name__)
@@ -27,6 +29,7 @@ def generate_topics(
         trigger=combination["trigger"],
         hook_type=combination["hook_type"],
         recent_topics=format_recent_topics(recent_topics or []),
+        live_triggers=live_triggers,
     )
 
     client = OpenRouterClient(

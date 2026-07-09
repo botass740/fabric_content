@@ -51,14 +51,19 @@ def main() -> None:
         from app.generators.article_plan import generate_article_plan
         from app.generators.articles import generate_article
         from app.generators.topic_matrix import pick_combination
+        from app.context.trends import load_trend_context
 
         combination = pick_combination(db, logger=logger)
         logger.info(f"Combination: {combination}")
+
+        # Один срез актуального фона на всю генерацию
+        live_triggers = load_trend_context(settings, logger=logger)
 
         # Генерация тем
         topics = generate_topics(
             settings,
             combination=combination,
+            live_triggers=live_triggers,
             recent_topics=db.recent_topics(limit=30),
             n=3,
         )
@@ -84,6 +89,7 @@ def main() -> None:
             hero=combination["hero"],
             emotion=combination["emotion"],
             format=combination["format"],
+            live_triggers=live_triggers,
         )
         article = generate_article(
             settings,
@@ -93,6 +99,7 @@ def main() -> None:
             hero=combination["hero"],
             emotion=combination["emotion"],
             format=combination["format"],
+            live_triggers=live_triggers,
         )
 
         db.register_combination(

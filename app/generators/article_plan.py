@@ -12,10 +12,14 @@ def generate_article_plan(
     hero: str,
     emotion: str,
     format: str,
+    live_triggers: str,
 ) -> str:
     """
     Генерирует структурированный план статьи.
     Возвращает читаемую текстовую версию плана для передачи в article_prompt.
+
+    live_triggers: готовый форматированный блок актуальных триггеров.
+    Тот же самый, что передавался в generate_topics — иначе тема и план разъедутся.
     """
     logger = logging.getLogger(__name__)
 
@@ -26,6 +30,7 @@ def generate_article_plan(
         hero=hero,
         emotion=emotion,
         format=format,
+        live_triggers=live_triggers,
     )
 
     client = OpenRouterClient(
@@ -60,6 +65,18 @@ def generate_article_plan(
             logger.error(f"No JSON found in response: {response[:500]}")
             raise ValueError("No JSON in article plan response")
 
+    # Диагностика: логируем сам план и предупреждаем о пропущенных полях
+    logger.info(f"Plan JSON keys: {sorted(plan_json.keys())}")
+    logger.info(f"Plan JSON full: {json.dumps(plan_json, ensure_ascii=False)[:2000]}")
+
+    missing = []
+    for required in ("core_insight", "narrator_stance", "twist_goal", "development_goals", "final_image"):
+        val = plan_json.get(required)
+        if not val or (isinstance(val, list) and not val):
+            missing.append(required)
+    if missing:
+        logger.warning(f"Plan missing/empty fields: {missing}. Статья потеряет часть структуры.")
+
     plan_text = f"""
 Главный инсайт:
 {plan_json.get('core_insight', '')}
@@ -70,11 +87,14 @@ def generate_article_plan(
 Эмоциональная арка:
 {' → '.join(plan_json.get('emotion_arc', []))}
 
+Позиция рассказчика (обязательно транслируй в тексте — воспоминаниями, реакциями, скрытой раной):
+{plan_json.get('narrator_stance', '')}
+
 Структура:
 - Хук: {plan_json.get('hook_goal', '')}
 - Бытовая сцена: {plan_json.get('scene_goal', '')}
-- Твист: {plan_json.get('twist_goal', '')}
-- Развитие идеи:
+- Твист (ЦЕНТРАЛЬНЫЙ момент статьи, обязательно исполни): {plan_json.get('twist_goal', '')}
+- Развитие идеи (сцены — разверни каждую в текст, не пропускай):
 {chr(10).join('  * ' + g for g in plan_json.get('development_goals', []))}
 - Финал: {plan_json.get('ending_goal', '')}
 

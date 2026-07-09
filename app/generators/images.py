@@ -131,7 +131,7 @@ def generate_cover(settings, *, topic: str, title: str, content: str) -> str | N
         logger.info(f"FLUX prompt: {flux_prompt[:150]}...")
 
         # ШАГ 4: Генерация через FLUX (если есть ключ OpenRouter)
-        if settings.openrouter_api_key:
+        if False:
             try:
                 client = FluxClient(
                     api_key=settings.openrouter_api_key,

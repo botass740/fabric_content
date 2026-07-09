@@ -31,6 +31,18 @@ _BANNED_TAILS = (
     "продолжение следует",
 )
 
+# Регэкспы афористических финалов — паттерны, которые модель постоянно пробивает.
+# Внимание: в _clean_text длинные тире (— и –) заменяются на обычный дефис (-),
+# поэтому паттерны используют класс [-—–] для устойчивости.
+_DASH = r"[-—–]"
+_APHORISM_PATTERNS = (
+    rf"иногда\s+[^\.\n]{{2,60}}\s+{_DASH}\s+значит\s+[^\.\n]{{2,60}}",
+    rf"настоящ(ая|ий|ее)\s+[а-яё]+\s+{_DASH}\s+это\s+не\s+[^\.\n]+",
+    rf"главное\s+{_DASH}\s+не\s+[^,\.\n]+,\s+а\s+[^\.\n]+",
+    rf"[а-яё]+\s+{_DASH}\s+это\s+не\s+про\s+[а-яё]+,\s+это\s+про\s+[а-яё]+",
+    r"и,?\s+кажется,?\s+это\s+того\s+стоит",
+)
+
 
 def _cut_second_ending(text: str) -> str:
     """
@@ -48,6 +60,22 @@ def _cut_second_ending(text: str) -> str:
     return text[:earliest].rstrip()
 
 
+def _detect_aphorism_ending(text: str, logger: logging.Logger) -> None:
+    """
+    Проверяет последний абзац на афористический паттерн.
+    Ничего не режет (риск испортить нормальный текст), только пишет warning в лог.
+    """
+    tail = text[-500:].lower()
+    for pattern in _APHORISM_PATTERNS:
+        m = re.search(pattern, tail)
+        if m:
+            logger.warning(
+                f"Aphoristic ending detected: '{m.group(0)[:100]}...'. "
+                f"Финал пробил запрет — рекомендуется регенерация."
+            )
+            return
+
+
 def generate_article(
     settings,
     *,
@@ -57,6 +85,7 @@ def generate_article(
     hero: str,
     emotion: str,
     format: str,
+    live_triggers: str,
 ) -> str:
     logger = logging.getLogger(__name__)
 
@@ -68,6 +97,7 @@ def generate_article(
         hero=hero,
         emotion=emotion,
         format=format,
+        live_triggers=live_triggers,
     )
 
     client = OpenRouterClient(
@@ -90,10 +120,18 @@ def generate_article(
         system=system,
         user=user_prompt,
         temperature=0.85,
-        max_tokens=2600,
+        max_tokens=3800,
     )
     text = _clean_text(text)
     text = _cut_second_ending(text)
 
-    logger.info(f"Generated article: {len(text)} chars, title: {title[:50]}")
+    length = len(text)
+    logger.info(f"Generated article: {length} chars, title: {title[:50]}")
+    if length < 2800:
+        logger.warning(
+            f"Article too short ({length} chars, target 3200-4500). "
+            f"Дзен-алгоритм плохо продвигает короткие статьи. "
+            f"Рекомендуется регенерация (кнопка 🔄 в боте)."
+        )
+    _detect_aphorism_ending(text, logger)
     return text.strip()

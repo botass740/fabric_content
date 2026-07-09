@@ -20,6 +20,8 @@ from app.generators.images import generate_cover
 from app.generators.titles import generate_titles
 from app.generators.topics import generate_topics
 from app.generators.topic_matrix import pick_combination
+from app.context.refresh import refresh_via_llm, apply_weekly_hot, parse_raw_input
+from app.context.trends import load_trend_context
 
 logger = logging.getLogger(__name__)
 
@@ -100,6 +102,10 @@ async def send_article_preview(bot, chat_id: int, article: dict) -> None:
 
 
 def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str, str | None]:
+    # 0. Один срез актуального фона на всю генерацию —
+    # чтобы тема, план и статья видели один и тот же контекст
+    live_triggers = load_trend_context(settings, logger=logger)
+
     # 1. Выбираем комбинацию осей (архетип героя, эмоция, формат, триггер, тип хука)
     combination = pick_combination(db, logger=logger)
 
@@ -108,6 +114,7 @@ def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str
     topics = generate_topics(
         settings,
         combination=combination,
+        live_triggers=live_triggers,
         recent_topics=recent,
         n=3,
     )
@@ -131,6 +138,7 @@ def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str
         hero=combination["hero"],
         emotion=combination["emotion"],
         format=combination["format"],
+        live_triggers=live_triggers,
     )
 
     # 5. Статья
@@ -142,6 +150,7 @@ def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str
         hero=combination["hero"],
         emotion=combination["emotion"],
         format=combination["format"],
+        live_triggers=live_triggers,
     )
 
     # 6. Обложка
@@ -177,6 +186,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 /list — последние статьи
 /stats — статистика
 /publish_last — опубликовать последнюю одобренную
+
+🌡 Актуальный фон:
+/refresh_trends — сгенерировать черновик горячих тем недели (LLM)
+/set_weekly <текст> — вручную задать горячие темы недели
+/show_trends — показать текущие триггеры
 
 После генерации нажми:
 ✅ Опубликовать — одобрить и опубликовать в Дзен
@@ -386,6 +400,39 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
     data = query.data
 
+    # Trend Layer callbacks (без article_id)
+    if data == "trends_apply":
+        blocks = context.application.bot_data.get("pending_trends") or []
+        if not blocks:
+            await query.answer("Нет черновика для применения.")
+            return
+        try:
+            await asyncio.to_thread(apply_weekly_hot, settings, blocks, logger=logger)
+        except Exception:
+            logger.exception("apply_weekly_hot failed")
+            await query.answer("Ошибка записи, см. логи.")
+            return
+        context.application.bot_data["pending_trends"] = None
+        await query.answer("Применено ✅")
+        try:
+            await query.edit_message_reply_markup(reply_markup=None)
+        except Exception:
+            pass
+        await context.bot.send_message(
+            chat_id=query.message.chat_id,
+            text=f"weekly_hot.txt обновлён: {len(blocks)} пунктов. Следующая /generate уже увидит новый фон.",
+        )
+        return
+
+    if data == "trends_cancel":
+        context.application.bot_data["pending_trends"] = None
+        await query.answer("Отменено ❌")
+        try:
+            await query.edit_message_reply_markup(reply_markup=None)
+        except Exception:
+            pass
+        return
+
     try:
         action, article_id_str = data.split(":", 1)
         article_id = int(article_id_str)
@@ -488,6 +535,8 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                 # Для перегенерации выбираем НОВУЮ комбинацию —
                 # это даёт разнообразный второй вариант вместо копии первого.
                 combination = pick_combination(db, logger=logger)
+                # Свежий срез фона на перегенерацию
+                live_triggers = load_trend_context(settings, logger=logger)
                 new_titles = generate_titles(
                     settings,
                     topic=seed_topic,
@@ -503,6 +552,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                     hero=combination["hero"],
                     emotion=combination["emotion"],
                     format=combination["format"],
+                    live_triggers=live_triggers,
                 )
                 new_content = generate_article(
                     settings,
@@ -512,6 +562,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                     hero=combination["hero"],
                     emotion=combination["emotion"],
                     format=combination["format"],
+                    live_triggers=live_triggers,
                 )
                 new_image = generate_cover(settings, topic=seed_topic, title=new_title, content=new_content)
                 db.register_combination(
@@ -546,6 +597,121 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                 chat_id=query.message.chat_id,
                 text=f"Ошибка перегенерации статьи #{article_id}, см. логи.",
             )
+
+
+# ========================= Trend Layer =========================
+
+def _build_trends_preview_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("✅ Применить", callback_data="trends_apply"),
+            InlineKeyboardButton("❌ Отмена", callback_data="trends_cancel"),
+        ],
+    ])
+
+
+def _format_blocks_preview(blocks: list[str]) -> str:
+    lines = []
+    for i, b in enumerate(blocks, 1):
+        lines.append(f"{i}. {b}")
+    return "\n\n".join(lines)
+
+
+async def cmd_refresh_trends(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+
+    if not is_admin(settings, update.effective_user.id):
+        return
+
+    await update.message.reply_text("Собираю черновик горячих тем недели... ~30 секунд.")
+
+    try:
+        blocks = await asyncio.to_thread(refresh_via_llm, settings, logger=logger)
+    except Exception:
+        logger.exception("refresh_via_llm failed")
+        await update.message.reply_text("Ошибка при генерации черновика, см. логи.")
+        return
+
+    if not blocks:
+        await update.message.reply_text("Модель не вернула ни одного пункта. Попробуй ещё раз или используй /set_weekly.")
+        return
+
+    context.application.bot_data["pending_trends"] = blocks
+
+    preview = _format_blocks_preview(blocks)
+    await update.message.reply_text(
+        f"🌡 Черновик горячих тем ({len(blocks)} шт.):\n\n{preview}",
+        reply_markup=_build_trends_preview_keyboard(),
+    )
+
+
+async def cmd_set_weekly(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+
+    if not is_admin(settings, update.effective_user.id):
+        return
+
+    raw = update.message.text or ""
+    # Убираем саму команду
+    if raw.startswith("/set_weekly"):
+        raw = raw[len("/set_weekly"):].lstrip()
+
+    if not raw.strip():
+        await update.message.reply_text(
+            "Использование: /set_weekly <текст>\n\n"
+            "Пункты разделяй пустой строкой или нумерацией (1., 2., ...).\n"
+            "Пример:\n"
+            "/set_weekly 1. Новые квитанции за ЖКХ, рост 10-15%.\n"
+            "2. WB и Ozon: подделки Apple и БАДы.\n"
+            "3. Отпуск в Сочи дороже Турции."
+        )
+        return
+
+    blocks = parse_raw_input(raw)
+    if not blocks:
+        await update.message.reply_text("Не удалось распарсить пункты. Разделяй их пустой строкой или нумерацией.")
+        return
+
+    context.application.bot_data["pending_trends"] = blocks
+
+    preview = _format_blocks_preview(blocks)
+    await update.message.reply_text(
+        f"Распознал {len(blocks)} пунктов:\n\n{preview}",
+        reply_markup=_build_trends_preview_keyboard(),
+    )
+
+
+async def cmd_show_trends(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+
+    if not is_admin(settings, update.effective_user.id):
+        return
+
+    # Показываем полный контекст, как его увидит промт (не сэмпл, а весь)
+    from app.context.trends import _load_file, _MONTHLY_FILE, _WEEKLY_FILE
+
+    monthly = _load_file(settings, _MONTHLY_FILE, logger)
+    weekly = _load_file(settings, _WEEKLY_FILE, logger)
+
+    parts = []
+    parts.append(f"📅 Weekly ({len(weekly)}):")
+    if weekly:
+        for i, b in enumerate(weekly, 1):
+            parts.append(f"  {i}. {b[:200]}")
+    else:
+        parts.append("  (пусто — используй /refresh_trends или /set_weekly)")
+
+    parts.append("")
+    parts.append(f"🗓 Monthly ({len(monthly)}):")
+    if monthly:
+        for i, b in enumerate(monthly, 1):
+            parts.append(f"  {i}. {b[:200]}")
+    else:
+        parts.append("  (пусто — обнови вручную app/context/monthly_triggers.txt)")
+
+    msg = "\n".join(parts)
+    for chunk in chunk_text(msg):
+        await update.message.reply_text(chunk)
 
 
 async def cmd_login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -615,6 +781,9 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
     application.add_handler(CommandHandler("stats", stats))
     application.add_handler(CommandHandler("publish_last", publish_last))
     application.add_handler(CommandHandler("login", cmd_login))
+    application.add_handler(CommandHandler("refresh_trends", cmd_refresh_trends))
+    application.add_handler(CommandHandler("set_weekly", cmd_set_weekly))
+    application.add_handler(CommandHandler("show_trends", cmd_show_trends))
     application.add_handler(CallbackQueryHandler(on_callback))
     logger.info("Bot started, polling...")
     application.run_polling(drop_pending_updates=True)
