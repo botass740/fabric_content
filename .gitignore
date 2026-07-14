@@ -39,6 +39,7 @@ step*.png
 
 # Local scripts
 freeclaude.bat
+freeclaude*.bat
 
 # OS files
 .DS_Store

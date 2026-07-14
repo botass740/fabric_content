@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import os
 from pathlib import Path
@@ -15,6 +16,7 @@ from telegram.ext import (
 from app.database.db import Database, STATUS_APPROVED, STATUS_GENERATED, STATUS_REJECTED, STATUS_PUBLISHED
 from app.publishers.dzen_publisher import DzenPublisher
 from app.generators.article_plan import generate_article_plan
+from app.generators.story_check import generate_story_check
 from app.generators.articles import generate_article
 from app.generators.images import generate_cover
 from app.generators.titles import generate_titles
@@ -101,6 +103,98 @@ async def send_article_preview(bot, chat_id: int, article: dict) -> None:
     )
 
 
+def _run_story_check_pipeline(
+    settings,
+    *,
+    topic: str,
+    title: str,
+    hero: str,
+    emotion: str,
+    format: str,
+    live_triggers: str,
+    max_plan_retries: int = 2,
+) -> tuple[str, dict]:
+    """
+    Генерирует план статьи, прогоняет через story_check,
+    при FAIL перегенерирует (до max_plan_retries раз).
+
+    Возвращает (plan_text, plan_json) — лучший план по версии story_check.
+
+    Если story_check технически недоступен (API error, невалидный JSON),
+    план принимается без проверки.
+    """
+    attempts = []
+    plan_text, plan_json = None, None
+
+    for attempt in range(1, max_plan_retries + 2):  # 1 initial + max_plan_retries retries
+        logger.info(f"[STORY_CHECK] Checking plan attempt {attempt}")
+
+        # Генерация плана (с feedback для повторных попыток)
+        feedback = None
+        if attempt > 1 and attempts:
+            last = attempts[-1]
+            feedback = json.dumps(last["check_issues"], ensure_ascii=False, indent=2) if last.get("check_issues") else None
+
+        plan_text, plan_json = generate_article_plan(
+            settings,
+            topic=topic,
+            title=title,
+            hero=hero,
+            emotion=emotion,
+            format=format,
+            live_triggers=live_triggers,
+            feedback=feedback,
+        )
+
+        # Story check
+        check = generate_story_check(
+            settings,
+            topic=topic,
+            title=title,
+            plan_json=plan_json,
+        )
+
+        # Техническая ошибка story_check — пропускаем проверку, используем план
+        if check is None:
+            logger.warning(
+                "[STORY_CHECK] Story check technical error — skipping check, "
+                f"using plan attempt {attempt}"
+            )
+            return plan_text, plan_json
+
+        # Сохраняем результат
+        attempts.append({
+            "plan": plan_json,
+            "plan_text": plan_text,
+            "check": check,
+            "check_issues": check.get("issues", []),
+            "score": check.get("score", 0),
+        })
+
+        if check["status"] == "PASS":
+            logger.info(f"[STORY_CHECK] Status=PASS Score={check['score']}")
+            logger.info("[STORY_CHECK] Plan accepted")
+            return plan_text, plan_json
+
+        # FAIL — логируем и регенерируем
+        critical_count = sum(1 for i in check.get("issues", []) if i.get("severity") == "critical")
+        logger.info(f"[STORY_CHECK] Status=FAIL Score={check['score']}")
+        if critical_count:
+            logger.info(f"[STORY_CHECK] Critical issues={critical_count}")
+        if attempt <= max_plan_retries:
+            logger.info("[STORY_CHECK] Regenerating plan with editor feedback")
+        else:
+            logger.info("[STORY_CHECK] No plan passed after 3 attempts")
+
+    # Все попытки FAIL — выбираем лучший по score
+    best = max(attempts, key=lambda a: (a["score"], attempts.index(a)))
+    logger.warning(
+        f"[STORY_CHECK] No plan passed after {max_plan_retries + 1} attempts. "
+        f"Using best plan: attempt={attempts.index(best) + 1} score={best['score']}"
+    )
+    return best["plan_text"], best["plan"]
+
+
 def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str, str | None]:
     # 0. Один срез актуального фона на всю генерацию —
     # чтобы тема, план и статья видели один и тот же контекст
@@ -130,8 +224,8 @@ def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str
     )
     title = titles[0] if titles else topic
 
-    # 4. План статьи с голосом рассказчика
-    plan = generate_article_plan(
+    # 4. План статьи + story_check + retry
+    plan, plan_json = _run_story_check_pipeline(
         settings,
         topic=topic,
         title=title,
@@ -545,7 +639,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                     n=6,
                 )
                 new_title = new_titles[0] if new_titles else seed_topic
-                new_plan = generate_article_plan(
+                new_plan, new_plan_json = _run_story_check_pipeline(
                     settings,
                     topic=seed_topic,
                     title=new_title,

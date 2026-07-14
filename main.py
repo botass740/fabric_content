@@ -49,6 +49,7 @@ def main() -> None:
         from app.generators.topics import generate_topics
         from app.generators.titles import generate_titles
         from app.generators.article_plan import generate_article_plan
+        from app.generators.story_check import generate_story_check
         from app.generators.articles import generate_article
         from app.generators.topic_matrix import pick_combination
         from app.context.trends import load_trend_context
@@ -80,9 +81,9 @@ def main() -> None:
         )
         logger.info(f"Titles: {titles}")
 
-        # План + статья
+        # План + story_check + статья
         title = titles[0] if titles else topic
-        plan = generate_article_plan(
+        plan_text, plan_json = generate_article_plan(
             settings,
             topic=topic,
             title=title,
@@ -91,11 +92,26 @@ def main() -> None:
             format=combination["format"],
             live_triggers=live_triggers,
         )
+
+        # Story check (в DEV режиме — однократно, без retry)
+        check = generate_story_check(
+            settings,
+            topic=topic,
+            title=title,
+            plan_json=plan_json,
+        )
+        if check is not None:
+            logger.info(f"[DEV] Story check: status={check['status']} score={check['score']}")
+            if check["status"] == "FAIL":
+                logger.warning(f"[DEV] Story check FAILED. Issues: {len(check.get('issues', []))}")
+        else:
+            logger.warning("[DEV] Story check technical error — skipped")
+
         article = generate_article(
             settings,
             topic=topic,
             title=title,
-            plan=plan,
+            plan=plan_text,
             hero=combination["hero"],
             emotion=combination["emotion"],
             format=combination["format"],

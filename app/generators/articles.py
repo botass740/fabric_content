@@ -1,6 +1,6 @@
 import re
 import logging
-from app.generators.openrouter_client import OpenRouterClient
+from app.generators.llm import get_llm_client
 from app.generators.utils import load_prompt
 
 
@@ -100,13 +100,7 @@ def generate_article(
         live_triggers=live_triggers,
     )
 
-    client = OpenRouterClient(
-        api_key=settings.openrouter_api_key,
-        base_url=settings.openrouter_base_url,
-        model=settings.openrouter_model,
-        timeout_s=settings.openrouter_timeout_s,
-        logger=logger,
-    )
+    client = get_llm_client(settings, logger)
 
     system = (
         "Ты пишешь для Дзена на русском. "

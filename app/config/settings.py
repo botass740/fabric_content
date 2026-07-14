@@ -17,6 +17,11 @@ class Settings:
     openrouter_timeout_s: int = 60
     openrouter_temperature: float = 0.85
     openrouter_top_p: float = 0.9
+    llm_provider: str = "openrouter"
+    anthropic_auth_token: str = ""
+    anthropic_base_url: str = "https://api.anthropic.com"
+    anthropic_model: str = "claude-opus-4-7"
+    anthropic_timeout_s: int = 180
     openai_api_key: str = ""
     openai_base_url: str = "https://api.openai.com/v1"
     openai_image_model: str = "gpt-image-1"
@@ -98,6 +103,11 @@ def get_settings() -> Settings:
             openrouter_timeout_s=int(os.getenv("OPENROUTER_TIMEOUT_S", "60")),
             openrouter_temperature=float(os.getenv("OPENROUTER_TEMPERATURE", "0.85")),
             openrouter_top_p=float(os.getenv("OPENROUTER_TOP_P", "0.9")),
+            llm_provider=os.getenv("LLM_PROVIDER", "openrouter"),
+            anthropic_auth_token=os.getenv("ANTHROPIC_AUTH_TOKEN", ""),
+            anthropic_base_url=os.getenv("ANTHROPIC_BASE_URL", "https://api.anthropic.com"),
+            anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-opus-4-7"),
+            anthropic_timeout_s=int(os.getenv("ANTHROPIC_TIMEOUT_S", "180")),
             openai_api_key=os.getenv("OPENAI_API_KEY", ""),
             openai_base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
             openai_image_model=os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1"),

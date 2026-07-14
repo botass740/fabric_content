@@ -2,5 +2,7 @@ python-dotenv
 python-telegram-bot
 requests
 openai
+anthropic
 playwright
-Pillowpyperclip
+Pillow
+pyperclip

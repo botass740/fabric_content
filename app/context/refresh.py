@@ -12,13 +12,13 @@
 
 from __future__ import annotations
 
-import json
 import logging
 import re
 from datetime import date
 
 from app.context.trends import write_weekly_hot
-from app.generators.openrouter_client import OpenRouterClient
+from app.generators.llm import get_llm_client
+from app.generators.utils import parse_json_list
 
 
 _REFRESH_PROMPT = """Ты — редактор Дзена в нише «деньги, финансовые ошибки, бытовая психология денег».
@@ -63,13 +63,7 @@ def refresh_via_llm(settings, *, logger: logging.Logger | None = None) -> list[s
     """
     log = logger or logging.getLogger(__name__)
 
-    client = OpenRouterClient(
-        api_key=settings.openrouter_api_key,
-        base_url=settings.openrouter_base_url,
-        model=settings.openrouter_model,
-        timeout_s=settings.openrouter_timeout_s,
-        logger=log,
-    )
+    client = get_llm_client(settings, log)
 
     prompt = _REFRESH_PROMPT.format(today=date.today().isoformat())
 
@@ -80,7 +74,7 @@ def refresh_via_llm(settings, *, logger: logging.Logger | None = None) -> list[s
         max_tokens=900,
     )
 
-    blocks = _parse_json_list(response)
+    blocks = parse_json_list(response)
     blocks = [b.strip() for b in blocks if b and b.strip()]
     log.info(f"refresh_via_llm produced {len(blocks)} blocks")
     return blocks
@@ -130,22 +124,3 @@ def parse_raw_input(raw: str) -> list[str]:
         cleaned.append(" ".join(current).strip())
 
     return [c for c in cleaned if c]
-
-
-def _parse_json_list(response: str) -> list[str]:
-    """Достаёт JSON-массив строк из ответа модели (с fallback на regex)."""
-    try:
-        data = json.loads(response)
-        if isinstance(data, list):
-            return [str(x) for x in data]
-    except Exception:
-        pass
-    match = re.search(r"\[.+\]", response, re.DOTALL)
-    if match:
-        try:
-            data = json.loads(match.group(0))
-            if isinstance(data, list):
-                return [str(x) for x in data]
-        except Exception:
-            pass
-    return []

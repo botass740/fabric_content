@@ -1,6 +1,6 @@
 import json
 import logging
-from app.generators.openrouter_client import OpenRouterClient
+from app.generators.llm import get_llm_client
 from app.prompts.image_templates import get_all_categories
 
 
@@ -44,13 +44,7 @@ def analyze_article_for_image(settings, *, title: str, content: str) -> dict:
 
 Ответ должен быть коротким и конкретным. Только JSON, без markdown, без пояснений."""
 
-    client = OpenRouterClient(
-        api_key=settings.openrouter_api_key,
-        base_url=settings.openrouter_base_url,
-        model=settings.openrouter_model,
-        timeout_s=settings.openrouter_timeout_s,
-        logger=logger
-    )
+    client = get_llm_client(settings, logger)
 
     response = client.chat(
         system=system,
