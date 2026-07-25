@@ -114,7 +114,7 @@ def generate_article(
         system=system,
         user=user_prompt,
         temperature=0.85,
-        max_tokens=3800,
+        max_tokens=8000,
     )
     text = _clean_text(text)
     text = _cut_second_ending(text)

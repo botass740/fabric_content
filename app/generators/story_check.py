@@ -103,7 +103,7 @@ def generate_story_check(
                 system=system,
                 user=user_prompt,
                 temperature=0.3,
-                max_tokens=1500,
+                max_tokens=3000,
             )
         except Exception as e:
             logger.error(f"[STORY_CHECK] Technical attempt {attempt} failed: API error: {e}")

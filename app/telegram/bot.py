@@ -1,10 +1,12 @@
 import asyncio
+import io
 import json
 import logging
 import os
 from pathlib import Path
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.error import NetworkError, TimedOut, RetryAfter
 from telegram.ext import (
     Application,
     ApplicationBuilder,
@@ -62,9 +64,50 @@ def build_actions_keyboard(article_id: int) -> InlineKeyboardMarkup:
             InlineKeyboardButton("🔄 Перегенерировать", callback_data=f"regen:{article_id}"),
         ],
         [
+            InlineKeyboardButton("🖼 Новая обложка", callback_data=f"recover:{article_id}"),
             InlineKeyboardButton("❌ Удалить", callback_data=f"del:{article_id}"),
         ],
     ])
+
+
+def _compress_for_preview(image_path: str, max_side: int = 1280, quality: int = 82) -> bytes:
+    """Сжимает обложку в JPEG для превью в Telegram.
+
+    Полноразмерный PNG (1.5+ МБ) обрывается на бесплатном прокси. Возвращаем
+    компактный JPEG (~150-250 КБ). Оригинальный файл на диске не меняем.
+    """
+    from PIL import Image
+
+    try:
+        with Image.open(image_path) as im:
+            im = im.convert("RGB")
+            im.thumbnail((max_side, max_side))
+            buf = io.BytesIO()
+            im.save(buf, format="JPEG", quality=quality, optimize=True)
+            return buf.getvalue()
+    except Exception as e:
+        logger.warning(f"Preview compression failed, sending original: {e}")
+        return Path(image_path).read_bytes()
+
+
+async def _retry_send(coro_factory, *, what: str, attempts: int = 4) -> bool:
+    """Повторяет отправку в Telegram при обрывах прокси (ReadError/TimedOut).
+
+    Бесплатный Cloudflare-прокси периодически рвёт соединение; один сбой
+    не должен ронять всю выдачу превью. Возвращает True при успехе.
+    """
+    for attempt in range(1, attempts + 1):
+        try:
+            await coro_factory()
+            return True
+        except RetryAfter as e:
+            await asyncio.sleep(getattr(e, "retry_after", 3) + 1)
+        except (NetworkError, TimedOut) as e:
+            logger.warning(f"Send '{what}' failed (attempt {attempt}/{attempts}): {e}")
+            if attempt == attempts:
+                return False
+            await asyncio.sleep(2 * attempt)
+    return False
 
 
 async def send_article_preview(bot, chat_id: int, article: dict) -> None:
@@ -74,32 +117,39 @@ async def send_article_preview(bot, chat_id: int, article: dict) -> None:
     status = article.get("status", "")
     article_id = article.get("id")
 
-    # Отправка фото
+    # Отправка фото (читаем байты заранее, чтобы можно было ретраить).
+    # Сжимаем в JPEG: полноразмерный PNG (1.5+ МБ) не пролезает через
+    # бесплатный Telegram-прокси. Оригинал на диске не трогаем — он идёт в Дзен.
+    photo_sent = False
     if image_path and Path(image_path).exists():
-        try:
-            with open(image_path, "rb") as photo:
-                await bot.send_photo(
-                    chat_id=chat_id,
-                    photo=photo,
-                    caption=title[:1000],
-                )
-        except Exception as e:
-            logger.warning(f"Failed to send photo: {e}")
-            await bot.send_message(chat_id=chat_id, text=f"Заголовок: {title}")
-    else:
-        await bot.send_message(chat_id=chat_id, text=f"Заголовок: {title}")
+        photo_bytes = _compress_for_preview(image_path)
+        photo_sent = await _retry_send(
+            lambda: bot.send_photo(chat_id=chat_id, photo=io.BytesIO(photo_bytes), caption=title[:1000]),
+            what="photo",
+        )
+    if not photo_sent:
+        await _retry_send(
+            lambda: bot.send_message(chat_id=chat_id, text=f"Заголовок: {title}"),
+            what="title",
+        )
 
     # Отправка текста статьи кусками
     chunks = chunk_text(content)
-    for chunk in chunks:
-        await bot.send_message(chat_id=chat_id, text=chunk)
+    for i, chunk in enumerate(chunks):
+        await _retry_send(
+            lambda c=chunk: bot.send_message(chat_id=chat_id, text=c),
+            what=f"chunk {i + 1}/{len(chunks)}",
+        )
 
     # Финальное сообщение с кнопками
     status_text = f"Статус: {status}\nID: {article_id}"
-    await bot.send_message(
-        chat_id=chat_id,
-        text=status_text,
-        reply_markup=build_actions_keyboard(article_id),
+    await _retry_send(
+        lambda: bot.send_message(
+            chat_id=chat_id,
+            text=status_text,
+            reply_markup=build_actions_keyboard(article_id),
+        ),
+        what="actions",
     )
 
 
@@ -288,7 +338,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 После генерации нажми:
 ✅ Опубликовать — одобрить и опубликовать в Дзен
-🔄 Перегенерировать — создать новый вариант
+🔄 Перегенерировать — создать новый вариант статьи
+🖼 Новая обложка — перегенерировать только картинку (статья не меняется)
 ❌ Удалить — отклонить статью
 """.strip()
     await update.message.reply_text(text)
@@ -303,6 +354,7 @@ async def generate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     await update.message.reply_text("Генерирую статью... это может занять 1-2 минуты.")
 
+    article_id = None
     try:
         topic, title, content, image_path = await asyncio.to_thread(
             generate_full_article_payload, settings, db
@@ -324,7 +376,20 @@ async def generate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     except Exception:
         logger.exception("Error in /generate handler")
-        await update.message.reply_text("Ошибка генерации, см. логи.")
+        if article_id is not None:
+            # Статья сгенерирована и сохранена — упала только доставка превью.
+            await _retry_send(
+                lambda: update.message.reply_text(
+                    f"Статья готова (ID: {article_id}), но превью не доставилось из-за сети. "
+                    f"Открой её через /list или /queue."
+                ),
+                what="generate-fallback",
+            )
+        else:
+            await _retry_send(
+                lambda: update.message.reply_text("Ошибка генерации, см. логи."),
+                what="generate-error",
+            )
 
 
 async def queue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -613,6 +678,50 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         except Exception:
             pass
 
+    # Кнопка: Новая обложка (перегенерирует ТОЛЬКО картинку, статья не трогается)
+    elif action == "recover":
+        article = db.get_article(article_id)
+        if not article:
+            await query.answer("Статья не найдена.")
+            return
+        await query.answer("Генерирую новую обложку...")
+        try:
+            new_image = await asyncio.to_thread(
+                generate_cover,
+                settings,
+                topic=article["title"],
+                title=article["title"],
+                content=article["content"],
+            )
+            if not new_image:
+                await context.bot.send_message(
+                    chat_id=query.message.chat_id,
+                    text=f"Не удалось сгенерировать обложку для #{article_id}, см. логи.",
+                )
+                return
+            db.update_article(article_id, image_path=new_image)
+
+            # Показываем только новую обложку + кнопки (текст статьи не дублируем)
+            if Path(new_image).exists():
+                with open(new_image, "rb") as photo:
+                    await context.bot.send_photo(
+                        chat_id=query.message.chat_id,
+                        photo=photo,
+                        caption=f"🖼 Новая обложка для #{article_id}\n{article['title'][:900]}",
+                        reply_markup=build_actions_keyboard(article_id),
+                    )
+            else:
+                await context.bot.send_message(
+                    chat_id=query.message.chat_id,
+                    text=f"Обложка сгенерирована, но файл не найден: {new_image}",
+                )
+        except Exception:
+            logger.exception(f"Error regenerating cover for article #{article_id}")
+            await context.bot.send_message(
+                chat_id=query.message.chat_id,
+                text=f"Ошибка генерации обложки для #{article_id}, см. логи.",
+            )
+
     # Кнопка: Перегенерировать
     elif action == "regen":
         await query.answer("Перегенерирую... подождите.")
@@ -860,11 +969,30 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
     os.environ["NO_PROXY"] = "*"
     os.environ["no_proxy"] = "*"
 
-    application = (
-        ApplicationBuilder()
-        .token(settings.telegram_bot_token)
-        .build()
-    )
+    # Используем Cloudflare Worker как прокси для Telegram API
+    if settings.telegram_api_base_url:
+        application = (
+            ApplicationBuilder()
+            .token(settings.telegram_bot_token)
+            .base_url(settings.telegram_api_base_url + "/bot")
+            .connect_timeout(30.0)
+            .read_timeout(30.0)
+            .write_timeout(60.0)
+            .pool_timeout(30.0)
+            .build()
+        )
+        logger.info(f"Using Cloudflare proxy: {settings.telegram_api_base_url}")
+    else:
+        application = (
+            ApplicationBuilder()
+            .token(settings.telegram_bot_token)
+            .connect_timeout(30.0)
+            .read_timeout(30.0)
+            .write_timeout(60.0)
+            .pool_timeout(30.0)
+            .build()
+        )
+        logger.info("Using direct Telegram API connection")
     application.bot_data["settings"] = settings
     application.bot_data["db"] = db
     application.bot_data["publisher"] = publisher

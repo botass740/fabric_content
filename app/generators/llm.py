@@ -18,5 +18,6 @@ def get_llm_client(settings, logger: logging.Logger | None = None):
         base_url=settings.openrouter_base_url,
         model=settings.openrouter_model,
         timeout_s=settings.openrouter_timeout_s,
+        reasoning_effort=settings.openrouter_reasoning_effort,
         logger=logger,
     )

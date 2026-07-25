@@ -9,12 +9,13 @@ class FluxClient:
     Использует endpoint /api/v1/images (не chat/completions).
     """
 
-    def __init__(self, api_key: str, model: str, output_format: str = "png", logger=None):
+    def __init__(self, api_key: str, model: str, output_format: str = "png", logger=None,
+                 base_url: str = "https://openrouter.ai/api/v1"):
         self.api_key = api_key
         self.model = model
         self.output_format = output_format
         self.logger = logger or logging.getLogger(__name__)
-        self.endpoint = "https://openrouter.ai/api/v1/images"
+        self.endpoint = base_url.rstrip("/") + "/images"
 
     def generate_image(self, prompt: str) -> bytes:
         """

@@ -60,16 +60,43 @@ def generate_article_plan(
 
     system = "Ты редактор Яндекс Дзена. Возвращай только JSON без пояснений и markdown."
 
-    response = client.chat(
-        system=system,
-        user=user_prompt,
-        temperature=0.75,
-        max_tokens=3000,
-    )
+    max_retries = 3
+    plan_json = None
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = client.chat(
+                system=system,
+                user=user_prompt,
+                temperature=0.75,
+                max_tokens=6000,
+            )
+        except Exception as e:
+            last_error = f"API error: {e}"
+            logger.error(f"[ARTICLE_PLAN] Technical attempt {attempt}/{max_retries} failed: {last_error}")
+            if attempt < max_retries:
+                continue
+            break
 
-    plan_json = extract_json(response, logger=logger)
+        if not response or not response.strip():
+            last_error = "empty response"
+            logger.error(f"[ARTICLE_PLAN] Technical attempt {attempt}/{max_retries} failed: {last_error}")
+            if attempt < max_retries:
+                continue
+            break
+
+        plan_json = extract_json(response, logger=logger)
+        if plan_json is not None:
+            break
+
+        last_error = "JSON parse failure"
+        logger.error(f"[ARTICLE_PLAN] Technical attempt {attempt}/{max_retries} failed: {last_error}")
+        if attempt < max_retries:
+            continue
+        break
+
     if plan_json is None:
-        logger.error(f"Full response ({len(response)} chars):\n{response[:2000]}")
+        logger.error(f"[ARTICLE_PLAN] All {max_retries} technical attempts exhausted. Last error: {last_error}")
         raise ValueError("Не удалось извлечь JSON из ответа LLM при генерации плана статьи")
 
     # Диагностика: логируем сам план и предупреждаем о пропущенных полях

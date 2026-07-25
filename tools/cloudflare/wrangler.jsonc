@@ -1,0 +1,5 @@
+{
+  "name": "openrouter-proxy",
+  "main": "openrouter-proxy.js",
+  "compatibility_date": "2026-07-01"
+}

@@ -30,6 +30,12 @@ data/app.sqlite3
 # Playwright profile
 playwright_profile/
 
+# Dzen session state (живые куки аккаунта Яндекса)
+dzen_state.json
+
+# Wrangler local cache (содержит id аккаунта Cloudflare)
+.wrangler/
+
 # Debug files
 debug_*.png
 debug_*.py

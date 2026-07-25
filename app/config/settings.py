@@ -11,12 +11,14 @@ _settings = None
 class Settings:
     telegram_bot_token: str = ""
     telegram_admin_id: Optional[int] = None
+    telegram_api_base_url: str = ""
     openrouter_api_key: str = ""
     openrouter_model: str = "deepseek/deepseek-chat"
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     openrouter_timeout_s: int = 60
     openrouter_temperature: float = 0.85
     openrouter_top_p: float = 0.9
+    openrouter_reasoning_effort: str = "low"
     llm_provider: str = "openrouter"
     anthropic_auth_token: str = ""
     anthropic_base_url: str = "https://api.anthropic.com"
@@ -93,6 +95,7 @@ def get_settings() -> Settings:
         _settings = Settings(
             telegram_bot_token=os.getenv("TELEGRAM_BOT_TOKEN", ""),
             telegram_admin_id=admin_id,
+            telegram_api_base_url=os.getenv("TELEGRAM_API_BASE_URL", ""),
             openrouter_api_key=os.getenv("OPENROUTER_API_KEY", ""),
             openrouter_model=os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat"),
             openrouter_base_url=os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
@@ -103,6 +106,7 @@ def get_settings() -> Settings:
             openrouter_timeout_s=int(os.getenv("OPENROUTER_TIMEOUT_S", "60")),
             openrouter_temperature=float(os.getenv("OPENROUTER_TEMPERATURE", "0.85")),
             openrouter_top_p=float(os.getenv("OPENROUTER_TOP_P", "0.9")),
+            openrouter_reasoning_effort=os.getenv("OPENROUTER_REASONING_EFFORT", "low"),
             llm_provider=os.getenv("LLM_PROVIDER", "openrouter"),
             anthropic_auth_token=os.getenv("ANTHROPIC_AUTH_TOKEN", ""),
             anthropic_base_url=os.getenv("ANTHROPIC_BASE_URL", "https://api.anthropic.com"),
