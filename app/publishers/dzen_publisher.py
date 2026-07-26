@@ -150,6 +150,21 @@ class DzenPublisher:
                     return PublishResult(ok=False, error="'Создать статью' not found", screenshot_path=screenshot)
 
                 sleep_rand(page, 2.0, 3.0)
+
+                # Редактор может открыться в новой вкладке и грузится долго на слабом VPS
+                editor_page = self._wait_for_editor_page(context, page)
+                if editor_page is None:
+                    self.logger.warning(
+                        f"Editor fields never appeared. Pages: {[p.url for p in context.pages]}"
+                    )
+                    screenshot = safe_screenshot(page, self.settings.logs_dir, "editor_not_loaded")
+                    return PublishResult(
+                        ok=False,
+                        error="Editor did not load (no DraftEditor fields)",
+                        screenshot_path=screenshot,
+                    )
+                page = editor_page
+                page.bring_to_front()
                 self.logger.info(f"Editor URL: {page.url}")
 
                 return self._fill_and_publish(page, title=title, content=content, image_path=image_path)
@@ -164,6 +179,27 @@ class DzenPublisher:
 
             finally:
                 context.close()
+
+    def _wait_for_editor_page(self, context, current_page, timeout_s: float = 60.0):
+        """Ищет вкладку с загрузившимся редактором (есть DraftEditor-поля).
+
+        Редактор может открыться в новой вкладке, а на слабом VPS его
+        JS-бандл грузится десятки секунд — поэтому опрашиваем все вкладки.
+        """
+        selector = 'div.notranslate.public-DraftEditor-content[role="textbox"]'
+        deadline = timeout_s * 1000
+        waited = 0.0
+        while waited < deadline:
+            for p in context.pages:
+                try:
+                    if p.locator(selector).count() >= 2:
+                        return p
+                except Exception:
+                    continue
+            current_page.wait_for_timeout(2000)
+            waited += 2000
+            self.logger.info(f"Waiting for editor... {int(waited/1000)}s, pages={len(context.pages)}")
+        return None
 
     def _fill_and_publish(
         self,
