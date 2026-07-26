@@ -325,6 +325,29 @@ AUTOGEN_TIMES = (
     dt.time(19, 0, tzinfo=MSK),
 )
 AUTOGEN_MAX_DELAY_S = 30 * 60
+QUEUE_SUMMARY_TIME = dt.time(21, 0, tzinfo=MSK)
+
+
+async def queue_summary_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+    db: Database = context.application.bot_data["db"]
+
+    articles = db.list_queue(limit=20)
+    if not articles:
+        logger.info("Queue summary: queue empty, nothing to send")
+        return
+
+    lines = [f"🌙 В очереди {len(articles)} неопубликованных:"]
+    for a in articles:
+        title_short = a["title"][:50] + "..." if len(a["title"]) > 50 else a["title"]
+        lines.append(f"#{a['id']} [{a['status']}] {title_short}")
+    lines.append("\nОткрой /queue или /list, чтобы опубликовать или удалить.")
+
+    await _retry_send(
+        lambda: context.bot.send_message(settings.telegram_admin_id, "\n".join(lines)),
+        what="queue-summary",
+    )
+    logger.info(f"Queue summary: sent, {len(articles)} pending")
 
 
 async def autogen_job(context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -1088,6 +1111,13 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
             application.job_queue.run_daily(autogen_job, time=t, name=f"autogen_{t.hour:02d}")
         times_str = ", ".join(f"{t.hour:02d}:{t.minute:02d}" for t in AUTOGEN_TIMES)
         logger.info(f"Autogen scheduled daily at {times_str} MSK (+0-30 min random delay)")
+        application.job_queue.run_daily(
+            queue_summary_job, time=QUEUE_SUMMARY_TIME, name="queue_summary"
+        )
+        logger.info(
+            f"Queue summary scheduled daily at "
+            f"{QUEUE_SUMMARY_TIME.hour:02d}:{QUEUE_SUMMARY_TIME.minute:02d} MSK"
+        )
 
     logger.info("Bot started, polling...")
     application.run_polling(drop_pending_updates=True)
