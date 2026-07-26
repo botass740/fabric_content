@@ -1,9 +1,12 @@
 import asyncio
+import datetime as dt
 import io
 import json
 import logging
 import os
+import random
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import NetworkError, TimedOut, RetryAfter
@@ -315,6 +318,68 @@ def generate_full_article_payload(settings, db: Database) -> tuple[str, str, str
 
 # ========================= Handlers =========================
 
+MSK = ZoneInfo("Europe/Moscow")
+AUTOGEN_TIMES = (
+    dt.time(9, 0, tzinfo=MSK),
+    dt.time(14, 0, tzinfo=MSK),
+    dt.time(19, 0, tzinfo=MSK),
+)
+AUTOGEN_MAX_DELAY_S = 30 * 60
+
+
+async def autogen_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+    db: Database = context.application.bot_data["db"]
+    chat_id = settings.telegram_admin_id
+
+    # Случайный сдвиг, чтобы статьи не выходили каждый день секунда в секунду
+    delay = random.randint(0, AUTOGEN_MAX_DELAY_S)
+    logger.info(f"Autogen: job fired, waiting {delay // 60} min before generation")
+    await asyncio.sleep(delay)
+
+    lock: asyncio.Lock = context.application.bot_data["autogen_lock"]
+    if lock.locked():
+        logger.warning("Autogen: previous cycle still running, skipping this slot")
+        return
+
+    async with lock:
+        article_id = None
+        try:
+            logger.info("Autogen: generating article")
+            topic, title, content, image_path = await asyncio.to_thread(
+                generate_full_article_payload, settings, db
+            )
+            article_id = db.create_article(
+                title=title,
+                content=content,
+                image_path=image_path,
+                status=STATUS_GENERATED,
+            )
+            article = db.get_article(article_id)
+
+            await _retry_send(
+                lambda: context.bot.send_message(
+                    chat_id, "⏰ Статья по расписанию готова. Проверь и опубликуй:"
+                ),
+                what="autogen-header",
+            )
+            await send_article_preview(bot=context.bot, chat_id=chat_id, article=article)
+            logger.info(f"Autogen: article #{article_id} generated, preview sent")
+        except Exception:
+            logger.exception("Autogen: generation failed")
+            if article_id is not None:
+                text = (
+                    f"⏰ Статья по расписанию готова (ID: {article_id}), "
+                    f"но превью не доставилось. Открой через /list или /queue."
+                )
+            else:
+                text = "⏰ Автогенерация упала, см. логи: journalctl -u dzen-bot"
+            await _retry_send(
+                lambda: context.bot.send_message(chat_id, text),
+                what="autogen-error",
+            )
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     settings = context.application.bot_data["settings"]
     if not is_admin(settings, update.effective_user.id):
@@ -330,6 +395,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 /list — последние статьи
 /stats — статистика
 /publish_last — опубликовать последнюю одобренную
+
+⏰ Автогенерация: 3 раза в день (09:00, 14:00, 19:00 МСК ±30 мин).
+Статья приходит превью — публикация после нажатия «Опубликовать».
 
 🌡 Актуальный фон:
 /refresh_trends — сгенерировать черновик горячих тем недели (LLM)
@@ -1007,5 +1075,19 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
     application.add_handler(CommandHandler("set_weekly", cmd_set_weekly))
     application.add_handler(CommandHandler("show_trends", cmd_show_trends))
     application.add_handler(CallbackQueryHandler(on_callback))
+
+    application.bot_data["autogen_lock"] = asyncio.Lock()
+    if settings.telegram_admin_id is None:
+        logger.warning("Autogen disabled: TELEGRAM_ADMIN_ID not set (nowhere to send previews)")
+    elif application.job_queue is None:
+        logger.warning(
+            "Autogen disabled: JobQueue unavailable, install python-telegram-bot[job-queue]"
+        )
+    else:
+        for t in AUTOGEN_TIMES:
+            application.job_queue.run_daily(autogen_job, time=t, name=f"autogen_{t.hour:02d}")
+        times_str = ", ".join(f"{t.hour:02d}:{t.minute:02d}" for t in AUTOGEN_TIMES)
+        logger.info(f"Autogen scheduled daily at {times_str} MSK (+0-30 min random delay)")
+
     logger.info("Bot started, polling...")
     application.run_polling(drop_pending_updates=True)
