@@ -1056,9 +1056,10 @@ async def cmd_login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
-    # Отключаем системный прокси (SOCKS4) для httpx
-    os.environ["NO_PROXY"] = "*"
-    os.environ["no_proxy"] = "*"
+    # Не проксируем Dzen, Telegram API (уже через Cloudflare Worker) и локальные адреса
+    no_proxy = "dzen.ru,telegram-api-proxy.botass740.workers.dev,localhost,127.0.0.1"
+    os.environ["NO_PROXY"] = no_proxy
+    os.environ["no_proxy"] = no_proxy
 
     # Используем Cloudflare Worker как прокси для Telegram API
     if settings.telegram_api_base_url:
@@ -1108,11 +1109,15 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
         )
     else:
         for t in AUTOGEN_TIMES:
-            application.job_queue.run_daily(autogen_job, time=t, name=f"autogen_{t.hour:02d}")
+            application.job_queue.run_daily(
+                autogen_job, time=t, name=f"autogen_{t.hour:02d}",
+                job_kwargs={"misfire_grace_time": 300},
+            )
         times_str = ", ".join(f"{t.hour:02d}:{t.minute:02d}" for t in AUTOGEN_TIMES)
         logger.info(f"Autogen scheduled daily at {times_str} MSK (+0-30 min random delay)")
         application.job_queue.run_daily(
-            queue_summary_job, time=QUEUE_SUMMARY_TIME, name="queue_summary"
+            queue_summary_job, time=QUEUE_SUMMARY_TIME, name="queue_summary",
+            job_kwargs={"misfire_grace_time": 300},
         )
         logger.info(
             f"Queue summary scheduled daily at "

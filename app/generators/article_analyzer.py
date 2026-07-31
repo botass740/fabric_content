@@ -109,7 +109,7 @@ def analyze_article_for_image(settings, *, title: str, content: str) -> dict:
         system=system,
         user=user,
         temperature=0.7,
-        max_tokens=2000,
+        max_tokens=4096,
     )
 
     analysis = _parse_scene(response, logger)

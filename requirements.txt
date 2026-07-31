@@ -6,3 +6,5 @@ anthropic
 playwright
 Pillow
 pyperclip
+beautifulsoup4
+lxml

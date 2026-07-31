@@ -1,6 +1,6 @@
 # Dzen_2 — состояние проекта
 
-**Обновлено:** 2026-07-26
+**Обновлено:** 2026-07-31
 
 **Назначение:** автогенерация и публикация статей в Яндекс.Дзен (ниша «финансы, заработок, бытовая психология денег»). Управление через Telegram-бота. Локальная разработка на Windows (`F:\Zerocoder\Dzen_2`), боевой запуск — на VPS.
 
@@ -15,11 +15,12 @@
 | Сервис | Как подключаемся | Важно |
 |--------|------------------|-------|
 | Telegram Bot API | Cloudflare Worker `telegram-api-proxy.botass740.workers.dev` | **НЕ УДАЛЯТЬ.** Без него VPS вообще не видит Telegram |
-| OpenRouter (LLM + FLUX) | Cloudflare Worker `openrouter-proxy.botass740.workers.dev` | Создан в этой сессии: с VPS OpenRouter отдавал `403 Access denied by security policy` (гео-блок) |
+| OpenRouter (LLM + FLUX) | Squid HTTP proxy на Хельсинки VPS → SSH-туннель (autossh) | Cloudflare Workers (и Vercel) заблокированы OpenRouter по гео. Squid на `89.125.113.2:19502` через SSH-туннель с Московского VPS (localhost:3128). |
 
-Оба воркера на аккаунте Cloudflare `botass740`. Код и конфиг воркера OpenRouter — в `tools/cloudflare/`.
+**OpenRouter proxy chain:** Moscow VPS → autossh SSH tunnel (port 19502) → Helsinki VPS → Squid (127.0.0.1:3128) → internet
+**Telegram proxy chain:** Moscow VPS → Cloudflare Worker `telegram-api-proxy.botass740.workers.dev` → Telegram API
 
-Адреса прокси подставляются через `.env`: `TELEGRAM_API_BASE_URL`, `OPENROUTER_BASE_URL`.
+Адреса прокси подставляются через `.env`: `TELEGRAM_API_BASE_URL`, `OPENROUTER_BASE_URL`, `HTTP_PROXY`/`HTTPS_PROXY`.
 
 **Секреты:** в `.env` лежат API-ключи и токен бота. В логах, которые присылает пользователь, токен бота виден внутри URL прокси — никогда не повторять его в ответах.
 
@@ -100,9 +101,43 @@
 
 Начата, приостановлена на этапе планирования (2026-07-26). Суть: собрать базу знаний для генератора статей — **10 крупных + 15 средних + 15 небольших** финансовых каналов Дзена (личные финансы, семейный бюджет, заработок, финансовые ошибки, экономия, мошенничество, психология денег; авто-тематику НЕ трогать). По каждому каналу — метаданные + последние **50 публикаций** (URL, заголовок, дата, первые 500 символов, полный текст если возможно, просмотры/лайки/комментарии; отсутствующие значения оставлять пустыми, не выдумывать). Обложки — без компьютерного зрения, только простые признаки. Хранение — **отдельный SQLite**, перезапускаемый без изменения структуры. На этом этапе только сбор, **никакого анализа**.
 
-Что уже выяснено: dzen.ru по чистому HTTP отдаёт 302 на sso.passport.yandex.ru — нужен браузерный скрейпинг (Playwright); гаданные API-эндпоинты `api/v3/launcher/export|more` → 404. Открытые вопросы к пользователю: где запускать сбор (рекомендация — локально на Windows, чтобы не светить IP VPS с публикующим аккаунтом), пороги подписчиков для крупный/средний/небольшой, что делать с признаками обложек без CV.
+Что уже выяснено (2026-07-27, `tools/dzen_explorer.py` + `tools/dzen_auth_explorer.py`):
+- **Без куков ничего не работает**: dzen.ru отдаёт 302 на sso.passport.yandex.ru; RSS/sitemap/публичные API — тоже мимо.
+- **requests + куки из `dzen_state.json` — работает полностью, браузер для сбора не нужен:**
+  - Страница канала `dzen.ru/<slug>` → HTTP 200, внутри `<script type="application/ld+json">` — ItemList с 20 публикациями (name, image, description, url).
+  - **Пагинация**: в HTML канала есть `"more":{"link":"https://dzen.ru/api/web/v1/channel-more?...&next_page_id=..."}` — GET по этой ссылке (с теми же куками) отдаёт JSON: `items[]` с title, text (сниппет), link, **views**, publicationDate (unix), timeToReadSeconds + следующий `more.link`. Цеплять цепочкой до конца (у tbank лента кончилась на ~33 статьях).
+  - Страница статьи `dzen.ru/a/<id>` → HTTP 200, внутри `var _params=({"ssrData":...})` (искать `"ssrData"` и вырезать сбалансированный `{...}`): полный текст в `publishersResponse.data.data.publication.content.articleContent.contentState` (строка с draft-js JSON, блоки → текст), просмотры в `publication.publicationStatistics` (views, viewsTillEnd, pageViews), лайки/комменты в `socialMetaResponse.items[0].metaInfo` (likeCount, commentsCount), дата в `og.publishDate`. Проверено на живой статье: заголовок+дата+16291 просмотр+40 лайков+полный текст 2673 символа.
+- Гаданные API (`launcher/feed`, `publisher/channel/articles`) — `{'error': 1, 'errtext': 'Unknown api request'}`, не тратить время.
+- **Seed-список `tools/dzen_channels_seed.txt` наполовину мёртвый**: tinkoffjournal, sravni, rbc, banki-ru → 404; живые: tbank, fincult, tjournal. Перед сбором обязательна проверка существования (HTTP 200 и не SSO).
+- Предупреждение: VK-автологин в куках отдаёт `invalid user` — на вход не влияет, но куки стареют; при массовых 302 на SSO — перелогин `tools/dzen_login_local.py`.
+
+Открытые вопросы к пользователю: где запускать сбор (рекомендация — локально на Windows, чтобы не светить IP VPS с публикующим аккаунтом), пороги подписчиков для крупный/средний/небольшой, что делать с признаками обложек без CV.
 
 ---
+
+## Хельсинки VPS — Squid прокси для OpenRouter
+
+**Сервер:** `root@89.125.113.2 -p 19502` (пароль в .env.local), Ubuntu 22.04, 1GB RAM, 1 vCPU. Хельсинки.
+**Назначение:** HTTP-прокси для обхода geo-блокировки OpenRouter (Россия, Cloudflare — заблокированы).
+
+**Как работает:**
+1. Squid (`/etc/squid/squid.conf`) слушает `127.0.0.1:3128` — только localhost, внешний доступ закрыт провайдером
+2. На Московском VPS запущен `autossh-tunnel.service` — SSH-туннель через порт 19502: `localhost:3128 → Helsinki:127.0.0.1:3128`
+3. Systemd-сервис `autossh-tunnel.service` на Московском VPS с `Restart=always`, `RestartSec=10`
+4. В `.env` на Московском VPS: `OPENROUTER_BASE_URL=https://openrouter.ai/api/v1` + `HTTP_PROXY=http://127.0.0.1:3128`
+5. SSH-ключ Московского VPS добавлен в `~/.ssh/authorized_keys` на Хельсинки (ed25519)
+
+**Провайдер** блокирует все порты, кроме 19502 (SSH). Новые порты не открыть — только через SSH-туннели.
+
+**Проверка:**
+```bash
+# На Московском VPS проверить туннель
+systemctl status autossh-tunnel.service
+# Тест OpenRouter
+curl -x http://127.0.0.1:3128 https://openrouter.ai/api/v1/models
+# Логи Squid на Хельсинки
+tail -f /var/log/squid/access.log
+```
 
 ## Известные грабли (проверено на практике)
 

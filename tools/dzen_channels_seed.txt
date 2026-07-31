@@ -1,0 +1,12 @@
+# tools/dzen_channels_seed.txt
+# Финансовые каналы Дзена (проверено вручную, активно ведутся)
+# Формат: один URL на строку
+# Для добавления нового канала: проверь что dzen.ru/SLUG открывается 
+# и публикации свежие (не старше месяца)
+
+https://dzen.ru/igorfaynman
+https://dzen.ru/fincult
+https://dzen.ru/gazprombank
+https://dzen.ru/vzoprodengi
+
+# TODO: добавить больше каналов через поиск в Дзене или рекомендации

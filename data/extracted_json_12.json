@@ -1,0 +1,32 @@
+{
+  "data": {
+    "__chunkManifest__dzen-layout_1.145.0__": {
+      "132": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-header-desktop.modern.bundle.js",
+      "238": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-debug-bottom-view.modern.bundle.js",
+      "256": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-search-wrapper-lazy-chunk.modern.bundle.js",
+      "277": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-link-vk-modal.modern.bundle.js",
+      "299": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-unauth-settings-button.modern.bundle.js",
+      "314": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-login-modal.modern.bundle.js",
+      "327": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-compliance-info.modern.bundle.js",
+      "481": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-thematic-catalog-drawer-manager-visible.modern.bundle.js",
+      "590": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-lazy-stellas-context.modern.bundle.js",
+      "651": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-offcanvas-manager-fetch.modern.bundle.js",
+      "716": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop.modern.bundle.js",
+      "839": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-dropdown-lazy-chunk.modern.bundle.js",
+      "843": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-thematic-catalog-content-fetch.modern.bundle.js",
+      "716.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop.modern.css",
+      "132.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-header-desktop.modern.css",
+      "839.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-dropdown-lazy-chunk.modern.css",
+      "256.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-search-wrapper-lazy-chunk.modern.css",
+      "590.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-lazy-stellas-context.modern.css",
+      "651.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-offcanvas-manager-fetch.modern.css",
+      "843.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-thematic-catalog-content-fetch.modern.css",
+      "277.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-link-vk-modal.modern.css",
+      "327.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-compliance-info.modern.css",
+      "238.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-debug-bottom-view.modern.css",
+      "299.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-unauth-settings-button.modern.css",
+      "481.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-thematic-catalog-drawer-manager-visible.modern.css",
+      "314.css": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0/dzen-layout-desktop-login-modal.modern.css"
+    }
+  }
+}

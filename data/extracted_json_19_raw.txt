@@ -1,0 +1,8 @@
+{
+    "startStack": getStartStack ? getStartStack() : "",
+    "endStack": getEndStack ? getEndStack() : "",
+    "filename": "page-data-fix.side-effect.ts",
+    "appId": "content@1.342.3",
+    "appVersion": "1.342.3",
+    "appName": "content",
+}

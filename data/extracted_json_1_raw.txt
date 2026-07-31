@@ -1,0 +1,8 @@
+{
+    "startStack": getStartStack ? getStartStack() : "",
+    "endStack": getEndStack ? getEndStack() : "",
+    "filename": "clear-url-script.ts",
+    "appId": "content@1.342.3",
+    "appVersion": "1.342.3",
+    "appName": "content",
+}

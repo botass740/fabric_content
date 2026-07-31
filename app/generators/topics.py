@@ -38,7 +38,7 @@ def generate_topics(
         system="Ты пишешь для Дзена на русском.",
         user=user_prompt,
         temperature=0.95,
-        max_tokens=2000,
+        max_tokens=4096,
     )
 
     topics = parse_json_list(response)

@@ -1,0 +1,8 @@
+{
+    "startStack": getStartStack ? getStartStack() : "",
+    "endStack": getEndStack ? getEndStack() : "",
+    "filename": "data-to-namespace.side-effect.ts",
+    "appId": "dzen-root@1.22.0",
+    "appVersion": "1.22.0",
+    "appName": "dzen-root",
+}

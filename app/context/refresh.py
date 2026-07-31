@@ -71,7 +71,7 @@ def refresh_via_llm(settings, *, logger: logging.Logger | None = None) -> list[s
         system="Ты редактор Дзена. Возвращай только JSON-массив без пояснений и markdown.",
         user=prompt,
         temperature=0.8,
-        max_tokens=900,
+        max_tokens=4096,
     )
 
     blocks = parse_json_list(response)

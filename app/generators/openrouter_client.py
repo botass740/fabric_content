@@ -21,9 +21,8 @@ class OpenRouterClient:
         self.reasoning_effort = (reasoning_effort or "").strip().lower()
         self.logger = logger or logging.getLogger(__name__)
 
-        # Создаём httpx клиент без системного прокси
+        # Создаём httpx клиент (прокси из HTTP_PROXY/HTTPS_PROXY env)
         http_client = httpx.Client(
-            proxy=None,
             timeout=timeout_s,
         )
 

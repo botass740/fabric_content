@@ -1,0 +1,2074 @@
+{
+  "appLockfile": {
+    "rootAppId": "dzen-root@1.22.0",
+    "apps": {
+      "dzen-root@1.22.0": {
+        "appId": "dzen-root@1.22.0",
+        "appName": "dzen-root",
+        "appVersion": "1.22.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-root/1.22.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-root/1.22.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "page-404",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "page-404@3.21.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-desktop",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-desktop@1.922.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "news-site",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "news-site@1.524.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "search",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "search@1.7.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "desktop2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "desktop2@3.431.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "article-feed",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "article-feed@1.33.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "content",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "content@1.342.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "brief-viewer",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "brief-viewer@1.15.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "subscriptions",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "subscriptions@1.32.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "topic-channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "topic-channel@1.37.2"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "prisma",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "prisma@1.5.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "history",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "history@1.11.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "shorts",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "shorts@1.20.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-feed",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-feed@1.37.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-viewer",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-viewer@1.43.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "year-results",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "year-results@1.6.7"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "predictions",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "predictions@1.1.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "channel@1.58.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-mobile",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-mobile@1.922.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "mobile",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "mobile@3.431.3"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "first-chunk": [
+                "first-chunk.%target%.bundle.js"
+              ],
+              "client": [
+                "client.%target%.bundle.js"
+              ],
+              "client-spa": [
+                "client-spa.%target%.bundle.js"
+              ]
+            },
+            "server": "server.node.bundle.js",
+            "placeholders": {}
+          }
+        }
+      },
+      "dzen-layout@1.145.0": {
+        "appId": "dzen-layout@1.145.0",
+        "appName": "dzen-layout",
+        "appVersion": "1.145.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-layout/1.145.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "dzen-layout-desktop": [
+                "dzen-layout-desktop.%target%.css",
+                "dzen-layout-desktop.%target%.bundle.js"
+              ],
+              "dzen-layout-header-desktop": [
+                "dzen-layout-header-desktop.%target%.css",
+                "dzen-layout-header-desktop.%target%.bundle.js"
+              ],
+              "dzen-layout-mobile": [
+                "dzen-layout-mobile.%target%.css",
+                "dzen-layout-mobile.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "dzen-layout-mobile": "dzen-layout-mobile.node.bundle.js",
+              "dzen-layout-desktop": "dzen-layout-desktop.node.bundle.js",
+              "dzen-layout-header-desktop": "dzen-layout-header-desktop.node.bundle.js"
+            },
+            "placeholders": {}
+          }
+        }
+      },
+      "profile-settings@1.40.3": {
+        "appId": "profile-settings@1.40.3",
+        "appName": "profile-settings",
+        "appVersion": "1.40.3",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/profile-settings/1.40.3",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/profile-settings/1.40.3",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "profile-settings-mobile": [
+                "profile-settings-mobile.%target%.css",
+                "profile-settings-mobile.%target%.bundle.js"
+              ],
+              "profile-settings-desktop": [
+                "profile-settings-desktop.%target%.css",
+                "profile-settings-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": {},
+            "placeholders": {}
+          }
+        }
+      },
+      "page-404@3.21.0": {
+        "appId": "page-404@3.21.0",
+        "appName": "page-404",
+        "appVersion": "3.21.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/page-404/3.21.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/page-404/3.21.0",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "server": "page-404.node.bundle.js"
+          }
+        }
+      },
+      "dzen-desktop@1.922.1": {
+        "appId": "dzen-desktop@1.922.1",
+        "appName": "dzen-desktop",
+        "appVersion": "1.922.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-desktop/1.922.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-desktop/1.922.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "dzen-desktop-first": [
+                "dzen-desktop-first.%target%.css",
+                "dzen-desktop-first.%target%.bundle.js"
+              ],
+              "dzen-desktop-first-chunk-micro-app": [
+                "dzen-desktop-first-chunk-micro-app.%target%.css",
+                "dzen-desktop-first-chunk-micro-app.%target%.bundle.js"
+              ],
+              "dzen-desktop-second": [
+                "dzen-desktop-second.%target%.css",
+                "dzen-desktop-second.%target%.bundle.js"
+              ],
+              "dzen-desktop-second-chunk-micro-apps": [
+                "dzen-desktop-second-chunk-micro-apps.%target%.css",
+                "dzen-desktop-second-chunk-micro-apps.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "dzen-desktop-first-chunk-micro-app": "dzen-desktop-first-chunk-micro-app.node.bundle.js",
+              "dzen-desktop-second-chunk-micro-apps": "dzen-desktop-second-chunk-micro-apps.node.bundle.js",
+              "main": "dzen-desktop.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "morda-ssr-router"
+          ]
+        }
+      },
+      "video-player-core@1.138.0": {
+        "appId": "video-player-core@1.138.0",
+        "appName": "video-player-core",
+        "appVersion": "1.138.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-player-core/1.138.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-player-core/1.138.0",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "one": [
+                "one.%target%.bundle.js"
+              ]
+            },
+            "server": {},
+            "placeholders": {}
+          }
+        }
+      },
+      "news-site@1.524.0": {
+        "appId": "news-site@1.524.0",
+        "appName": "news-site",
+        "appVersion": "1.524.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/news-site/1.524.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/news-site/1.524.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "init.desktop": [
+                "init.desktop.%target%.bundle.js"
+              ],
+              "instory.desktop": [
+                "instory.desktop.%target%.css",
+                "instory.desktop.%target%.bundle.js"
+              ],
+              "main.desktop": [
+                "main.desktop.%target%.css",
+                "main.desktop.%target%.bundle.js"
+              ],
+              "one_smi.desktop": [
+                "one_smi.desktop.%target%.css",
+                "one_smi.desktop.%target%.bundle.js"
+              ],
+              "rubric.desktop": [
+                "rubric.desktop.%target%.css",
+                "rubric.desktop.%target%.bundle.js"
+              ],
+              "search.desktop": [
+                "search.desktop.%target%.css",
+                "search.desktop.%target%.bundle.js"
+              ],
+              "smi.desktop": [
+                "smi.desktop.%target%.css",
+                "smi.desktop.%target%.bundle.js"
+              ],
+              "story.desktop": [
+                "story.desktop.%target%.css",
+                "story.desktop.%target%.bundle.js"
+              ],
+              "theme.desktop": [
+                "theme.desktop.%target%.css",
+                "theme.desktop.%target%.bundle.js"
+              ],
+              "top.desktop": [
+                "top.desktop.%target%.css",
+                "top.desktop.%target%.bundle.js"
+              ],
+              "tournament.desktop": [
+                "tournament.desktop.%target%.css",
+                "tournament.desktop.%target%.bundle.js"
+              ],
+              "init.mobile": [
+                "init.mobile.%target%.bundle.js"
+              ],
+              "instory.mobile": [
+                "instory.mobile.%target%.css",
+                "instory.mobile.%target%.bundle.js"
+              ],
+              "main.mobile": [
+                "main.mobile.%target%.css",
+                "main.mobile.%target%.bundle.js"
+              ],
+              "one_smi.mobile": [
+                "one_smi.mobile.%target%.css",
+                "one_smi.mobile.%target%.bundle.js"
+              ],
+              "rubric.mobile": [
+                "rubric.mobile.%target%.css",
+                "rubric.mobile.%target%.bundle.js"
+              ],
+              "search.mobile": [
+                "search.mobile.%target%.css",
+                "search.mobile.%target%.bundle.js"
+              ],
+              "smi.mobile": [
+                "smi.mobile.%target%.css",
+                "smi.mobile.%target%.bundle.js"
+              ],
+              "story.mobile": [
+                "story.mobile.%target%.css",
+                "story.mobile.%target%.bundle.js"
+              ],
+              "theme.mobile": [
+                "theme.mobile.%target%.css",
+                "theme.mobile.%target%.bundle.js"
+              ],
+              "top.mobile": [
+                "top.mobile.%target%.css",
+                "top.mobile.%target%.bundle.js"
+              ],
+              "tournament.mobile": [
+                "tournament.mobile.%target%.css",
+                "tournament.mobile.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "instory": "instory.node.bundle.js",
+              "main": "main.node.bundle.js",
+              "one_smi": "one_smi.node.bundle.js",
+              "rubric": "rubric.node.bundle.js",
+              "search": "search.node.bundle.js",
+              "smi": "smi.node.bundle.js",
+              "story": "story.node.bundle.js",
+              "theme": "theme.node.bundle.js",
+              "top": "top.node.bundle.js",
+              "tournament": "tournament.node.bundle.js",
+              "news-site": "news-site.node.bundle.js",
+              "instory.desktop": "instory.node.bundle.js",
+              "main.desktop": "main.node.bundle.js",
+              "one_smi.desktop": "one_smi.node.bundle.js",
+              "rubric.desktop": "rubric.node.bundle.js",
+              "search.desktop": "search.node.bundle.js",
+              "smi.desktop": "smi.node.bundle.js",
+              "story.desktop": "story.node.bundle.js",
+              "theme.desktop": "theme.node.bundle.js",
+              "top.desktop": "top.node.bundle.js",
+              "tournament.desktop": "tournament.node.bundle.js",
+              "news-site-desktop": "news-site.node.bundle.js",
+              "instory.mobile": "instory.node.bundle.js",
+              "main.mobile": "main.node.bundle.js",
+              "one_smi.mobile": "one_smi.node.bundle.js",
+              "rubric.mobile": "rubric.node.bundle.js",
+              "search.mobile": "search.node.bundle.js",
+              "smi.mobile": "smi.node.bundle.js",
+              "story.mobile": "story.node.bundle.js",
+              "theme.mobile": "theme.node.bundle.js",
+              "top.mobile": "top.node.bundle.js",
+              "tournament.mobile": "tournament.node.bundle.js",
+              "news-site-mobile": "news-site.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "news-ssr-router"
+          ]
+        }
+      },
+      "comments2@1.40.0": {
+        "appId": "comments2@1.40.0",
+        "appName": "comments2",
+        "appVersion": "1.40.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/comments2/1.40.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/comments2/1.40.0",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "comments2-mobile": [
+                "comments2-mobile.%target%.css",
+                "comments2-mobile.%target%.bundle.js"
+              ],
+              "comments2-desktop": [
+                "comments2-desktop.%target%.css",
+                "comments2-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": {},
+            "placeholders": {}
+          }
+        }
+      },
+      "search@1.7.0": {
+        "appId": "search@1.7.0",
+        "appName": "search",
+        "appVersion": "1.7.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/search/1.7.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/search/1.7.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "search-mobile": [
+                "search-mobile.%target%.css",
+                "search-mobile.%target%.bundle.js"
+              ],
+              "search-desktop": [
+                "search-desktop.%target%.css",
+                "search-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": "search.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "desktop2@3.431.3": {
+        "appId": "desktop2@3.431.3",
+        "appName": "desktop2",
+        "appVersion": "3.431.3",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/desktop2/3.431.3",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/desktop2/3.431.3",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "page-404",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "page-404@3.21.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "article-feed",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "article-feed@1.33.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "channel@1.58.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "topic-channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "topic-channel@1.37.2"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "subscriptions",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "subscriptions@1.32.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "search",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "search@1.7.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "prisma",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "prisma@1.5.1"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "desktop2": [
+                "desktop2.%target%.css",
+                "desktop2.%target%.bundle.js"
+              ],
+              "content": [
+                "content.%target%.css",
+                "content.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content": "content.node.bundle.js",
+              "main": "desktop2.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "article-feed@1.33.0": {
+        "appId": "article-feed@1.33.0",
+        "appName": "article-feed",
+        "appVersion": "1.33.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/article-feed/1.33.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/article-feed/1.33.0",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "article-feed-desktop": [
+                "article-feed-desktop.%target%.css",
+                "article-feed-desktop.%target%.bundle.js"
+              ],
+              "article-feed-mobile": [
+                "article-feed-mobile.%target%.css",
+                "article-feed-mobile.%target%.bundle.js"
+              ]
+            },
+            "server": "article-feed.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "channel@1.58.1": {
+        "appId": "channel@1.58.1",
+        "appName": "channel",
+        "appVersion": "1.58.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/channel/1.58.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/channel/1.58.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "channel-mobile": [
+                "channel-mobile.%target%.css",
+                "channel-mobile.%target%.bundle.js"
+              ],
+              "channel-desktop": [
+                "channel-desktop.%target%.css",
+                "channel-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": "channel.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "topic-channel@1.37.2": {
+        "appId": "topic-channel@1.37.2",
+        "appName": "topic-channel",
+        "appVersion": "1.37.2",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/topic-channel/1.37.2",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/topic-channel/1.37.2",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "topic-channel-mobile": [
+                "topic-channel-mobile.%target%.css",
+                "topic-channel-mobile.%target%.bundle.js"
+              ],
+              "topic-channel-desktop": [
+                "topic-channel-desktop.%target%.css",
+                "topic-channel-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": "topic-channel.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "subscriptions@1.32.1": {
+        "appId": "subscriptions@1.32.1",
+        "appName": "subscriptions",
+        "appVersion": "1.32.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/subscriptions/1.32.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/subscriptions/1.32.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "subscriptions-mobile": [
+                "subscriptions-mobile.%target%.css",
+                "subscriptions-mobile.%target%.bundle.js"
+              ],
+              "subscriptions-desktop": [
+                "subscriptions-desktop.%target%.css",
+                "subscriptions-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": "subscriptions.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "prisma@1.5.1": {
+        "appId": "prisma@1.5.1",
+        "appName": "prisma",
+        "appVersion": "1.5.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/prisma/1.5.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/prisma/1.5.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "prisma-desktop": [
+                "prisma-desktop.%target%.css",
+                "prisma-desktop.%target%.bundle.js"
+              ],
+              "prisma-mobile": [
+                "prisma-mobile.%target%.css",
+                "prisma-mobile.%target%.bundle.js"
+              ]
+            },
+            "server": "prisma.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "content@1.342.3": {
+        "appId": "content@1.342.3",
+        "appName": "content",
+        "appVersion": "1.342.3",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/content/1.342.3",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/content/1.342.3",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "prisma",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "prisma@1.5.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "zenlib-pub-article-desktop",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "zenlib-pub-article-desktop@3.323.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "zenlib-pub-article-mobile",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "zenlib-pub-article-mobile@3.323.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments@1.24.4@f3c37225"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "publication": [
+                "publication.%target%.bundle.js"
+              ],
+              "article": [
+                "article.%target%.css",
+                "article.%target%.bundle.js"
+              ],
+              "entry.desktop": [
+                "entry.desktop.%target%.bundle.js"
+              ],
+              "error": [
+                "error.%target%.css",
+                "error.%target%.bundle.js"
+              ],
+              "publication.m": [
+                "publication.m.%target%.bundle.js"
+              ],
+              "article.m": [
+                "article.m.%target%.css",
+                "article.m.%target%.bundle.js"
+              ],
+              "entry.mobile": [
+                "entry.mobile.%target%.bundle.js"
+              ],
+              "native-article": [
+                "native-article.%target%.css",
+                "native-article.%target%.bundle.js"
+              ],
+              "error.m": [
+                "error.m.%target%.css",
+                "error.m.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "article": "article.node.bundle.js",
+              "article.m": "article.m.node.bundle.js",
+              "main": "content.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "publishers-ssr-router",
+            "rezen-router"
+          ]
+        }
+      },
+      "zenlib-pub-article-desktop@3.323.0": {
+        "appId": "zenlib-pub-article-desktop@3.323.0",
+        "appName": "zenlib-pub-article-desktop",
+        "appVersion": "3.323.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/3.323.0/zenlib-pub-article-desktop",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/3.323.0/zenlib-pub-article-desktop",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "main": [
+                "loader.%target%.bundle.js"
+              ]
+            },
+            "server": {},
+            "placeholders": {}
+          }
+        }
+      },
+      "zenlib-pub-article-mobile@3.323.0": {
+        "appId": "zenlib-pub-article-mobile@3.323.0",
+        "appName": "zenlib-pub-article-mobile",
+        "appVersion": "3.323.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/3.323.0/zenlib-pub-article-mobile",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/3.323.0/zenlib-pub-article-mobile",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "main": [
+                "loader.%target%.bundle.js"
+              ]
+            },
+            "server": {},
+            "placeholders": {}
+          }
+        }
+      },
+      "comments@1.24.4@f3c37225": {
+        "appId": "comments@1.24.4@f3c37225",
+        "appName": "comments",
+        "appVersion": "1.24.4",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/1.24.4/comments",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-lib/1.24.4/comments",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "main": [
+                "comments-no-react.%target%.%lang%.bundle.js"
+              ]
+            }
+          },
+          "fallback": true
+        }
+      },
+      "brief-viewer@1.15.0": {
+        "appId": "brief-viewer@1.15.0",
+        "appName": "brief-viewer",
+        "appVersion": "1.15.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/brief-viewer/1.15.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/brief-viewer/1.15.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "zenlib-pub-article-desktop",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "zenlib-pub-article-desktop@3.323.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "zenlib-pub-article-mobile",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "zenlib-pub-article-mobile@3.323.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments@1.24.4@f3c37225"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "publication": [
+                "publication.%target%.bundle.js"
+              ],
+              "brief": [
+                "brief.%target%.css",
+                "brief.%target%.bundle.js"
+              ],
+              "error": [
+                "error.%target%.css",
+                "error.%target%.bundle.js"
+              ],
+              "publication.m": [
+                "publication.m.%target%.bundle.js"
+              ],
+              "brief.m": [
+                "brief.m.%target%.css",
+                "brief.m.%target%.bundle.js"
+              ],
+              "error.m": [
+                "error.m.%target%.css",
+                "error.m.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "brief": "brief.node.bundle.js",
+              "brief.m": "brief.m.node.bundle.js",
+              "main": "brief-viewer.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "publishers-ssr-router",
+            "rezen-router"
+          ]
+        }
+      },
+      "history@1.11.1": {
+        "appId": "history@1.11.1",
+        "appName": "history",
+        "appVersion": "1.11.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/history/1.11.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/history/1.11.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "history-mobile": [
+                "history-mobile.%target%.bundle.js"
+              ],
+              "content-history-mobile": [
+                "content-history-mobile.%target%.css",
+                "content-history-mobile.%target%.bundle.js"
+              ],
+              "history-desktop": [
+                "history-desktop.%target%.bundle.js"
+              ],
+              "content-history-desktop": [
+                "content-history-desktop.%target%.css",
+                "content-history-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content-history": "content-history.node.bundle.js",
+              "main": "history.node.bundle.js",
+              "content-history-desktop": "content-history.node.bundle.js",
+              "content-history-mobile": "content-history.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "shorts@1.20.1": {
+        "appId": "shorts@1.20.1",
+        "appName": "shorts",
+        "appVersion": "1.20.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/shorts/1.20.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/shorts/1.20.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "page-404",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "page-404@3.21.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "shorts-mobile": [
+                "shorts-mobile.%target%.bundle.js"
+              ],
+              "content-short-mobile": [
+                "content-short-mobile.%target%.css",
+                "content-short-mobile.%target%.bundle.js"
+              ],
+              "shorts-desktop": [
+                "shorts-desktop.%target%.bundle.js"
+              ],
+              "content-short-desktop": [
+                "content-short-desktop.%target%.css",
+                "content-short-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content-short": "content-short.node.bundle.js",
+              "main": "shorts.node.bundle.js",
+              "content-short-desktop": "content-short.node.bundle.js",
+              "content-short-mobile": "content-short.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router",
+            "video-ssr-router"
+          ]
+        }
+      },
+      "video-feed@1.37.0": {
+        "appId": "video-feed@1.37.0",
+        "appName": "video-feed",
+        "appVersion": "1.37.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-feed/1.37.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-feed/1.37.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "video-feed-mobile": [
+                "video-feed-mobile.%target%.bundle.js"
+              ],
+              "content-feed-mobile": [
+                "content-feed-mobile.%target%.css",
+                "content-feed-mobile.%target%.bundle.js"
+              ],
+              "video-feed-desktop": [
+                "video-feed-desktop.%target%.bundle.js"
+              ],
+              "content-feed-desktop": [
+                "content-feed-desktop.%target%.css",
+                "content-feed-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content-feed": "content-feed.node.bundle.js",
+              "main": "video-feed.node.bundle.js",
+              "content-feed-desktop": "content-feed.node.bundle.js",
+              "content-feed-mobile": "content-feed.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "video-viewer@1.43.0": {
+        "appId": "video-viewer@1.43.0",
+        "appName": "video-viewer",
+        "appVersion": "1.43.0",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-viewer/1.43.0",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/video-viewer/1.43.0",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "page-404",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "page-404@3.21.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "video-viewer-desktop": [
+                "video-viewer-desktop.%target%.bundle.js"
+              ],
+              "content-long-desktop": [
+                "content-long-desktop.%target%.css",
+                "content-long-desktop.%target%.bundle.js"
+              ],
+              "video-viewer-mobile": [
+                "video-viewer-mobile.%target%.bundle.js"
+              ],
+              "content-long-mobile": [
+                "content-long-mobile.%target%.css",
+                "content-long-mobile.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content-long": "content-long.node.bundle.js",
+              "main": "video-viewer.node.bundle.js",
+              "content-long-desktop": "content-long.node.bundle.js",
+              "content-long-mobile": "content-long.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "video-ssr-router"
+          ]
+        }
+      },
+      "year-results@1.6.7": {
+        "appId": "year-results@1.6.7",
+        "appName": "year-results",
+        "appVersion": "1.6.7",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/year-results/1.6.7",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/year-results/1.6.7",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "content-year-results-mobile": [
+                "content-year-results-mobile.%target%.css",
+                "content-year-results-mobile.%target%.bundle.js"
+              ],
+              "content-year-results-desktop": [
+                "content-year-results-desktop.%target%.css",
+                "content-year-results-desktop.%target%.bundle.js"
+              ]
+            },
+            "server": "year-results.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "predictions@1.1.1": {
+        "appId": "predictions@1.1.1",
+        "appName": "predictions",
+        "appVersion": "1.1.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/predictions/1.1.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/predictions/1.1.1",
+        "deps": [],
+        "meta": {
+          "entries": {
+            "client": {
+              "content-predictions-desktop": [
+                "content-predictions-desktop.%target%.css",
+                "content-predictions-desktop.%target%.bundle.js"
+              ],
+              "content-predictions-mobile": [
+                "content-predictions-mobile.%target%.css",
+                "content-predictions-mobile.%target%.bundle.js"
+              ]
+            },
+            "server": "predictions.node.bundle.js",
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      },
+      "dzen-mobile@1.922.1": {
+        "appId": "dzen-mobile@1.922.1",
+        "appName": "dzen-mobile",
+        "appVersion": "1.922.1",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-mobile/1.922.1",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/dzen-mobile/1.922.1",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "dzen-mobile-first": [
+                "dzen-mobile-first.%target%.css",
+                "dzen-mobile-first.%target%.bundle.js"
+              ],
+              "dzen-mobile-first-chunk-micro-app": [
+                "dzen-mobile-first-chunk-micro-app.%target%.css",
+                "dzen-mobile-first-chunk-micro-app.%target%.bundle.js"
+              ],
+              "dzen-mobile-second": [
+                "dzen-mobile-second.%target%.css",
+                "dzen-mobile-second.%target%.bundle.js"
+              ],
+              "dzen-mobile-second-chunk-micro-apps": [
+                "dzen-mobile-second-chunk-micro-apps.%target%.css",
+                "dzen-mobile-second-chunk-micro-apps.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "dzen-mobile-first-chunk-micro-app": "dzen-mobile-first-chunk-micro-app.node.bundle.js",
+              "dzen-mobile-second-chunk-micro-apps": "dzen-mobile-second-chunk-micro-apps.node.bundle.js",
+              "main": "dzen-mobile.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "morda-ssr-router"
+          ]
+        }
+      },
+      "mobile@3.431.3": {
+        "appId": "mobile@3.431.3",
+        "appName": "mobile",
+        "appVersion": "3.431.3",
+        "appMode": "prod",
+        "appPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/mobile/3.431.3",
+        "clientAppPackageUrl": "https://static.dzeninfra.ru/s3/zen-apps/mobile/3.431.3",
+        "deps": [
+          {
+            "depReq": {
+              "appName": "profile-settings",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "profile-settings@1.40.3"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "dzen-layout",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "dzen-layout@1.145.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "page-404",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "page-404@3.21.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "video-player-core",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "video-player-core@1.138.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "comments2",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "comments2@1.40.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "article-feed",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "article-feed@1.33.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "channel@1.58.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "topic-channel",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "topic-channel@1.37.2"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "subscriptions",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "subscriptions@1.32.1"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "search",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "search@1.7.0"
+              }
+            }
+          },
+          {
+            "depReq": {
+              "appName": "prisma",
+              "appVersion": "*"
+            },
+            "depRes": {
+              "type": "fulfilled",
+              "value": {
+                "appId": "prisma@1.5.1"
+              }
+            }
+          }
+        ],
+        "meta": {
+          "entries": {
+            "client": {
+              "mobile": [
+                "mobile.%target%.css",
+                "mobile.%target%.bundle.js"
+              ],
+              "content": [
+                "content.%target%.css",
+                "content.%target%.bundle.js"
+              ]
+            },
+            "server": {
+              "content": "content.node.bundle.js",
+              "main": "mobile.node.bundle.js"
+            },
+            "placeholders": {}
+          },
+          "serverRoots": [
+            "site-ssr-router"
+          ]
+        }
+      }
+    }
+  }
+}

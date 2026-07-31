@@ -1,0 +1,852 @@
+JSON Extraction Report for data/debug_article.html
+============================================================
+
+[_params] -> extracted_json_0.json (0.0 KB)
+
+[_params] -> extracted_json_2.json (32.1 KB)
+  .appLockfile.apps.desktop2@3.431.3.meta.entries.client.content: list [2 items]
+  .appLockfile.apps.desktop2@3.431.3.meta.entries.server.content: str "content.node.bundle.js"
+  .appLockfile.apps.article-feed@1.33.0: dict {8 keys}
+  .appLockfile.apps.article-feed@1.33.0.meta.entries.client.article-feed-desktop: list [2 items]
+  .appLockfile.apps.article-feed@1.33.0.meta.entries.client.article-feed-mobile: list [2 items]
+  .appLockfile.apps.content@1.342.3: dict {8 keys}
+  .appLockfile.apps.content@1.342.3.meta.entries.client.article: list [2 items]
+  .appLockfile.apps.content@1.342.3.meta.entries.client.article.m: list [2 items]
+  .appLockfile.apps.content@1.342.3.meta.entries.client.native-article: list [2 items]
+  .appLockfile.apps.content@1.342.3.meta.entries.server.article: str "article.node.bundle.js"
+  .appLockfile.apps.content@1.342.3.meta.entries.server.article.m: str "article.m.node.bundle.js"
+  .appLockfile.apps.zenlib-pub-article-desktop@3.323.0: dict {8 keys}
+  .appLockfile.apps.zenlib-pub-article-mobile@3.323.0: dict {8 keys}
+  .appLockfile.apps.history@1.11.1.meta.entries.client.content-history-mobile: list [2 items]
+  .appLockfile.apps.history@1.11.1.meta.entries.client.content-history-desktop: list [2 items]
+  .appLockfile.apps.history@1.11.1.meta.entries.server.content-history: str "content-history.node.bundle.js"
+  .appLockfile.apps.history@1.11.1.meta.entries.server.content-history-desktop: str "content-history.node.bundle.js"
+  .appLockfile.apps.history@1.11.1.meta.entries.server.content-history-mobile: str "content-history.node.bundle.js"
+  .appLockfile.apps.shorts@1.20.1.meta.entries.client.content-short-mobile: list [2 items]
+  .appLockfile.apps.shorts@1.20.1.meta.entries.client.content-short-desktop: list [2 items]
+  .appLockfile.apps.shorts@1.20.1.meta.entries.server.content-short: str "content-short.node.bundle.js"
+  .appLockfile.apps.shorts@1.20.1.meta.entries.server.content-short-desktop: str "content-short.node.bundle.js"
+  .appLockfile.apps.shorts@1.20.1.meta.entries.server.content-short-mobile: str "content-short.node.bundle.js"
+  .appLockfile.apps.video-feed@1.37.0.meta.entries.client.content-feed-mobile: list [2 items]
+  .appLockfile.apps.video-feed@1.37.0.meta.entries.client.content-feed-desktop: list [2 items]
+  .appLockfile.apps.video-feed@1.37.0.meta.entries.server.content-feed: str "content-feed.node.bundle.js"
+  .appLockfile.apps.video-feed@1.37.0.meta.entries.server.content-feed-desktop: str "content-feed.node.bundle.js"
+  .appLockfile.apps.video-feed@1.37.0.meta.entries.server.content-feed-mobile: str "content-feed.node.bundle.js"
+  .appLockfile.apps.video-viewer@1.43.0.meta.entries.client.content-long-desktop: list [2 items]
+  .appLockfile.apps.video-viewer@1.43.0.meta.entries.client.content-long-mobile: list [2 items]
+  .appLockfile.apps.video-viewer@1.43.0.meta.entries.server.content-long: str "content-long.node.bundle.js"
+  .appLockfile.apps.video-viewer@1.43.0.meta.entries.server.content-long-desktop: str "content-long.node.bundle.js"
+  .appLockfile.apps.video-viewer@1.43.0.meta.entries.server.content-long-mobile: str "content-long.node.bundle.js"
+  .appLockfile.apps.year-results@1.6.7.meta.entries.client.content-year-results-mobile: list [2 items]
+  .appLockfile.apps.year-results@1.6.7.meta.entries.client.content-year-results-desktop: list [2 items]
+  .appLockfile.apps.predictions@1.1.1.meta.entries.client.content-predictions-desktop: list [2 items]
+  .appLockfile.apps.predictions@1.1.1.meta.entries.client.content-predictions-mobile: list [2 items]
+  .appLockfile.apps.mobile@3.431.3.meta.entries.client.content: list [2 items]
+  .appLockfile.apps.mobile@3.431.3.meta.entries.server.content: str "content.node.bundle.js"
+
+[_params] -> extracted_json_4.json (0.0 KB)
+
+[_params] -> extracted_json_6.json (0.5 KB)
+  .loggerContext: dict {10 keys}
+
+[_params] -> extracted_json_8.json (0.4 KB)
+
+[_params] -> extracted_json_10.json (0.1 KB)
+
+[_params] -> extracted_json_12.json (3.2 KB)
+
+[_params] -> extracted_json_14.json (10.0 KB)
+  .data.__chunkManifest__content_1.342.3__: dict {91 keys}
+
+[_params] -> extracted_json_16.json (149.8 KB)
+  .ssrData.initResponse.zenFeatures.big_card_images: bool True
+  .ssrData.initResponse.zenFeatures.stat_params_with_context: bool True
+  .ssrData.webCommonData.clientDefinitionMap.endless_article_publications_count: int 10
+  .ssrData.webCommonData.clientDefinitionMap.is_article_smaller_title_height: bool True
+  .ssrData.webCommonData.clientDefinitionMap.endless_article_page_subscription_trap_mobile: dict {2 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_subtitles_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.full_screen_ad_params_desktop.show_after_article_view_count: int 1
+  .ssrData.webCommonData.clientDefinitionMap.article_ad_inner_start_params: dict {8 keys}
+  .ssrData.webCommonData.clientDefinitionMap.article_ad_inner_start_params.article_ad_threshold: int 600
+  .ssrData.webCommonData.clientDefinitionMap.browser_switch_trap.text: str "?????????? ?? ????? ??????????
+? ??????? ????"
+  .ssrData.webCommonData.clientDefinitionMap.browser_switch_trap.button_text: str "????????"
+  .ssrData.webCommonData.clientDefinitionMap.browser_switch_trap.title: str "???? ?????? ???????? ????????"
+  .ssrData.webCommonData.clientDefinitionMap.is_article_authors_block_redesign: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_updated_news_block_desktop: bool True
+  .ssrData.webCommonData.clientDefinitionMap.article_special_media_banner: dict {4 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_article_header_top_ad_placeholder_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_touch_article_showcase_feed: bool False
+  .ssrData.webCommonData.clientDefinitionMap.running_lines.is_enabled_on_article_pages: bool True
+  .ssrData.webCommonData.clientDefinitionMap.running_lines.cache_hours_on_article_pages: int 5
+  .ssrData.webCommonData.clientDefinitionMap.ad_campaign_qr_banner.title: str "???? ?????? ??? ?????
+?? <span>iOS</span> ? <span>Android</span>"
+  .ssrData.webCommonData.clientDefinitionMap.promo_spec_projects_text: str ""
+  .ssrData.webCommonData.clientDefinitionMap.auth_likes_trigger.is_article_desktop_trigger_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.auth_likes_trigger.is_article_touch_trigger_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.ds_cards.should_use_in_article_recommender: bool True
+  .ssrData.webCommonData.clientDefinitionMap.stellas_contest.contest_end_date: str "2026-07-18T23:59:59+03:00"
+  .ssrData.webCommonData.clientDefinitionMap.stellas_contest.contest_draw_date: str "2026-07-24"
+  .ssrData.webCommonData.clientDefinitionMap.article_half_screen_touch_params: dict {1 keys}
+  .ssrData.webCommonData.clientDefinitionMap.glif.article: dict {5 keys}
+  .ssrData.webCommonData.clientDefinitionMap.glif.article.is_enabled_for_publisher_media_agency_only: bool False
+  .ssrData.webCommonData.clientDefinitionMap.article_page_subscription_trap_mobile: dict {2 keys}
+  .ssrData.webCommonData.clientDefinitionMap.article_desktop_ad_offset_load_config: dict {3 keys}
+  .ssrData.webCommonData.clientDefinitionMap.web2app_subscriptions_feed_item.text_variant: str ""
+  .ssrData.webCommonData.clientDefinitionMap.delete_right_banner_title: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_sticky_ad_on_article: bool True
+  .ssrData.webCommonData.clientDefinitionMap.full_screen_ad_params_touch.show_after_article_view_count: int 0
+  .ssrData.webCommonData.clientDefinitionMap.article_half_screen_ya_start_params: dict {1 keys}
+  .ssrData.webCommonData.clientDefinitionMap.with_article_navigation: bool True
+  .ssrData.webCommonData.clientDefinitionMap.promo_banner.titles: str (41 words) "643b338e75fca230e6615191=????? ?????? ??? ????? ?????? <<?????>> ??????????? ? ?????!;5f34cffbbfe39b218c788e29=????? ?????? ??? ??????? <<?????????? ????>> ??????????? ? ?????!;64af9b3a9c9f88269239fbd3=??..."
+  .ssrData.webCommonData.clientDefinitionMap.with_article_showcase_tabs: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_clamped_articles_without_d2d: bool False
+  .ssrData.webCommonData.clientDefinitionMap.nalivka_feed_popup.gif_title: str "?? ?????????? ??? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.luring_into_video_modal_params.text_type: str "sound-short"
+  .ssrData.webCommonData.clientDefinitionMap.is_video_subtitles_force_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_custom_comments_title_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.premium_embed_in_article: dict {1 keys}
+  .ssrData.webCommonData.clientDefinitionMap.should_use_ad_centric_media: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_views_in_article_header_mobile: bool True
+  .ssrData.webCommonData.clientDefinitionMap.auth_recommend_popup.is_trigger_enter_content: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_article_meta_with_icons: bool True
+  .ssrData.webCommonData.clientDefinitionMap.should_send_content_heartbeat: bool True
+  .ssrData.webCommonData.clientDefinitionMap.discover_in_search.is_new_header_text_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_article_ad_right_block_with_comments_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.flash.pretitle: str ""
+  .ssrData.webCommonData.clientDefinitionMap.flash.main_text: str "?????? ?????? ?????? ?????????? ?? ???? <<topic_name>>?"
+  .ssrData.webCommonData.clientDefinitionMap.flash.button_text: str ""
+  .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.question_text: str "??? ???????? ???????? ????? ? ??????"
+  .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.answer_text: str "???????, ??? ????????? ?????? ???? ?????!"
+  .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.answer_text_bad_mark: str "???????, ?? ????? ????????? ??????? ???? ?????!"
+  .ssrData.webCommonData.clientDefinitionMap.interesting_floor_title: str "??????????"
+  .ssrData.webCommonData.clientDefinitionMap.is_wide_article: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_action_island_with_next_article_btn_touch: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_article_authors_block: bool True
+  .ssrData.webCommonData.clientDefinitionMap.discover_desktop.is_final_title: bool True
+  .ssrData.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[0].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/food-short-57.png"
+  .ssrData.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[1].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/games-short-57.png"
+  .ssrData.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[2].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/beauty-short-57.png"
+  .ssrData.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[3].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/it-short-57.png"
+  .ssrData.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[4].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/travel-long-57.png"
+  .ssrData.webCommonData.clientDefinitionMap.article_mobile_ad_scroll_speed_adapting: dict {4 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_views_in_article_header_desktop: bool True
+  .ssrData.webCommonData.clientDefinitionMap.measure_title_by_font_metrics: bool True
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB&nbsp;?&nbsp;?????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.button_text: str "??????????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.title: str "???? ??? ???????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB ? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.button_text: str "??????????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.title: str "???? ??? ???????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.enabled_in_article: bool True
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.article: dict {4 keys}
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.article.subtitle: str "?????????? ???? ??? ?? 159 RUB ? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.article.button_text: str "??????????"
+  .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.article.title: str "? ????????? ??????? ?? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.full_screen_ad_params_start.show_after_article_view_count: int 0
+  .ssrData.webCommonData.clientDefinitionMap.is_chronologic_polnotext_analytics: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_ok_article_subscription_block_enabled: bool False
+  .ssrData.webCommonData.clientDefinitionMap.is_action_island_with_next_article_btn_desktop: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_article_ssr_disabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text: str "?????????? ?????????:
+?????? ? ????? ?????? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text_color: str "#333333"
+  .ssrData.webCommonData.clientDefinitionMap.ad_short_article_sidebar_freq: int 1
+  .ssrData.webCommonData.clientDefinitionMap.article_mobile_ad_offset_load_config: dict {5 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_desktop_one_column_redesign.is_article_card_redesign: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_article_showcase_trends_tabs_desktop: bool True
+  .ssrData.webCommonData.clientDefinitionMap.article_banner_top_header_large_ad: dict {1 keys}
+  .ssrData.webCommonData.clientDefinitionMap.endless_article_d2d_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_article_new_layout: bool True
+  .ssrData.webCommonData.clientDefinitionMap.stellas.article_entry_point: dict {1 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_mittens_share_with_text: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_ds_cards_on_article_showcase: bool True
+  .ssrData.webCommonData.clientDefinitionMap.calendar_widget_title: str "?????? <<???? ????????>>"
+  .ssrData.webCommonData.clientDefinitionMap.endless_article_page_subscription_trap_desktop: dict {2 keys}
+  .ssrData.webCommonData.clientDefinitionMap.article_page_subscription_trap_desktop: dict {2 keys}
+  .ssrData.webCommonData.clientDefinitionMap.video_player_settings.one_video_player_config.useManagedMediaSource: bool True
+  .ssrData.webCommonData.clientDefinitionMap.scroll_speed_tracking.enabled_on_article: bool True
+  .ssrData.webCommonData.clientDefinitionMap.donations.birthday_sticker.is_enabled_in_articles: bool True
+  .ssrData.webCommonData.clientDefinitionMap.donations.article_entry_point: dict {4 keys}
+  .ssrData.webCommonData.clientDefinitionMap.is_article_bottom_banner_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_morda_title_hint_shown: bool True
+  .ssrData.webCommonData.clientDefinitionMap.premium.is_content_tariff_mark_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.endless_article_d2d_items_count: int 4
+  .ssrData.webCommonData.clientDefinitionMap.with_article_showcase_feed: bool True
+  .ssrData.webCommonData.clientDefinitionMap.with_ray_on_article: bool True
+  .ssrData.webCommonData.clientDefinitionMap.articles_floor_ad: dict {4 keys}
+  .ssrData.webCommonData.clientDefinitionMap.discover.is_final_title: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_desktop_clamped_articles_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.alternative_trends_entry.has_title_and_more_button: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_special_article_popup_enabled: bool True
+  .ssrData.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text: dict {2 keys}
+  .ssrData.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text.title: str "??????? ???? ?????"
+  .ssrData.webCommonData.clientDefinitionMap.use_showcase_text_subscribe_status: bool True
+  .ssrData.webCommonData.clientDefinitionMap.is_new_design_card_article_floors_desktop: bool True
+  .ssrData.webCommonData.currentUserSourceInfo.title: str "?????? ????? ?????"
+  .ssrData.webCommonData.currentUserSourceInfo.publisherId: str "637b09c7e1c5d415d437e6ab"
+  .ssrData.webCommonData.geoInfo.regionTitle: str "???????????"
+  .ssrData.webCommonData.geoInfoIp.regionTitle: str "???????????"
+  .ssrData.webCommonData.marketingPromo.discover.images: dict {5 keys}
+  .ssrData.webCommonData.marketingPromo.main.images: dict {1 keys}
+  .ssrData.webCommonData.marketingPromo.header.title: str "????????"
+  .ssrData.publishersResponse.data.title: str "?????? ? 2026 ???? --- ??? ??? ???????? ? ???? ????? | ???????????? - ??????? ??? ?????? | ????"
+  .ssrData.publishersResponse.data.data.user.publisherId: str "637b09c7e1c5d415d437e6ab"
+  .ssrData.publishersResponse.data.data.userPublisher.isPublisherMediaAgency: bool False
+  .ssrData.publishersResponse.data.data.publisher.isPublisherMediaAgency: bool False
+  .ssrData.publishersResponse.data.data.publication.publisherId: str "638496a435577b2eb4764811"
+  .ssrData.publishersResponse.data.data.publication.addTime: int 1785132070784
+  .ssrData.publishersResponse.data.data.publication.publishTime: int 1785149289119
+  .ssrData.publishersResponse.data.data.publication.modificationTime: int 1785151369021
+  .ssrData.publishersResponse.data.data.publication.content: dict {5 keys}
+  .ssrData.publishersResponse.data.data.publication.content.articleContent: dict {1 keys}
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState: str (245 words) "{"draftJsState":{"blocks":[{"data":{"image":{"id":"6a670be79829680cc0b549ba"}},"depth":0,"entityRanges":[],"inlineStyleRanges":[],"text":"","type":"atomic:image","key":"50aqn"},{"data":{},"depth":0,"e..."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState: dict {2 keys}
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks: list [11 items]
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[0].text: str ""
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[1].text: str "???? ?????? --- ????? ?????????????? ??? ????? ?????????. ? ???????, ??? ?? ?????????? ? ????????? ??????????? --- ??? ????? ??? ??????????. ??????? ??????? ??????????? ????, ?? ?????? ? ? ???????."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[2].text: str "?????????? ??? ?????????? 2026 ????"
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[3].text: str "????: ????/??????? ????????"
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[4].text: str (43 words) "? 2026 ???? ?????? ???????? ??? ??????. ? 1 ?????? ????????? ?????? (?? ????????, ????????????, ?????? ?????????) ???????????????? ?? 7,6%. ? 1 ?????? ?????????? ?????? ??????? ?? 6,8%. ?? ????? ???? ..."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[5].text: str (52 words) "????? ????, ? 1 ??????? ?????????? ???? ???????? ????????? ?????????? ??? ?????????? ???????????. ? ???? ?????? ?????: ???? ? ???? ??? ??????????? 80 ??? ??? ?????????? I ?????? ????????????, ? ??????..."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[6].text: str (48 words) "? 2026 ???? ????????? ?????? ??????????? ????? (???) ?????????? 156,76 ?????, ? ????????????? ??????? --- 9 584,69 ?????. ????????? ?????? ?????????????? ?? ???????: ?????????? ?????? ???????? ?? ??????..."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[7].text: str (51 words) "?? ???? ???? ????????? ??????. ???????? ?? ?????? 2026 ???? ????????? ?? ?????? 6--7%, ? ?????????? ?????? ? ?????? ?????? ?????????? 7,6% --- ?? ???? ???? ?????? ???? ????????? ????????, ? ?? ????? ????..."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[8].text: str "??? ? ??? ? ??????? ? ???? ???? --- ????????????? ????????? ??? ???????? ??? ?????? ?????????? ???? ??????? ? ????????????."
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[9].text: str ""
+  .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[10].text: str ""
+  .ssrData.publishersResponse.data.data.publication.content.preview.title: str "?????? ? 2026 ???? --- ??? ??? ???????? ? ???? ?????"
+  .ssrData.publishersResponse.data.data.publication.content.preview.galleryPreviewImages: list [0 items]
+  .ssrData.publishersResponse.data.data.publication.titleForUrl: str "pensii-v-2026-godu--chto-uje-povysili-i-chego-jdat"
+  .ssrData.publishersResponse.data.data.publication.customCommentsTitle: str ""
+  .ssrData.publishersResponse.data.data.resolvedMacroses.{title_eng}: str "pensii-v-2026-godu--chto-uje-povysili-i-chego-jdat"
+  .ssrData.publishersResponse.data.data.resolvedMacroses.{title}: str "?????? ? 2026 ???? --- ??? ??? ???????? ? ???? ?????"
+  .ssrData.publishersResponse.data.data.images: dict {4 keys}
+  .ssrData.publishersResponse.data.data.adData.params.articleMobileTopBlockParams: dict {2 keys}
+  .ssrData.publishersResponse.data.data.adData.customAdBlocks: bool False
+  .ssrData.publishersResponse.data.data.adData.adBlocks: dict {5 keys}
+  .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-header.bulkData.myTargetExtraParams: dict {0 keys}
+  .ssrData.publishersResponse.data.data.adData.adBlocks.comments.bulkData.myTargetExtraParams: dict {0 keys}
+  .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-right.bulkData.myTargetExtraParams: dict {0 keys}
+  .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-footer.bulkData.myTargetExtraParams: dict {0 keys}
+  .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-fullscreen.bulkData.myTargetExtraParams: dict {0 keys}
+  .ssrData.publishersResponse.data.data.adData.waterfallAdBlocks: dict {0 keys}
+  .ssrData.publishersResponse.data.data.specialAdConfig.maskotConfig.bubble_text_align: str "left"
+  .ssrData.publishersResponse.data.data.adContent: dict {0 keys}
+  .ssrData.publishersResponse.data.data.publisherSubscribersCount.publisherId: str "638496a435577b2eb4764811"
+  .ssrData.publishersResponse.data.data.isArticle: bool True
+  .ssrData.publishersResponse.data.data.og.title: str "?????? ? 2026 ???? --- ??? ??? ???????? ? ???? ?????"
+  .ssrData.publishersResponse.data.data.og.publishDate: str "2026-07-27"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_comments_lazy_load_margin: str "2000"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_articles_light_metrika_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_desktop_bottom_by_url_block_id: str "R-A-1688615-2"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.footer_menu_mob: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.show_article_thematic_banners_at_the_top: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_call_to_subscribe_hide_element: str "ad"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_cache_enabled: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_comments_lazy_load_version: str "1"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_tab_articles_touch_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.new_likes_design_desktop: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_feed_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_comments_lazy_load_max_wait: str "25000"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_call_to_subscribe_hide_element: str "ad"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.block_id: str "R-I-216651-453"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign_new_layout_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_layout_mob: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.new_article_design: str "2"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.intersection_header_mob: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_layout_desktop: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_comments_count: str "3"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_desktop_bottom_block_id: str "R-I-216651-452"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.narrative_slide_images_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.new_likes_design_desktop_share: str "ok,vk,fb,tw"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_by_url_block.block_id: str "R-A-1688615-1"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_footer_with_sharing_on_desktop_article: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.use_article_related_request: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.should_disable_cache_in_article_feed: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.ad_article_redesign: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_call_to_subscribe_show_percent: str "95"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_header_mob: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_comments_lazy_load_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_bottom_socials_desktop_redesign: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.topic_channel.feed_content_blocks_order: str "ARTICLE,LONG_VIDEO,SHORT_VIDEO"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.topic_channel.articles_block_size: str "12"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.enable_runtime_ad_verdicts_in_article: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.text_styles_desktop: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_channel_tab_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_article_new_layout: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_bottom_block_mobile: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.is_images_adaptive_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_article_suggested_publications_sorted: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_call_to_subscribe_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_article_static_bottom_subscription_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_call_to_subscribe_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_partner_label.color: str "#07F"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_images_two_items_square: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_tab_articles_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_call_to_subscribe_appearance_mode: str "once-sticky"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.disable_custom_ad_blocks: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.share_in_header_mob: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_desktop_article_header_placeholder_exp: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.new_tags_design_desktop: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.right_ad_gap_height: str "700"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_call_to_subscribe_short_article_default: str "app"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_header_desktop: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_partner_label.href: str "https://zen.yandex.ru/adv?utm_source=publabel_zen"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.embeds: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.mobile_subscribe_button: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.new_likes_design_desktop_subs: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.new_bottom_block_desktop: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_partner_label.text: str "??????? ? ?????"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_feed_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_article_one_column_feed: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.margin_for_lazy_load_similar_articles: str "1000"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.min_points_between_ad_blocks: str "1600"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.is_mediascope_pixel_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_blocks_with_non_lazy_gifs_count: str "5"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.zenkit_open_native_viewer_in_articles: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.right_ad_section_height: str "700"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_call_to_subscribe_show_percent: str "95"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.new_article_share: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.publisher_channel_welcome_config.articles_size: int 12
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.show_article_thematic_banners_at_the_bottom: str "false"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_thematic_banners_enabled: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.text_styles_mobile: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.ad_inner_block_threshold_points: str "30"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.mobile_article_replace_likes_with_avatars: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.first_right_ad_screen_position: str "1"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.tags_feed_allow_article: str "true"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_label.text: str "??????????? ????????"
+  .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_right_ad_block.collapse_tags: str "true"
+  .ssrData.publishersResponse.data.data.experiments.context: dict {4 keys}
+  .ssrData.publishersResponse.data.config.draftShareEnabled: bool False
+  .ssrData.publishersResponse.data.config.desktopArticleFullRenderEnabled: bool True
+  .ssrData.publishersResponse.data.config.mobileArticleFullRenderEnabled: bool True
+  .ssrData.publishersResponse.data.config.allowZenappArticleFeed: bool False
+  .ssrData.publishersResponse.data.config.campaignUtmEditorCallToActionText: str "call2ActionText"
+  .ssrData.publishersResponse.data.config.lazyLoadSimilarArticlesEnabled: bool False
+  .ssrData.publishersResponse.data.config.marginForLazyLoadSimilarArticles: str "0px 0px 300px 0px"
+  .ssrData.publishersResponse.data.config.maxGalleryContentSize: int 1500
+  .ssrData.publishersResponse.data.config.marketWidgetInArticleStatus: str "code"
+  .ssrData.publishersResponse.data.featureConfig.adCampaigns.articleBasedOnTemplateCreationEnabled: bool True
+  .ssrData.publishersResponse.data.featureConfig.adCampaigns.articlePreviewTitleCustomMaxLengthEnabled: bool True
+  .ssrData.publishersResponse.data.featureConfig.adCampaigns.articlePreviewPromoSnippetEnabled: bool True
+  .ssrData.publishersResponse.data.featureConfig.adCampaigns.rsyaBulkUpdateEnabled: bool True
+  .ssrData.publishersResponse.data.featureConfig.adCampaigns.dailyBudgetOverdraftEnabled: bool True
+  .ssrData.publishersResponse.data.featureConfig.articleEditorConfig: dict {5 keys}
+  .ssrData.publishersResponse.data.editorConfig.clickoutStatIsAvailableForArticle: bool False
+  .ssrData.publishersResponse.data.editorConfig.videoSubtitlesEnabled: bool False
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_show: str "adfox_article:show"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_video_show: str "adfox_article:video_show"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_mount: str "adfox_article:mount"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_fail: str "adfox_article:fail"
+  .ssrData.publishersResponse.stats_info.stat_events.expand_text: str "expand_text"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_video_end: str "adfox_article:video_end"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_load: str "adfox_article:load"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_video_autoplay: str "ad_article:video_autoplay"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_video_heartbeat: str "adfox_article:video_heartbeat"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_mount: str "ad_article:mount"
+  .ssrData.publishersResponse.stats_info.stat_events.content_item_swipe: str "content_item:swipe"
+  .ssrData.publishersResponse.stats_info.stat_events.content_item_show: str "content_item:show"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_show: str "ad_article:show"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_click: str "adfox_article:click"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_fail: str "ad_article:fail"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_preview_show: str "ad_article:preview_show"
+  .ssrData.publishersResponse.stats_info.stat_events.content_item_tap: str "content_item:tap"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_video_show: str "ad_article:video_show"
+  .ssrData.publishersResponse.stats_info.stat_events.content_item_click: str "content_item:click"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_video_heartbeat: str "ad_article:video_heartbeat"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_video_end: str "ad_article:video_end"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_load: str "ad_article:load"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_preview_show: str "adfox_article:preview_show"
+  .ssrData.publishersResponse.stats_info.stat_events.article_ad_click: str "ad_article:click"
+  .ssrData.publishersResponse.stats_info.stat_events.article_adfox_video_autoplay: str "adfox_article:video_heartbeat"
+  .ssrData.publishersResponse.publishers_config.experiments_data.ab:site_desktop_title_letter_spacing:site_desktop_title_letter_spacing: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.endless_article_publications_count: int 10
+  .ssrData.publishersResponse.client_definition.is_article_smaller_title_height: bool True
+  .ssrData.publishersResponse.client_definition.endless_article_page_subscription_trap_mobile: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.is_subtitles_enabled: bool True
+  .ssrData.publishersResponse.client_definition.full_screen_ad_params_desktop.show_after_article_view_count: int 1
+  .ssrData.publishersResponse.client_definition.article_ad_inner_start_params: dict {8 keys}
+  .ssrData.publishersResponse.client_definition.article_ad_inner_start_params.article_ad_threshold: int 600
+  .ssrData.publishersResponse.client_definition.browser_switch_trap.text: str "?????????? ?? ????? ??????????
+? ??????? ????"
+  .ssrData.publishersResponse.client_definition.browser_switch_trap.button_text: str "????????"
+  .ssrData.publishersResponse.client_definition.browser_switch_trap.title: str "???? ?????? ???????? ????????"
+  .ssrData.publishersResponse.client_definition.is_article_authors_block_redesign: bool True
+  .ssrData.publishersResponse.client_definition.is_updated_news_block_desktop: bool True
+  .ssrData.publishersResponse.client_definition.article_special_media_banner: dict {4 keys}
+  .ssrData.publishersResponse.client_definition.is_article_header_top_ad_placeholder_enabled: bool True
+  .ssrData.publishersResponse.client_definition.with_touch_article_showcase_feed: bool False
+  .ssrData.publishersResponse.client_definition.running_lines.is_enabled_on_article_pages: bool True
+  .ssrData.publishersResponse.client_definition.running_lines.cache_hours_on_article_pages: int 5
+  .ssrData.publishersResponse.client_definition.ad_campaign_qr_banner.title: str "???? ?????? ??? ?????
+?? <span>iOS</span> ? <span>Android</span>"
+  .ssrData.publishersResponse.client_definition.promo_spec_projects_text: str ""
+  .ssrData.publishersResponse.client_definition.auth_likes_trigger.is_article_desktop_trigger_enabled: bool True
+  .ssrData.publishersResponse.client_definition.auth_likes_trigger.is_article_touch_trigger_enabled: bool True
+  .ssrData.publishersResponse.client_definition.ds_cards.should_use_in_article_recommender: bool True
+  .ssrData.publishersResponse.client_definition.stellas_contest.contest_end_date: str "2026-07-18T23:59:59+03:00"
+  .ssrData.publishersResponse.client_definition.stellas_contest.contest_draw_date: str "2026-07-24"
+  .ssrData.publishersResponse.client_definition.article_half_screen_touch_params: dict {1 keys}
+  .ssrData.publishersResponse.client_definition.glif.article: dict {5 keys}
+  .ssrData.publishersResponse.client_definition.glif.article.is_enabled_for_publisher_media_agency_only: bool False
+  .ssrData.publishersResponse.client_definition.article_page_subscription_trap_mobile: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.article_desktop_ad_offset_load_config: dict {3 keys}
+  .ssrData.publishersResponse.client_definition.web2app_subscriptions_feed_item.text_variant: str ""
+  .ssrData.publishersResponse.client_definition.delete_right_banner_title: bool True
+  .ssrData.publishersResponse.client_definition.with_sticky_ad_on_article: bool True
+  .ssrData.publishersResponse.client_definition.full_screen_ad_params_touch.show_after_article_view_count: int 0
+  .ssrData.publishersResponse.client_definition.article_half_screen_ya_start_params: dict {1 keys}
+  .ssrData.publishersResponse.client_definition.with_article_navigation: bool True
+  .ssrData.publishersResponse.client_definition.promo_banner.titles: str (41 words) "643b338e75fca230e6615191=????? ?????? ??? ????? ?????? <<?????>> ??????????? ? ?????!;5f34cffbbfe39b218c788e29=????? ?????? ??? ??????? <<?????????? ????>> ??????????? ? ?????!;64af9b3a9c9f88269239fbd3=??..."
+  .ssrData.publishersResponse.client_definition.with_article_showcase_tabs: bool True
+  .ssrData.publishersResponse.client_definition.is_clamped_articles_without_d2d: bool False
+  .ssrData.publishersResponse.client_definition.nalivka_feed_popup.gif_title: str "?? ?????????? ??? ?????"
+  .ssrData.publishersResponse.client_definition.luring_into_video_modal_params.text_type: str "sound-short"
+  .ssrData.publishersResponse.client_definition.is_video_subtitles_force_enabled: bool True
+  .ssrData.publishersResponse.client_definition.is_custom_comments_title_enabled: bool True
+  .ssrData.publishersResponse.client_definition.premium_embed_in_article: dict {1 keys}
+  .ssrData.publishersResponse.client_definition.should_use_ad_centric_media: bool True
+  .ssrData.publishersResponse.client_definition.is_views_in_article_header_mobile: bool True
+  .ssrData.publishersResponse.client_definition.auth_recommend_popup.is_trigger_enter_content: bool True
+  .ssrData.publishersResponse.client_definition.is_article_meta_with_icons: bool True
+  .ssrData.publishersResponse.client_definition.should_send_content_heartbeat: bool True
+  .ssrData.publishersResponse.client_definition.discover_in_search.is_new_header_text_enabled: bool True
+  .ssrData.publishersResponse.client_definition.is_article_ad_right_block_with_comments_enabled: bool True
+  .ssrData.publishersResponse.client_definition.flash.pretitle: str ""
+  .ssrData.publishersResponse.client_definition.flash.main_text: str "?????? ?????? ?????? ?????????? ?? ???? <<topic_name>>?"
+  .ssrData.publishersResponse.client_definition.flash.button_text: str ""
+  .ssrData.publishersResponse.client_definition.video_quality_survey.question_text: str "??? ???????? ???????? ????? ? ??????"
+  .ssrData.publishersResponse.client_definition.video_quality_survey.answer_text: str "???????, ??? ????????? ?????? ???? ?????!"
+  .ssrData.publishersResponse.client_definition.video_quality_survey.answer_text_bad_mark: str "???????, ?? ????? ????????? ??????? ???? ?????!"
+  .ssrData.publishersResponse.client_definition.interesting_floor_title: str "??????????"
+  .ssrData.publishersResponse.client_definition.is_wide_article: bool True
+  .ssrData.publishersResponse.client_definition.is_action_island_with_next_article_btn_touch: bool True
+  .ssrData.publishersResponse.client_definition.with_article_authors_block: bool True
+  .ssrData.publishersResponse.client_definition.discover_desktop.is_final_title: bool True
+  .ssrData.publishersResponse.client_definition.promo_campaign_landings_entries[0].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/food-short-57.png"
+  .ssrData.publishersResponse.client_definition.promo_campaign_landings_entries[1].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/games-short-57.png"
+  .ssrData.publishersResponse.client_definition.promo_campaign_landings_entries[2].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/beauty-short-57.png"
+  .ssrData.publishersResponse.client_definition.promo_campaign_landings_entries[3].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/it-short-57.png"
+  .ssrData.publishersResponse.client_definition.promo_campaign_landings_entries[4].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/travel-long-57.png"
+  .ssrData.publishersResponse.client_definition.article_mobile_ad_scroll_speed_adapting: dict {4 keys}
+  .ssrData.publishersResponse.client_definition.is_views_in_article_header_desktop: bool True
+  .ssrData.publishersResponse.client_definition.measure_title_by_font_metrics: bool True
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.slider.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB&nbsp;?&nbsp;?????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.slider.button_text: str "??????????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.slider.title: str "???? ??? ???????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.corner.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB ? ?????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.corner.button_text: str "??????????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.corner.title: str "???? ??? ???????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.corner.enabled_in_article: bool True
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.article: dict {4 keys}
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.article.subtitle: str "?????????? ???? ??? ?? 159 RUB ? ?????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.article.button_text: str "??????????"
+  .ssrData.publishersResponse.client_definition.dzen_pro.banner.article.title: str "? ????????? ??????? ?? ?????"
+  .ssrData.publishersResponse.client_definition.full_screen_ad_params_start.show_after_article_view_count: int 0
+  .ssrData.publishersResponse.client_definition.is_chronologic_polnotext_analytics: bool True
+  .ssrData.publishersResponse.client_definition.is_ok_article_subscription_block_enabled: bool False
+  .ssrData.publishersResponse.client_definition.is_action_island_with_next_article_btn_desktop: bool True
+  .ssrData.publishersResponse.client_definition.is_article_ssr_disabled: bool True
+  .ssrData.publishersResponse.client_definition.promo_trends_entries.khl.text: str "?????????? ?????????:
+?????? ? ????? ?????? ?????"
+  .ssrData.publishersResponse.client_definition.promo_trends_entries.khl.text_color: str "#333333"
+  .ssrData.publishersResponse.client_definition.ad_short_article_sidebar_freq: int 1
+  .ssrData.publishersResponse.client_definition.article_mobile_ad_offset_load_config: dict {5 keys}
+  .ssrData.publishersResponse.client_definition.is_desktop_one_column_redesign.is_article_card_redesign: bool True
+  .ssrData.publishersResponse.client_definition.with_article_showcase_trends_tabs_desktop: bool True
+  .ssrData.publishersResponse.client_definition.article_banner_top_header_large_ad: dict {1 keys}
+  .ssrData.publishersResponse.client_definition.endless_article_d2d_enabled: bool True
+  .ssrData.publishersResponse.client_definition.is_article_new_layout: bool True
+  .ssrData.publishersResponse.client_definition.stellas.article_entry_point: dict {1 keys}
+  .ssrData.publishersResponse.client_definition.is_mittens_share_with_text: bool True
+  .ssrData.publishersResponse.client_definition.with_ds_cards_on_article_showcase: bool True
+  .ssrData.publishersResponse.client_definition.calendar_widget_title: str "?????? <<???? ????????>>"
+  .ssrData.publishersResponse.client_definition.endless_article_page_subscription_trap_desktop: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.article_page_subscription_trap_desktop: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.video_player_settings.one_video_player_config.useManagedMediaSource: bool True
+  .ssrData.publishersResponse.client_definition.scroll_speed_tracking.enabled_on_article: bool True
+  .ssrData.publishersResponse.client_definition.donations.birthday_sticker.is_enabled_in_articles: bool True
+  .ssrData.publishersResponse.client_definition.donations.article_entry_point: dict {4 keys}
+  .ssrData.publishersResponse.client_definition.is_article_bottom_banner_enabled: bool True
+  .ssrData.publishersResponse.client_definition.is_morda_title_hint_shown: bool True
+  .ssrData.publishersResponse.client_definition.premium.is_content_tariff_mark_enabled: bool True
+  .ssrData.publishersResponse.client_definition.endless_article_d2d_items_count: int 4
+  .ssrData.publishersResponse.client_definition.with_article_showcase_feed: bool True
+  .ssrData.publishersResponse.client_definition.with_ray_on_article: bool True
+  .ssrData.publishersResponse.client_definition.articles_floor_ad: dict {4 keys}
+  .ssrData.publishersResponse.client_definition.discover.is_final_title: bool True
+  .ssrData.publishersResponse.client_definition.is_desktop_clamped_articles_enabled: bool True
+  .ssrData.publishersResponse.client_definition.alternative_trends_entry.has_title_and_more_button: bool True
+  .ssrData.publishersResponse.client_definition.is_special_article_popup_enabled: bool True
+  .ssrData.publishersResponse.client_definition.main_auth_trap.auth_popup_text: dict {2 keys}
+  .ssrData.publishersResponse.client_definition.main_auth_trap.auth_popup_text.title: str "??????? ???? ?????"
+  .ssrData.publishersResponse.client_definition.use_showcase_text_subscribe_status: bool True
+  .ssrData.publishersResponse.client_definition.is_new_design_card_article_floors_desktop: bool True
+  .ssrData.publishersResponse.current_user_source_info.title_background_color: str "#999999"
+  .ssrData.publishersResponse.current_user_source_info.title_color: str "#000000"
+  .ssrData.publishersResponse.current_user_source_info.title: str "?????? ????? ?????"
+  .ssrData.publishersResponse.current_user_source_info.subtitle: str "??? ???????????"
+  .ssrData.publishersResponse.thematicBanners[0].title: str "?????????"
+  .ssrData.publishersResponse.thematicBanners[1].title: str "??????"
+  .ssrData.publishersResponse.thematicBanners[2].title: str "????????"
+  .ssrData.publishersResponse.thematicBanners[3].title: str "? ???? ? ????????"
+  .ssrData.publishersResponse.thematicBanners[4].title: str "???????? <<???????>>"
+  .ssrData.publishersResponse.thematicBanners[5].title: str "?????????????"
+  .ssrData.publishersResponse.thematicBanners[6].title: str "????????????"
+  .ssrData.publishersResponse.thematicBanners[7].title: str "??????? ?????????"
+  .ssrData.publishersResponse.thematicBanners[8].title: str "??????: ????? ? ????????"
+  .ssrData.publishersResponse.thematicBanners[9].title: str "??????????"
+  .ssrData.publishersResponse.thematicBanners[10].title: str "?????????? ???????????"
+  .ssrData.publishersResponse.thematicBanners[11].title: str "?????? ? ???????"
+  .ssrData.publishersResponse.thematicBanners[12].title: str "??????????????"
+  .ssrData.publishersResponse.thematicBanners[13].title: str "?????????? ? ???????????"
+  .ssrData.publishersResponse.thematicBanners[14].title: str "????????????? ???????? ??????"
+  .ssrData.publishersResponse.thematicBanners[15].title: str "????????????? ?????????"
+  .ssrData.publishersResponse.thematicBanners[16].title: str "?????????? ??????"
+  .ssrData.publishersResponse.thematicBanners[17].title: str "?????? ? ???????????????????"
+  .ssrData.publishersResponse.thematicBanners[18].title: str "????? ?????"
+  .ssrData.publishersResponse.thematicBanners[19].title: str "???????? ?????????"
+  .ssrData.publishersResponse.topicChannelSubscriptionSuggestion.topicChannelTitle: str "? ???? ? ????????"
+  .ssrData.publishersResponse.mostRelevantTopicChannel.title: str "? ???? ? ????????"
+  .ssrData.publishersResponse.topicChannelsSeoTags[0].title: str "? ???? ? ????????"
+  .ssrData.publishersResponse.topicChannelsSeoTags[1].title: str "??????"
+  .ssrData.publishersResponse.thematicCloud.title: str "????????? ?? ??? ????"
+  .ssrData.publishersResponse.thematicCloud.items[0].title: str "?????????"
+  .ssrData.publishersResponse.thematicCloud.items[1].title: str "??????"
+  .ssrData.publishersResponse.thematicCloud.items[2].title: str "????????"
+  .ssrData.publishersResponse.thematicCloud.items[3].title: str "? ???? ? ????????"
+  .ssrData.publishersResponse.thematicCloud.items[4].title: str "???????? <<???????>>"
+  .ssrData.publishersResponse.thematicCloud.items[5].title: str "?????????????"
+  .ssrData.publishersResponse.thematicCloud.items[6].title: str "????????????"
+  .ssrData.publishersResponse.thematicCloud.items[7].title: str "??????? ?????????"
+  .ssrData.publishersResponse.thematicCloud.items[8].title: str "??????: ????? ? ????????"
+  .ssrData.publishersResponse.thematicCloud.items[9].title: str "??????????"
+  .ssrData.publishersResponse.thematicCloud.items[10].title: str "?????????? ???????????"
+  .ssrData.publishersResponse.thematicCloud.items[11].title: str "?????? ? ???????"
+  .ssrData.publishersResponse.thematicCloud.items[12].title: str "??????????????"
+  .ssrData.publishersResponse.thematicCloud.items[13].title: str "?????????? ? ???????????"
+  .ssrData.publishersResponse.thematicCloud.items[14].title: str "????????????? ???????? ??????"
+  .ssrData.publishersResponse.thematicCloud.items[15].title: str "????????????? ?????????"
+  .ssrData.publishersResponse.thematicCloud.items[16].title: str "?????????? ??????"
+  .ssrData.publishersResponse.thematicCloud.items[17].title: str "?????? ? ???????????????????"
+  .ssrData.publishersResponse.thematicCloud.items[18].title: str "????? ?????"
+  .ssrData.publishersResponse.thematicCloud.items[19].title: str "???????? ?????????"
+  .ssrData.publishersResponse.thematicCloud.lightModeTextColor: str "#796EB8"
+  .ssrData.publishersResponse.thematicCloud.darkModeTextColor: str "#A39AD6"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.title: str "????????? ?? ???????? ?????????????? ?????? ?? ???? ?????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.answers[0].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.answers[1].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.answers[2].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.answers[3].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.answers[4].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.submitButton.text: str "???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.title: str "????? ?????? ???????? ?? ????????????? ? ??????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.answers[0].title: str "???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.answers[1].title: str "??????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.answers[2].title: str "??????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.answers[3].title: str "?????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.submitButton.text: str "?????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.title: str "??????????, ?????? ?? ????????? ????? ???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.submitButton.text: str "??????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.input.text: str "?????????? ????????????..."
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.title: str "??????? ?? ??????!"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.submitButton.text: str "???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.imageInfo.darkImageSrc: str "https://avatars.dzeninfra.ru/get-zen-logos/271828/661008eae1e9f93210d1ecef/orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.imageInfo.lightImageSrc: str "https://avatars.dzeninfra.ru/get-zen-logos/271828/661008aa3454fe1735231f32/orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.title: str "????????? ?? ???????? ???????? ? ??????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.answers[0].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.answers[1].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.answers[2].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.answers[3].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.answers[4].title: str ""
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.submitButton.text: str "???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.title: str "??????????, ?????? ?? ????????? ????? ???????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.submitButton.text: str "??????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.submitButton.textColor: str "#000000"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.input.text: str "?????????? ????????????..."
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.title: str "????????? ?? ?????? ????????????? ???? ??????? ? ?????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.minAnswerTitle: str "?? ????????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.maxAnswerTitle: str "????????????"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[0].title: str "0"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[0].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[0].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[1].title: str "1"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[1].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[1].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[2].title: str "2"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[2].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[2].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[3].title: str "3"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[3].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[3].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[4].title: str "4"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[4].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[4].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[5].title: str "5"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[5].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[5].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[6].title: str "6"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[6].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[6].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[7].title: str "7"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[7].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[7].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[8].title: str "8"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[8].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[8].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[9].title: str "9"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[9].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[9].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[10].title: str "10"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[10].imageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.interviewV2[0].screenMap.5330463089516694251.answers[10].lightImageSrc: str "https://avatars.dzeninfra.ru/get-///orig"
+  .ssrData.publishersResponse.mediaAgencyAuthors: list [0 items]
+  .ssrData.articleD2dForRobot: null
+
+[_params] -> extracted_json_18.json (37.2 KB)
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.endless_article_publications_count: int 10
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_smaller_title_height: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.endless_article_page_subscription_trap_mobile: dict {2 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_subtitles_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.full_screen_ad_params_desktop.show_after_article_view_count: int 1
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_ad_inner_start_params: dict {8 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_ad_inner_start_params.article_ad_threshold: int 600
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.browser_switch_trap.text: str "?????????? ?? ????? ??????????
+? ??????? ????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.browser_switch_trap.button_text: str "????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.browser_switch_trap.title: str "???? ?????? ???????? ????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_authors_block_redesign: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_updated_news_block_desktop: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_special_media_banner: dict {4 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_header_top_ad_placeholder_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_touch_article_showcase_feed: bool False
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.running_lines.is_enabled_on_article_pages: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.running_lines.cache_hours_on_article_pages: int 5
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.ad_campaign_qr_banner.title: str "???? ?????? ??? ?????
+?? <span>iOS</span> ? <span>Android</span>"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_spec_projects_text: str ""
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.auth_likes_trigger.is_article_desktop_trigger_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.auth_likes_trigger.is_article_touch_trigger_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.ds_cards.should_use_in_article_recommender: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.stellas_contest.contest_end_date: str "2026-07-18T23:59:59+03:00"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.stellas_contest.contest_draw_date: str "2026-07-24"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_half_screen_touch_params: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.glif.article: dict {5 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.glif.article.is_enabled_for_publisher_media_agency_only: bool False
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_page_subscription_trap_mobile: dict {2 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_desktop_ad_offset_load_config: dict {3 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.web2app_subscriptions_feed_item.text_variant: str ""
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.delete_right_banner_title: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_sticky_ad_on_article: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.full_screen_ad_params_touch.show_after_article_view_count: int 0
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_half_screen_ya_start_params: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_article_navigation: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_banner.titles: str (41 words) "643b338e75fca230e6615191=????? ?????? ??? ????? ?????? <<?????>> ??????????? ? ?????!;5f34cffbbfe39b218c788e29=????? ?????? ??? ??????? <<?????????? ????>> ??????????? ? ?????!;64af9b3a9c9f88269239fbd3=??..."
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_article_showcase_tabs: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_clamped_articles_without_d2d: bool False
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.nalivka_feed_popup.gif_title: str "?? ?????????? ??? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.luring_into_video_modal_params.text_type: str "sound-short"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_video_subtitles_force_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_custom_comments_title_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.premium_embed_in_article: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.should_use_ad_centric_media: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_views_in_article_header_mobile: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.auth_recommend_popup.is_trigger_enter_content: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_meta_with_icons: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.should_send_content_heartbeat: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.discover_in_search.is_new_header_text_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_ad_right_block_with_comments_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.flash.pretitle: str ""
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.flash.main_text: str "?????? ?????? ?????? ?????????? ?? ???? <<topic_name>>?"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.flash.button_text: str ""
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.video_quality_survey.question_text: str "??? ???????? ???????? ????? ? ??????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.video_quality_survey.answer_text: str "???????, ??? ????????? ?????? ???? ?????!"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.video_quality_survey.answer_text_bad_mark: str "???????, ?? ????? ????????? ??????? ???? ?????!"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.interesting_floor_title: str "??????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_wide_article: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_action_island_with_next_article_btn_touch: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_article_authors_block: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.discover_desktop.is_final_title: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[0].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/food-short-57.png"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[1].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/games-short-57.png"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[2].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/beauty-short-57.png"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[3].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/it-short-57.png"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_campaign_landings_entries[4].imageShort: str "https://s3.dzeninfra.ru/zen-misc/images/floors-promo/travel-long-57.png"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_mobile_ad_scroll_speed_adapting: dict {4 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_views_in_article_header_desktop: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.measure_title_by_font_metrics: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB&nbsp;?&nbsp;?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.button_text: str "??????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.title: str "???? ??? ???????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.subtitle: str "???????? ???? ??? ??&nbsp;159&nbsp;RUB ? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.button_text: str "??????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.title: str "???? ??? ???????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.enabled_in_article: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.article: dict {4 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.article.subtitle: str "?????????? ???? ??? ?? 159 RUB ? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.article.button_text: str "??????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.dzen_pro.banner.article.title: str "? ????????? ??????? ?? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.full_screen_ad_params_start.show_after_article_view_count: int 0
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_chronologic_polnotext_analytics: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_ok_article_subscription_block_enabled: bool False
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_action_island_with_next_article_btn_desktop: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_ssr_disabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text: str "?????????? ?????????:
+?????? ? ????? ?????? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text_color: str "#333333"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.ad_short_article_sidebar_freq: int 1
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_mobile_ad_offset_load_config: dict {5 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_desktop_one_column_redesign.is_article_card_redesign: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_article_showcase_trends_tabs_desktop: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_banner_top_header_large_ad: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.endless_article_d2d_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_new_layout: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.stellas.article_entry_point: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_mittens_share_with_text: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_ds_cards_on_article_showcase: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.calendar_widget_title: str "?????? <<???? ????????>>"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.endless_article_page_subscription_trap_desktop: dict {2 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.article_page_subscription_trap_desktop: dict {2 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.video_player_settings.one_video_player_config.useManagedMediaSource: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.scroll_speed_tracking.enabled_on_article: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.donations.birthday_sticker.is_enabled_in_articles: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.donations.article_entry_point: dict {4 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_article_bottom_banner_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_morda_title_hint_shown: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.premium.is_content_tariff_mark_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.endless_article_d2d_items_count: int 4
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_article_showcase_feed: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.with_ray_on_article: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.articles_floor_ad: dict {4 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.discover.is_final_title: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_desktop_clamped_articles_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.alternative_trends_entry.has_title_and_more_button: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_special_article_popup_enabled: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text: dict {2 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text.title: str "??????? ???? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.use_showcase_text_subscribe_status: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.clientDefinitionMap.is_new_design_card_article_floors_desktop: bool True
+  .data.MICRO_APP_SSR_DATA.webCommonData.currentUserSourceInfo.title: str "?????? ????? ?????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.currentUserSourceInfo.publisherId: str "637b09c7e1c5d415d437e6ab"
+  .data.MICRO_APP_SSR_DATA.webCommonData.geoInfo.regionTitle: str "???????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.geoInfoIp.regionTitle: str "???????????"
+  .data.MICRO_APP_SSR_DATA.webCommonData.marketingPromo.discover.images: dict {5 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.marketingPromo.main.images: dict {1 keys}
+  .data.MICRO_APP_SSR_DATA.webCommonData.marketingPromo.header.title: str "????????"
+
+
+RECOMMENDATION: article data in `_params`
+  -> .ssrData.initResponse.zenFeatures.stat_params_with_context
+  -> .ssrData.webCommonData.clientDefinitionMap.browser_switch_trap.text
+  -> .ssrData.webCommonData.clientDefinitionMap.browser_switch_trap.button_text
+  -> .ssrData.webCommonData.clientDefinitionMap.promo_spec_projects_text
+  -> .ssrData.webCommonData.clientDefinitionMap.web2app_subscriptions_feed_item.text_variant
+  -> .ssrData.webCommonData.clientDefinitionMap.luring_into_video_modal_params.text_type
+  -> .ssrData.webCommonData.clientDefinitionMap.auth_recommend_popup.is_trigger_enter_content
+  -> .ssrData.webCommonData.clientDefinitionMap.should_send_content_heartbeat
+  -> .ssrData.webCommonData.clientDefinitionMap.discover_in_search.is_new_header_text_enabled
+  -> .ssrData.webCommonData.clientDefinitionMap.flash.main_text
+  -> .ssrData.webCommonData.clientDefinitionMap.flash.button_text
+  -> .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.question_text
+  -> .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.answer_text
+  -> .ssrData.webCommonData.clientDefinitionMap.video_quality_survey.answer_text_bad_mark
+  -> .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.slider.button_text
+  -> .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.corner.button_text
+  -> .ssrData.webCommonData.clientDefinitionMap.dzen_pro.banner.article.button_text
+  -> .ssrData.webCommonData.clientDefinitionMap.is_chronologic_polnotext_analytics
+  -> .ssrData.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text
+  -> .ssrData.webCommonData.clientDefinitionMap.promo_trends_entries.khl.text_color
+  -> .ssrData.webCommonData.clientDefinitionMap.is_mittens_share_with_text
+  -> .ssrData.webCommonData.clientDefinitionMap.premium.is_content_tariff_mark_enabled
+  -> .ssrData.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text
+  -> .ssrData.webCommonData.clientDefinitionMap.main_auth_trap.auth_popup_text.title
+  -> .ssrData.webCommonData.clientDefinitionMap.use_showcase_text_subscribe_status
+  -> .ssrData.publishersResponse.data.data.publication.content
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState (245 words)
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[0].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[1].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[2].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[3].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[4].text (43 words)
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[5].text (52 words)
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[6].text (48 words)
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[7].text (51 words)
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[8].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[9].text
+  -> .ssrData.publishersResponse.data.data.publication.content.articleContent.contentState.draftJsState.blocks[10].text
+  -> .ssrData.publishersResponse.data.data.publication.content.preview.title
+  -> .ssrData.publishersResponse.data.data.publication.content.preview.galleryPreviewImages
+  -> .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-header.bulkData.myTargetExtraParams
+  -> .ssrData.publishersResponse.data.data.adData.adBlocks.comments.bulkData.myTargetExtraParams
+  -> .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-right.bulkData.myTargetExtraParams
+  -> .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-footer.bulkData.myTargetExtraParams
+  -> .ssrData.publishersResponse.data.data.adData.adBlocks.desktop-fullscreen.bulkData.myTargetExtraParams
+  -> .ssrData.publishersResponse.data.data.specialAdConfig.maskotConfig.bubble_text_align
+  -> .ssrData.publishersResponse.data.data.adContent
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.topic_channel.feed_content_blocks_order
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.text_styles_desktop
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.is_images_adaptive_enabled
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_partner_label.text
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.min_points_between_ad_blocks
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_redesign.text_styles_mobile
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_content.ad_inner_block_threshold_points
+  -> .ssrData.publishersResponse.data.data.experiments.publishers_config.properties.article_ad_label.text
+  -> .ssrData.publishersResponse.data.data.experiments.context
+  -> .ssrData.publishersResponse.data.config.draftShareEnabled
+  -> .ssrData.publishersResponse.data.config.campaignUtmEditorCallToActionText
+  -> .ssrData.publishersResponse.data.config.maxGalleryContentSize
+  -> .ssrData.publishersResponse.data.featureConfig.adCampaigns.dailyBudgetOverdraftEnabled
+  -> .ssrData.publishersResponse.stats_info.stat_events.expand_text
+  -> .ssrData.publishersResponse.stats_info.stat_events.content_item_swipe
+  -> .ssrData.publishersResponse.stats_info.stat_events.content_item_show
+  -> .ssrData.publishersResponse.stats_info.stat_events.content_item_tap
+  -> .ssrData.publishersResponse.stats_info.stat_events.content_item_click
+  -> .ssrData.publishersResponse.client_definition.browser_switch_trap.text
+  -> .ssrData.publishersResponse.client_definition.browser_switch_trap.button_text
+  -> .ssrData.publishersResponse.client_definition.promo_spec_projects_text
+  -> .ssrData.publishersResponse.client_definition.web2app_subscriptions_feed_item.text_variant
+  -> .ssrData.publishersResponse.client_definition.luring_into_video_modal_params.text_type
+  -> .ssrData.publishersResponse.client_definition.auth_recommend_popup.is_trigger_enter_content
+  -> .ssrData.publishersResponse.client_definition.should_send_content_heartbeat
+  -> .ssrData.publishersResponse.client_definition.discover_in_search.is_new_header_text_enabled
+  -> .ssrData.publishersResponse.client_definition.flash.main_text
+  -> .ssrData.publishersResponse.client_definition.flash.button_text
+  -> .ssrData.publishersResponse.client_definition.video_quality_survey.question_text
+  -> .ssrData.publishersResponse.client_definition.video_quality_survey.answer_text
+  -> .ssrData.publishersResponse.client_definition.video_quality_survey.answer_text_bad_mark
+  -> .ssrData.publishersResponse.client_definition.dzen_pro.banner.slider.button_text
+  -> .ssrData.publishersResponse.client_definition.dzen_pro.banner.corner.button_text
+  -> .ssrData.publishersResponse.client_definition.dzen_pro.banner.article.button_text
+  -> .ssrData.publishersResponse.client_definition.is_chronologic_polnotext_analytics
+  -> .ssrData.publishersResponse.client_definition.promo_trends_entries.khl.text
+  -> .ssrData.publishersResponse.client_definition.promo_trends_entries.khl.text_color
+  -> .ssrData.publishersResponse.client_definition.is_mittens_share_with_text
+  -> .ssrData.publishersResponse.client_definition.premium.is_content_tariff_mark_enabled
+  -> .ssrData.publishersResponse.client_definition.main_auth_trap.auth_popup_text
+  -> .ssrData.publishersResponse.client_definition.main_auth_trap.auth_popup_text.title
+  -> .ssrData.publishersResponse.client_definition.use_showcase_text_subscribe_status
+  -> .ssrData.publishersResponse.thematicCloud.lightModeTextColor
+  -> .ssrData.publishersResponse.thematicCloud.darkModeTextColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.1132187186591188093.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.5525851292723464927.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.2556850327399908616.input.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.-3499467728812487920.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.661992524381503896.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.submitButton.text
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.submitButton.textColor
+  -> .ssrData.publishersResponse.interviewV2[0].screenMap.-563859461124829496.input.text

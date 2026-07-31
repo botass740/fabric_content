@@ -1,0 +1,28 @@
+{
+  "loggerContext": {
+    "dc": "dc",
+    "env": "production",
+    "reqid": "89860285.1060.1785351686950.49540",
+    "slots": [
+      "1639281",
+      "1639824",
+      "1639281",
+      "1639824",
+      "1639281",
+      "1639824"
+    ],
+    "yandexuid": "1604047921781888071",
+    "uid": "317927879",
+    "service": "content",
+    "version": "1.342.3",
+    "additional": {
+      "apphostReqid": "3fb9f07298707ab242c803b371c696b7",
+      "serverTime": 1785351687069,
+      "isBackgroundBrowser": false
+    },
+    "isBackground": false
+  },
+  "page": "desktop_article",
+  "cookieOfTheDay": "ancQTZw",
+  "isUaBrowserVersionSupported": true
+}

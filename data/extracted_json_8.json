@@ -1,0 +1,23 @@
+{
+  "url": "https://rum.dzen.ru/api/batch",
+  "cookieOfTheDay": "ancQTZw",
+  "baseItem": {
+    "environment": "production",
+    "platform": "desktop",
+    "page": "desktop_article",
+    "deviceId": "1604047921781888071",
+    "userId": "317927879",
+    "sessionId": "1503EF26-9A53-434F-8C72-73B203A4CB93",
+    "requestId": "3fb9f07298707ab242c803b371c696b7",
+    "experimentGroupIds": [
+      "1639281",
+      "1639824",
+      "1639281",
+      "1639824",
+      "1639281",
+      "1639824"
+    ],
+    "route": "",
+    "additional": {}
+  }
+}
