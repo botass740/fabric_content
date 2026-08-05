@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-07-30T21:03:22",
+  "generated_at": "2026-08-02T20:04:48",
   "corpus": {
-    "total_articles": 164,
-    "total_channels": 4
+    "total_articles": 560,
+    "total_channels": 34
   },
   "text_length": {
-    "total_articles": 164,
-    "mean_words": 535.4,
-    "median_words": 429.0,
-    "std_words": 312.1,
-    "min_words": 148,
-    "max_words": 1491,
-    "percentile_25": 291,
-    "percentile_75": 765,
+    "total_articles": 560,
+    "mean_words": 566.5,
+    "median_words": 483.0,
+    "std_words": 399.1,
+    "min_words": 3,
+    "max_words": 2911,
+    "percentile_25": 292,
+    "percentile_75": 775,
     "distribution": {
-      "0-200": 5,
-      "200-400": 76,
-      "400-600": 25,
-      "600-800": 23,
-      "800-1000": 23,
-      "1000+": 12
+      "0-200": 76,
+      "200-400": 134,
+      "400-600": 134,
+      "600-800": 85,
+      "800-1000": 67,
+      "1000+": 64
     },
     "by_channel": {
       "igorfaynman": {
-        "mean": 419.7,
-        "median": 334,
-        "count": 53
+        "mean": 424.3,
+        "median": 350,
+        "count": 57
       },
       "fincult": {
         "mean": 1167.0,
@@ -33,46 +33,126 @@
         "count": 1
       },
       "gazprombank": {
-        "mean": 321.0,
-        "median": 309.5,
-        "count": 54
+        "mean": 323.8,
+        "median": 311,
+        "count": 55
       },
       "vzoprodengi": {
-        "mean": 840.4,
-        "median": 834.0,
-        "count": 56
+        "mean": 838.0,
+        "median": 831,
+        "count": 59
+      },
+      "myfincons": {
+        "mean": 711.1,
+        "median": 587.0,
+        "count": 52
+      },
+      "pavelrakov": {
+        "mean": 578.1,
+        "median": 514.0,
+        "count": 52
+      },
+      "igorrybakov": {
+        "mean": 978.7,
+        "median": 875.5,
+        "count": 50
+      },
+      "azbukadeneg": {
+        "mean": 406.3,
+        "median": 418,
+        "count": 55
+      },
+      "navigator_finans": {
+        "mean": 660.8,
+        "median": 628,
+        "count": 23
+      },
+      "kapitalist": {
+        "mean": 47.9,
+        "median": 46.5,
+        "count": 52
+      },
+      "ekonomim_dengi": {
+        "mean": 948.5,
+        "median": 940,
+        "count": 55
+      },
+      "budniminimalista": {
+        "mean": 336.3,
+        "median": 319,
+        "count": 49
       }
     }
   },
   "titles": {
-    "mean_chars": 66.7,
-    "median_chars": 64.5,
-    "mean_words": 10.9,
+    "mean_chars": 62.1,
+    "median_chars": 59.0,
+    "mean_words": 9.9,
     "distribution_chars": {
-      "0-40": 3,
-      "40-60": 71,
-      "60-80": 44,
-      "80-100": 39,
-      "100+": 7
+      "0-40": 77,
+      "40-60": 207,
+      "60-80": 152,
+      "80-100": 95,
+      "100+": 29
     },
-    "starts_with_number": 4,
-    "starts_with_quote": 8,
-    "starts_with_verb": 9,
-    "contains_question": 4,
-    "contains_colon": 61,
-    "contains_digits": 61,
+    "starts_with_number": 20,
+    "starts_with_quote": 17,
+    "starts_with_verb": 44,
+    "contains_question": 55,
+    "contains_colon": 167,
+    "contains_digits": 182,
     "top_first_words": [
       [
         "Как",
-        9
+        44
+      ],
+      [
+        "Почему",
+        30
+      ],
+      [
+        "Мои",
+        12
+      ],
+      [
+        "Через",
+        12
+      ],
+      [
+        "Что",
+        11
       ],
       [
         "В",
-        7
+        8
       ],
       [
         "Золото",
-        4
+        6
+      ],
+      [
+        "Я",
+        6
+      ],
+      [
+        "❗",
+        6
+      ],
+      [
+        "За",
+        6
+      ],
+      [
+        "Когда",
+        5
+      ],
+      [
+        "5",
+        5
+      ],
+      [
+        "Зачем",
+        5
       ],
       [
         "Отец",
@@ -81,2059 +161,2087 @@
       [
         "Мать",
         4
-      ],
-      [
-        "Почему",
-        3
-      ],
-      [
-        "Что",
-        3
-      ],
-      [
-        "Дочь",
-        3
-      ],
-      [
-        "Рынок",
-        3
-      ],
-      [
-        "Дефицит",
-        3
-      ],
-      [
-        "Пенсии",
-        3
-      ],
-      [
-        "Дед",
-        3
-      ],
-      [
-        "Мама,",
-        3
-      ],
-      [
-        "Wildberries",
-        2
-      ],
-      [
-        "6",
-        2
       ]
     ]
   },
   "word_frequency": {
     "top_words_in_texts": [
       {
-        "word": "деньги",
-        "count": 286,
+        "word": "только",
+        "count": 808,
         "rank": 1
       },
       {
-        "word": "может",
-        "count": 202,
+        "word": "чтобы",
+        "count": 707,
         "rank": 2
       },
       {
-        "word": "больше",
-        "count": 201,
+        "word": "может",
+        "count": 651,
         "rank": 3
       },
       {
-        "word": "только",
-        "count": 179,
+        "word": "деньги",
+        "count": 614,
         "rank": 4
       },
       {
         "word": "просто",
-        "count": 166,
+        "count": 608,
         "rank": 5
       },
       {
-        "word": "мне",
-        "count": 159,
+        "word": "больше",
+        "count": 599,
         "rank": 6
       },
       {
-        "word": "чтобы",
-        "count": 155,
+        "word": "которые",
+        "count": 506,
         "rank": 7
       },
       {
-        "word": "год",
-        "count": 155,
+        "word": "где",
+        "count": 502,
         "rank": 8
       },
       {
-        "word": "было",
-        "count": 155,
+        "word": "себя",
+        "count": 493,
         "rank": 9
       },
       {
-        "word": "сейчас",
-        "count": 144,
+        "word": "даже",
+        "count": 477,
         "rank": 10
       },
       {
-        "word": "меня",
-        "count": 140,
+        "word": "быть",
+        "count": 467,
         "rank": 11
       },
       {
-        "word": "стоит",
-        "count": 134,
+        "word": "будет",
+        "count": 457,
         "rank": 12
       },
       {
-        "word": "жизнь",
-        "count": 130,
+        "word": "меня",
+        "count": 448,
         "rank": 13
       },
       {
-        "word": "потому",
-        "count": 126,
+        "word": "вас",
+        "count": 431,
         "rank": 14
       },
       {
-        "word": "месяц",
-        "count": 120,
+        "word": "было",
+        "count": 422,
         "rank": 15
       },
       {
-        "word": "потом",
-        "count": 113,
+        "word": "время",
+        "count": 421,
         "rank": 16
       },
       {
-        "word": "день",
-        "count": 110,
+        "word": "мне",
+        "count": 421,
         "rank": 17
       },
       {
-        "word": "этом",
-        "count": 108,
+        "word": "потому",
+        "count": 376,
         "rank": 18
       },
       {
-        "word": "про",
-        "count": 101,
+        "word": "сейчас",
+        "count": 374,
         "rank": 19
       },
       {
-        "word": "вас",
-        "count": 100,
+        "word": "раз",
+        "count": 367,
         "rank": 20
       },
       {
-        "word": "который",
-        "count": 100,
+        "word": "про",
+        "count": 359,
         "rank": 21
       },
       {
-        "word": "раз",
-        "count": 100,
+        "word": "кто",
+        "count": 343,
         "rank": 22
       },
       {
-        "word": "которые",
-        "count": 98,
+        "word": "потом",
+        "count": 340,
         "rank": 23
       },
       {
-        "word": "банк",
-        "count": 98,
+        "word": "этом",
+        "count": 335,
         "rank": 24
       },
       {
-        "word": "кто",
-        "count": 97,
+        "word": "очень",
+        "count": 323,
         "rank": 25
       },
       {
-        "word": "лучше",
-        "count": 96,
+        "word": "день",
+        "count": 322,
         "rank": 26
       },
       {
-        "word": "мать",
-        "count": 95,
+        "word": "более",
+        "count": 320,
         "rank": 27
       },
       {
-        "word": "где",
-        "count": 92,
+        "word": "именно",
+        "count": 320,
         "rank": 28
       },
       {
-        "word": "вот",
-        "count": 91,
+        "word": "том",
+        "count": 307,
         "rank": 29
       },
       {
-        "word": "даже",
-        "count": 90,
+        "word": "вот",
+        "count": 307,
         "rank": 30
       },
       {
-        "word": "теперь",
-        "count": 90,
+        "word": "всегда",
+        "count": 307,
         "rank": 31
       },
       {
-        "word": "денег",
-        "count": 85,
+        "word": "себе",
+        "count": 296,
         "rank": 32
       },
       {
-        "word": "один",
-        "count": 85,
+        "word": "поэтому",
+        "count": 295,
         "rank": 33
       },
       {
-        "word": "пенсии",
-        "count": 83,
+        "word": "теперь",
+        "count": 290,
         "rank": 34
       },
       {
-        "word": "два",
-        "count": 82,
+        "word": "который",
+        "count": 287,
         "rank": 35
       },
       {
-        "word": "человек",
-        "count": 82,
+        "word": "тоже",
+        "count": 277,
         "rank": 36
       },
       {
-        "word": "будет",
-        "count": 81,
+        "word": "год",
+        "count": 272,
         "rank": 37
       },
       {
-        "word": "почти",
-        "count": 81,
+        "word": "лучше",
+        "count": 267,
         "rank": 38
       },
       {
-        "word": "комментариях",
-        "count": 80,
+        "word": "один",
+        "count": 266,
         "rank": 39
       },
       {
-        "word": "работает",
-        "count": 80,
+        "word": "этого",
+        "count": 262,
         "rank": 40
       },
       {
-        "word": "три",
-        "count": 77,
+        "word": "того",
+        "count": 260,
         "rank": 41
       },
       {
-        "word": "каждый",
-        "count": 77,
+        "word": "жизнь",
+        "count": 260,
         "rank": 42
       },
       {
-        "word": "себя",
-        "count": 77,
+        "word": "там",
+        "count": 250,
         "rank": 43
       },
       {
-        "word": "могут",
-        "count": 75,
+        "word": "пока",
+        "count": 249,
         "rank": 44
       },
       {
-        "word": "этого",
-        "count": 73,
+        "word": "жизни",
+        "count": 248,
         "rank": 45
       },
       {
-        "word": "почему",
-        "count": 72,
+        "word": "всего",
+        "count": 247,
         "rank": 46
       },
       {
-        "word": "говорит",
-        "count": 72,
+        "word": "почти",
+        "count": 246,
         "rank": 47
       },
       {
-        "word": "жизни",
-        "count": 72,
+        "word": "стоит",
+        "count": 241,
         "rank": 48
       },
       {
-        "word": "быть",
-        "count": 71,
+        "word": "тем",
+        "count": 238,
         "rank": 49
       },
       {
-        "word": "более",
-        "count": 71,
+        "word": "денег",
+        "count": 235,
         "rank": 50
       },
       {
-        "word": "сколько",
-        "count": 71,
+        "word": "россии",
+        "count": 235,
         "rank": 51
       },
       {
-        "word": "всю",
-        "count": 69,
+        "word": "часто",
+        "count": 231,
         "rank": 52
       },
       {
-        "word": "дочь",
-        "count": 68,
+        "word": "сегодня",
+        "count": 231,
         "rank": 53
       },
       {
-        "word": "цены",
-        "count": 67,
+        "word": "могут",
+        "count": 229,
         "rank": 54
       },
       {
-        "word": "того",
-        "count": 67,
+        "word": "почему",
+        "count": 227,
         "rank": 55
       },
       {
-        "word": "том",
-        "count": 66,
+        "word": "каждый",
+        "count": 226,
         "rank": 56
       },
       {
-        "word": "тем",
-        "count": 66,
+        "word": "люди",
+        "count": 221,
         "rank": 57
       },
       {
-        "word": "часто",
-        "count": 66,
+        "word": "месяц",
+        "count": 219,
         "rank": 58
       },
       {
-        "word": "сказала",
-        "count": 66,
+        "word": "также",
+        "count": 217,
         "rank": 59
       },
       {
-        "word": "него",
-        "count": 65,
+        "word": "человек",
+        "count": 215,
         "rank": 60
       },
       {
-        "word": "россии",
-        "count": 65,
+        "word": "становится",
+        "count": 213,
         "rank": 61
       },
       {
-        "word": "детей",
-        "count": 65,
+        "word": "например",
+        "count": 212,
         "rank": 62
       },
       {
-        "word": "время",
-        "count": 64,
+        "word": "сразу",
+        "count": 211,
         "rank": 63
       },
       {
-        "word": "себе",
-        "count": 64,
+        "word": "много",
+        "count": 210,
         "rank": 64
       },
       {
-        "word": "часть",
-        "count": 63,
+        "word": "которая",
+        "count": 209,
         "rank": 65
       },
       {
-        "word": "доход",
-        "count": 63,
+        "word": "тут",
+        "count": 205,
         "rank": 66
       },
       {
-        "word": "пока",
-        "count": 63,
+        "word": "людей",
+        "count": 202,
         "rank": 67
       },
       {
-        "word": "дети",
-        "count": 63,
+        "word": "них",
+        "count": 194,
         "rank": 68
       },
       {
-        "word": "сам",
-        "count": 62,
+        "word": "компании",
+        "count": 194,
         "rank": 69
       },
       {
-        "word": "люди",
-        "count": 62,
+        "word": "свою",
+        "count": 191,
         "rank": 70
       },
       {
-        "word": "всего",
-        "count": 61,
+        "word": "него",
+        "count": 189,
         "rank": 71
       },
       {
-        "word": "человека",
-        "count": 61,
+        "word": "делать",
+        "count": 188,
         "rank": 72
       },
       {
-        "word": "тогда",
-        "count": 60,
+        "word": "несколько",
+        "count": 186,
         "rank": 73
       },
       {
-        "word": "иногда",
-        "count": 60,
+        "word": "часть",
+        "count": 180,
         "rank": 74
       },
       {
-        "word": "например",
-        "count": 59,
+        "word": "чтото",
+        "count": 180,
         "rank": 75
       },
       {
-        "word": "источник",
-        "count": 59,
+        "word": "работает",
+        "count": 177,
         "rank": 76
       },
       {
-        "word": "которая",
-        "count": 58,
+        "word": "рост",
+        "count": 175,
         "rank": 77
       },
       {
-        "word": "раньше",
-        "count": 58,
+        "word": "этой",
+        "count": 173,
         "rank": 78
       },
       {
-        "word": "карту",
-        "count": 57,
+        "word": "банк",
+        "count": 172,
         "rank": 79
       },
       {
-        "word": "расходы",
-        "count": 57,
+        "word": "времени",
+        "count": 172,
         "rank": 80
       },
       {
-        "word": "счет",
-        "count": 56,
+        "word": "раньше",
+        "count": 172,
         "rank": 81
       },
       {
-        "word": "всегда",
-        "count": 56,
+        "word": "всех",
+        "count": 171,
         "rank": 82
       },
       {
-        "word": "июля",
-        "count": 56,
+        "word": "нам",
+        "count": 171,
         "rank": 83
       },
       {
-        "word": "около",
-        "count": 56,
+        "word": "между",
+        "count": 170,
         "rank": 84
       },
       {
-        "word": "дело",
-        "count": 55,
+        "word": "меньше",
+        "count": 169,
         "rank": 85
       },
       {
-        "word": "них",
-        "count": 55,
+        "word": "минут",
+        "count": 166,
         "rank": 86
       },
       {
-        "word": "несколько",
-        "count": 55,
+        "word": "такие",
+        "count": 165,
         "rank": 87
       },
       {
-        "word": "напишите",
-        "count": 55,
+        "word": "иногда",
+        "count": 165,
         "rank": 88
       },
       {
-        "word": "отец",
-        "count": 55,
+        "word": "важно",
+        "count": 164,
         "rank": 89
       },
       {
-        "word": "тоже",
-        "count": 54,
+        "word": "чего",
+        "count": 164,
         "rank": 90
       },
       {
-        "word": "канале",
-        "count": 54,
+        "word": "комментариях",
+        "count": 161,
         "rank": 91
       },
       {
-        "word": "интересного",
-        "count": 54,
+        "word": "неделю",
+        "count": 161,
         "rank": 92
       },
       {
-        "word": "банка",
-        "count": 53,
+        "word": "здесь",
+        "count": 161,
         "rank": 93
       },
       {
-        "word": "сразу",
-        "count": 53,
+        "word": "тогда",
+        "count": 158,
         "rank": 94
       },
       {
-        "word": "ему",
-        "count": 53,
+        "word": "сколько",
+        "count": 158,
         "rank": 95
       },
       {
-        "word": "свою",
-        "count": 53,
+        "word": "такой",
+        "count": 158,
         "rank": 96
       },
       {
-        "word": "макс",
-        "count": 53,
+        "word": "ничего",
+        "count": 157,
         "rank": 97
       },
       {
-        "word": "меньше",
-        "count": 52,
+        "word": "сделать",
+        "count": 157,
         "rank": 98
       },
       {
-        "word": "неделю",
-        "count": 51,
+        "word": "два",
+        "count": 155,
         "rank": 99
       },
       {
-        "word": "две",
-        "count": 50,
+        "word": "человека",
+        "count": 153,
         "rank": 100
       },
       {
-        "word": "вместе",
-        "count": 50,
+        "word": "три",
+        "count": 152,
         "rank": 101
       },
       {
-        "word": "ничего",
-        "count": 50,
+        "word": "вопрос",
+        "count": 152,
         "rank": 102
       },
       {
-        "word": "там",
-        "count": 50,
+        "word": "сша",
+        "count": 151,
         "rank": 103
       },
       {
-        "word": "дед",
-        "count": 50,
+        "word": "вместе",
+        "count": 151,
         "rank": 104
       },
       {
-        "word": "семье",
-        "count": 49,
+        "word": "будут",
+        "count": 151,
         "rank": 105
       },
       {
-        "word": "мама",
-        "count": 49,
+        "word": "цены",
+        "count": 150,
         "rank": 106
       },
       {
-        "word": "история",
-        "count": 49,
+        "word": "сам",
+        "count": 149,
         "rank": 107
       },
       {
-        "word": "тут",
-        "count": 48,
+        "word": "своей",
+        "count": 148,
         "rank": 108
       },
       {
-        "word": "всех",
-        "count": 48,
+        "word": "лишь",
+        "count": 148,
         "rank": 109
       },
       {
-        "word": "сумму",
-        "count": 48,
+        "word": "слишком",
+        "count": 148,
         "rank": 110
       },
       {
-        "word": "сын",
-        "count": 48,
+        "word": "многие",
+        "count": 146,
         "rank": 111
       },
       {
-        "word": "эту",
-        "count": 47,
+        "word": "сама",
+        "count": 145,
         "rank": 112
       },
       {
-        "word": "людей",
-        "count": 47,
+        "word": "снова",
+        "count": 145,
         "rank": 113
       },
       {
-        "word": "этой",
-        "count": 47,
+        "word": "одной",
+        "count": 144,
         "rank": 114
       },
       {
-        "word": "тот",
-        "count": 47,
+        "word": "шаг",
+        "count": 144,
         "rank": 115
       },
       {
-        "word": "перед",
-        "count": 47,
+        "word": "значит",
+        "count": 144,
         "rank": 116
       },
       {
-        "word": "матери",
-        "count": 47,
+        "word": "ему",
+        "count": 143,
         "rank": 117
       },
       {
-        "word": "двадцать",
-        "count": 47,
+        "word": "говорит",
+        "count": 142,
         "rank": 118
       },
       {
-        "word": "между",
-        "count": 46,
+        "word": "чаще",
+        "count": 140,
         "rank": 119
       },
       {
-        "word": "одна",
-        "count": 46,
+        "word": "момент",
+        "count": 138,
         "rank": 120
       },
       {
-        "word": "сегодня",
-        "count": 46,
+        "word": "доход",
+        "count": 137,
         "rank": 121
       },
       {
-        "word": "рубля",
-        "count": 45,
+        "word": "особенно",
+        "count": 137,
         "rank": 122
       },
       {
-        "word": "рост",
-        "count": 45,
+        "word": "хотя",
+        "count": 137,
         "rank": 123
       },
       {
-        "word": "компании",
-        "count": 45,
+        "word": "дома",
+        "count": 137,
         "rank": 124
       },
       {
-        "word": "зарплаты",
-        "count": 45,
+        "word": "своих",
+        "count": 135,
         "rank": 125
       },
       {
-        "word": "сами",
-        "count": 45,
+        "word": "работы",
+        "count": 135,
         "rank": 126
       },
       {
-        "word": "которую",
-        "count": 45,
+        "word": "тот",
+        "count": 135,
         "rank": 127
       },
       {
-        "word": "дохода",
-        "count": 45,
+        "word": "покупки",
+        "count": 134,
         "rank": 128
       },
       {
-        "word": "мой",
-        "count": 45,
+        "word": "компания",
+        "count": 134,
         "rank": 129
       },
       {
-        "word": "ваши",
-        "count": 44,
+        "word": "отношения",
+        "count": 133,
         "rank": 130
       },
       {
-        "word": "историю",
-        "count": 44,
+        "word": "одна",
+        "count": 132,
         "rank": 131
       },
       {
-        "word": "дома",
-        "count": 44,
+        "word": "главное",
+        "count": 131,
         "rank": 132
       },
       {
-        "word": "покупки",
-        "count": 43,
+        "word": "какие",
+        "count": 130,
         "rank": 133
       },
       {
-        "word": "пять",
-        "count": 43,
+        "word": "сами",
+        "count": 130,
         "rank": 134
       },
       {
-        "word": "одной",
-        "count": 43,
+        "word": "быстро",
+        "count": 130,
         "rank": 135
       },
       {
-        "word": "поэтому",
-        "count": 43,
+        "word": "других",
+        "count": 129,
         "rank": 136
       },
       {
-        "word": "родители",
-        "count": 43,
+        "word": "перед",
+        "count": 129,
         "rank": 137
       },
       {
-        "word": "главное",
-        "count": 42,
+        "word": "хорошо",
+        "count": 128,
         "rank": 138
       },
       {
-        "word": "месяца",
-        "count": 42,
+        "word": "тех",
+        "count": 128,
         "rank": 139
       },
       {
-        "word": "карты",
-        "count": 42,
+        "word": "которой",
+        "count": 128,
         "rank": 140
       },
       {
-        "word": "вещь",
-        "count": 42,
+        "word": "рынок",
+        "count": 127,
         "rank": 141
       },
       {
-        "word": "пенсия",
-        "count": 42,
+        "word": "вообще",
+        "count": 127,
         "rank": 142
       },
       {
-        "word": "какие",
-        "count": 41,
+        "word": "немного",
+        "count": 125,
         "rank": 143
       },
       {
-        "word": "делать",
-        "count": 40,
+        "word": "всем",
+        "count": 124,
         "rank": 144
       },
       {
-        "word": "которой",
-        "count": 40,
+        "word": "новые",
+        "count": 124,
         "rank": 145
       },
       {
-        "word": "сама",
-        "count": 40,
+        "word": "другой",
+        "count": 122,
         "rank": 146
       },
       {
-        "word": "сначала",
-        "count": 40,
+        "word": "дело",
+        "count": 121,
         "rank": 147
       },
       {
-        "word": "сбережения",
-        "count": 40,
+        "word": "расходы",
+        "count": 121,
         "rank": 148
       },
       {
-        "word": "снова",
-        "count": 40,
+        "word": "изза",
+        "count": 121,
         "rank": 149
       },
       {
-        "word": "важно",
-        "count": 39,
+        "word": "внутри",
+        "count": 121,
         "rank": 150
       },
       {
-        "word": "правило",
-        "count": 39,
+        "word": "около",
+        "count": 119,
         "rank": 151
       },
       {
-        "word": "недели",
-        "count": 39,
+        "word": "нельзя",
+        "count": 119,
         "rank": 152
       },
       {
-        "word": "чего",
-        "count": 39,
+        "word": "продукты",
+        "count": 119,
         "rank": 153
       },
       {
-        "word": "расходов",
-        "count": 38,
+        "word": "пенсии",
+        "count": 119,
         "rank": 154
       },
       {
-        "word": "много",
-        "count": 38,
+        "word": "всю",
+        "count": 117,
         "rank": 155
       },
       {
-        "word": "именно",
-        "count": 38,
+        "word": "роста",
+        "count": 116,
         "rank": 156
       },
       {
-        "word": "срок",
-        "count": 38,
+        "word": "эту",
+        "count": 115,
         "rank": 157
       },
       {
-        "word": "работа",
-        "count": 38,
+        "word": "которую",
+        "count": 115,
         "rank": 158
       },
       {
-        "word": "цен",
-        "count": 38,
+        "word": "сумму",
+        "count": 115,
         "rank": 159
       },
       {
-        "word": "золото",
-        "count": 37,
+        "word": "жить",
+        "count": 114,
         "rank": 160
       },
       {
-        "word": "месяцев",
-        "count": 37,
+        "word": "собой",
+        "count": 113,
         "rank": 161
       },
       {
-        "word": "данным",
-        "count": 37,
+        "word": "инвестиции",
+        "count": 113,
         "rank": 162
       },
       {
-        "word": "одну",
-        "count": 37,
+        "word": "системы",
+        "count": 113,
         "rank": 163
       },
       {
-        "word": "чаще",
-        "count": 37,
+        "word": "финансовой",
+        "count": 111,
         "rank": 164
       },
       {
-        "word": "могу",
-        "count": 37,
+        "word": "делает",
+        "count": 110,
         "rank": 165
       },
       {
-        "word": "нельзя",
-        "count": 37,
+        "word": "счет",
+        "count": 110,
         "rank": 166
       },
       {
-        "word": "ней",
-        "count": 37,
+        "word": "мужчина",
+        "count": 110,
         "rank": 167
       },
       {
-        "word": "годы",
-        "count": 37,
+        "word": "однако",
+        "count": 109,
         "rank": 168
       },
       {
-        "word": "сказал",
-        "count": 37,
+        "word": "ваши",
+        "count": 109,
         "rank": 169
       },
       {
-        "word": "сорок",
-        "count": 37,
+        "word": "сначала",
+        "count": 109,
         "rank": 170
       },
       {
-        "word": "выше",
-        "count": 36,
+        "word": "возможно",
+        "count": 109,
         "rank": 171
       },
       {
-        "word": "вопрос",
-        "count": 36,
+        "word": "вместо",
+        "count": 109,
         "rank": 172
       },
       {
-        "word": "купить",
-        "count": 36,
+        "word": "обычно",
+        "count": 108,
         "rank": 173
       },
       {
-        "word": "ставка",
-        "count": 36,
+        "word": "система",
+        "count": 108,
         "rank": 174
       },
       {
-        "word": "данные",
-        "count": 36,
+        "word": "работу",
+        "count": 108,
         "rank": 175
       },
       {
-        "word": "инфляции",
-        "count": 36,
+        "word": "которых",
+        "count": 108,
         "rank": 176
       },
       {
-        "word": "квартиру",
-        "count": 36,
+        "word": "другие",
+        "count": 107,
         "rank": 177
       },
       {
-        "word": "тебе",
-        "count": 36,
+        "word": "банка",
+        "count": 105,
         "rank": 178
       },
       {
-        "word": "обычно",
-        "count": 35,
+        "word": "мой",
+        "count": 105,
         "rank": 179
       },
       {
-        "word": "своей",
-        "count": 35,
+        "word": "иначе",
+        "count": 105,
         "rank": 180
       },
       {
-        "word": "многие",
-        "count": 35,
+        "word": "расходов",
+        "count": 103,
         "rank": 181
       },
       {
-        "word": "работу",
-        "count": 35,
+        "word": "могу",
+        "count": 103,
         "rank": 182
       },
       {
-        "word": "чтото",
-        "count": 35,
+        "word": "хочу",
+        "count": 103,
         "rank": 183
       },
       {
-        "word": "траты",
-        "count": 35,
+        "word": "либо",
+        "count": 103,
         "rank": 184
       },
       {
-        "word": "счета",
-        "count": 35,
+        "word": "детей",
+        "count": 103,
         "rank": 185
       },
       {
-        "word": "дня",
-        "count": 35,
+        "word": "быстрее",
+        "count": 102,
         "rank": 186
       },
       {
-        "word": "спокойно",
-        "count": 35,
+        "word": "зарплаты",
+        "count": 102,
         "rank": 187
       },
       {
-        "word": "бюджет",
-        "count": 34,
+        "word": "история",
+        "count": 102,
         "rank": 188
       },
       {
-        "word": "ставки",
-        "count": 34,
+        "word": "можете",
+        "count": 102,
         "rank": 189
       },
       {
-        "word": "мошенники",
-        "count": 34,
+        "word": "данные",
+        "count": 101,
         "rank": 190
       },
       {
-        "word": "изза",
-        "count": 34,
+        "word": "ставки",
+        "count": 101,
         "rank": 191
       },
       {
-        "word": "родителей",
-        "count": 34,
+        "word": "дня",
+        "count": 101,
         "rank": 192
       },
       {
-        "word": "этим",
-        "count": 34,
+        "word": "дохода",
+        "count": 100,
         "rank": 193
       },
       {
-        "word": "значит",
-        "count": 34,
+        "word": "мать",
+        "count": 100,
         "rank": 194
       },
       {
-        "word": "мам",
-        "count": 34,
+        "word": "кажется",
+        "count": 99,
         "rank": 195
       },
       {
-        "word": "знаю",
-        "count": 34,
+        "word": "самый",
+        "count": 99,
         "rank": 196
       },
       {
-        "word": "дочери",
-        "count": 34,
+        "word": "цен",
+        "count": 98,
         "rank": 197
       },
       {
-        "word": "цена",
-        "count": 33,
+        "word": "стал",
+        "count": 98,
         "rank": 198
       },
       {
-        "word": "доходы",
-        "count": 33,
+        "word": "ктото",
+        "count": 97,
         "rank": 199
       },
       {
-        "word": "также",
-        "count": 33,
+        "word": "банки",
+        "count": 97,
         "rank": 200
       }
     ],
     "top_words_in_titles": [
       {
-        "word": "сколько",
-        "count": 13,
+        "word": "почему",
+        "count": 44,
         "rank": 1
       },
       {
-        "word": "мать",
-        "count": 12,
+        "word": "минут",
+        "count": 20,
         "rank": 2
       },
       {
-        "word": "стоит",
-        "count": 9,
+        "word": "стрим",
+        "count": 20,
         "rank": 3
       },
       {
         "word": "деньги",
-        "count": 9,
+        "count": 18,
         "rank": 4
       },
       {
-        "word": "почему",
-        "count": 8,
+        "word": "чтобы",
+        "count": 17,
         "rank": 5
       },
       {
-        "word": "денег",
-        "count": 6,
+        "word": "день",
+        "count": 17,
         "rank": 6
       },
       {
-        "word": "чтобы",
-        "count": 6,
+        "word": "сколько",
+        "count": 16,
         "rank": 7
       },
       {
-        "word": "год",
-        "count": 6,
+        "word": "стоит",
+        "count": 16,
         "rank": 8
+      },
+      {
+        "word": "неделю",
+        "count": 15,
+        "rank": 9
+      },
+      {
+        "word": "другие",
+        "count": 15,
+        "rank": 10
+      },
+      {
+        "word": "мои",
+        "count": 15,
+        "rank": 11
+      },
+      {
+        "word": "стартует",
+        "count": 14,
+        "rank": 12
+      },
+      {
+        "word": "денег",
+        "count": 13,
+        "rank": 13
+      },
+      {
+        "word": "больше",
+        "count": 13,
+        "rank": 14
+      },
+      {
+        "word": "про",
+        "count": 13,
+        "rank": 15
+      },
+      {
+        "word": "новости",
+        "count": 13,
+        "rank": 16
+      },
+      {
+        "word": "мать",
+        "count": 12,
+        "rank": 17
+      },
+      {
+        "word": "сегодня",
+        "count": 12,
+        "rank": 18
+      },
+      {
+        "word": "канале",
+        "count": 12,
+        "rank": 19
+      },
+      {
+        "word": "торговый",
+        "count": 12,
+        "rank": 20
+      },
+      {
+        "word": "россии",
+        "count": 11,
+        "rank": 21
+      },
+      {
+        "word": "которые",
+        "count": 11,
+        "rank": 22
+      },
+      {
+        "word": "какие",
+        "count": 10,
+        "rank": 23
+      },
+      {
+        "word": "рынок",
+        "count": 9,
+        "rank": 24
+      },
+      {
+        "word": "пенсии",
+        "count": 9,
+        "rank": 25
+      },
+      {
+        "word": "доллар",
+        "count": 9,
+        "rank": 26
+      },
+      {
+        "word": "долларов",
+        "count": 9,
+        "rank": 27
+      },
+      {
+        "word": "короткие",
+        "count": 9,
+        "rank": 28
+      },
+      {
+        "word": "всего",
+        "count": 8,
+        "rank": 29
+      },
+      {
+        "word": "снова",
+        "count": 8,
+        "rank": 30
+      },
+      {
+        "word": "инвестиции",
+        "count": 8,
+        "rank": 31
+      },
+      {
+        "word": "планирование",
+        "count": 8,
+        "rank": 32
+      },
+      {
+        "word": "работает",
+        "count": 7,
+        "rank": 33
+      },
+      {
+        "word": "год",
+        "count": 7,
+        "rank": 34
+      },
+      {
+        "word": "покупать",
+        "count": 7,
+        "rank": 35
+      },
+      {
+        "word": "ставку",
+        "count": 7,
+        "rank": 36
+      },
+      {
+        "word": "чего",
+        "count": 7,
+        "rank": 37
+      },
+      {
+        "word": "жизнь",
+        "count": 7,
+        "rank": 38
+      },
+      {
+        "word": "индексные",
+        "count": 7,
+        "rank": 39
+      },
+      {
+        "word": "фонды",
+        "count": 7,
+        "rank": 40
+      },
+      {
+        "word": "закрытой",
+        "count": 7,
+        "rank": 41
+      },
+      {
+        "word": "золото",
+        "count": 6,
+        "rank": 42
+      },
+      {
+        "word": "время",
+        "count": 6,
+        "rank": 43
+      },
+      {
+        "word": "один",
+        "count": 6,
+        "rank": 44
+      },
+      {
+        "word": "жизни",
+        "count": 6,
+        "rank": 45
       },
       {
         "word": "матери",
         "count": 6,
-        "rank": 9
+        "rank": 46
       },
       {
-        "word": "пенсии",
+        "word": "июля",
         "count": 6,
-        "rank": 10
+        "rank": 47
+      },
+      {
+        "word": "сбережения",
+        "count": 6,
+        "rank": 48
+      },
+      {
+        "word": "делать",
+        "count": 6,
+        "rank": 49
+      },
+      {
+        "word": "доллара",
+        "count": 6,
+        "rank": 50
+      },
+      {
+        "word": "рост",
+        "count": 6,
+        "rank": 51
+      },
+      {
+        "word": "планы",
+        "count": 6,
+        "rank": 52
+      },
+      {
+        "word": "марафон",
+        "count": 6,
+        "rank": 53
+      },
+      {
+        "word": "сэкономить",
+        "count": 6,
+        "rank": 54
+      },
+      {
+        "word": "всем",
+        "count": 6,
+        "rank": 55
+      },
+      {
+        "word": "себя",
+        "count": 6,
+        "rank": 56
+      },
+      {
+        "word": "купил",
+        "count": 6,
+        "rank": 57
+      },
+      {
+        "word": "делюсь",
+        "count": 6,
+        "rank": 58
+      },
+      {
+        "word": "зачем",
+        "count": 6,
+        "rank": 59
+      },
+      {
+        "word": "девочки",
+        "count": 6,
+        "rank": 60
+      },
+      {
+        "word": "второй",
+        "count": 6,
+        "rank": 61
+      },
+      {
+        "word": "заработали",
+        "count": 6,
+        "rank": 62
+      },
+      {
+        "word": "группе",
+        "count": 6,
+        "rank": 63
+      },
+      {
+        "word": "меню",
+        "count": 6,
+        "rank": 64
+      },
+      {
+        "word": "инфляции",
+        "count": 5,
+        "rank": 65
+      },
+      {
+        "word": "доход",
+        "count": 5,
+        "rank": 66
+      },
+      {
+        "word": "могут",
+        "count": 5,
+        "rank": 67
       },
       {
         "word": "посчитал",
         "count": 5,
-        "rank": 11
+        "rank": 68
       },
       {
         "word": "дочь",
         "count": 5,
-        "rank": 12
+        "rank": 69
       },
       {
         "word": "квартиру",
         "count": 5,
-        "rank": 13
+        "rank": 70
       },
       {
-        "word": "рынок",
+        "word": "цены",
         "count": 5,
-        "rank": 14
+        "rank": 71
+      },
+      {
+        "word": "зарплаты",
+        "count": 5,
+        "rank": 72
+      },
+      {
+        "word": "детей",
+        "count": 5,
+        "rank": 73
+      },
+      {
+        "word": "куда",
+        "count": 5,
+        "rank": 74
+      },
+      {
+        "word": "меня",
+        "count": 5,
+        "rank": 75
+      },
+      {
+        "word": "нефть",
+        "count": 5,
+        "rank": 76
+      },
+      {
+        "word": "экономить",
+        "count": 5,
+        "rank": 77
+      },
+      {
+        "word": "даже",
+        "count": 5,
+        "rank": 78
+      },
+      {
+        "word": "финансы",
+        "count": 5,
+        "rank": 79
+      },
+      {
+        "word": "назад",
+        "count": 5,
+        "rank": 80
+      },
+      {
+        "word": "дома",
+        "count": 5,
+        "rank": 81
+      },
+      {
+        "word": "одной",
+        "count": 5,
+        "rank": 82
+      },
+      {
+        "word": "деньгами",
+        "count": 5,
+        "rank": 83
+      },
+      {
+        "word": "бесплатно",
+        "count": 5,
+        "rank": 84
+      },
+      {
+        "word": "каждый",
+        "count": 5,
+        "rank": 85
+      },
+      {
+        "word": "сигналы",
+        "count": 5,
+        "rank": 86
+      },
+      {
+        "word": "еды",
+        "count": 5,
+        "rank": 87
       },
       {
         "word": "происходит",
         "count": 4,
-        "rank": 15
+        "rank": 88
       },
       {
-        "word": "золото",
+        "word": "инвестора",
         "count": 4,
-        "rank": 16
+        "rank": 89
       },
       {
-        "word": "могут",
+        "word": "самый",
         "count": 4,
-        "rank": 17
+        "rank": 90
       },
       {
-        "word": "один",
+        "word": "ошибок",
         "count": 4,
-        "rank": 18
+        "rank": 91
+      },
+      {
+        "word": "накопить",
+        "count": 4,
+        "rank": 92
+      },
+      {
+        "word": "них",
+        "count": 4,
+        "rank": 93
+      },
+      {
+        "word": "купить",
+        "count": 4,
+        "rank": 94
+      },
+      {
+        "word": "было",
+        "count": 4,
+        "rank": 95
       },
       {
         "word": "отец",
         "count": 4,
-        "rank": 19
+        "rank": 96
       },
       {
         "word": "зарплату",
         "count": 4,
-        "rank": 20
+        "rank": 97
       },
       {
-        "word": "покупать",
+        "word": "растут",
         "count": 4,
-        "rank": 21
+        "rank": 98
+      },
+      {
+        "word": "инфляция",
+        "count": 4,
+        "rank": 99
+      },
+      {
+        "word": "значит",
+        "count": 4,
+        "rank": 100
       },
       {
         "word": "изменилось",
         "count": 4,
-        "rank": 22
+        "rank": 101
       },
       {
-        "word": "июля",
+        "word": "бюджета",
         "count": 4,
-        "rank": 23
+        "rank": 102
       },
       {
-        "word": "детей",
+        "word": "разбор",
         "count": 4,
-        "rank": 24
+        "rank": 103
       },
       {
-        "word": "которые",
+        "word": "найти",
         "count": 4,
-        "rank": 25
+        "rank": 104
+      },
+      {
+        "word": "работу",
+        "count": 4,
+        "rank": 105
+      },
+      {
+        "word": "здоровье",
+        "count": 4,
+        "rank": 106
+      },
+      {
+        "word": "стать",
+        "count": 4,
+        "rank": 107
+      },
+      {
+        "word": "ваших",
+        "count": 4,
+        "rank": 108
+      },
+      {
+        "word": "ждать",
+        "count": 4,
+        "rank": 109
+      },
+      {
+        "word": "новый",
+        "count": 4,
+        "rank": 110
+      },
+      {
+        "word": "лучше",
+        "count": 4,
+        "rank": 111
+      },
+      {
+        "word": "инструкция",
+        "count": 4,
+        "rank": 112
+      },
+      {
+        "word": "москве",
+        "count": 4,
+        "rank": 113
+      },
+      {
+        "word": "трат",
+        "count": 4,
+        "rank": 114
+      },
+      {
+        "word": "нужен",
+        "count": 4,
+        "rank": 115
+      },
+      {
+        "word": "правила",
+        "count": 4,
+        "rank": 116
+      },
+      {
+        "word": "привычки",
+        "count": 4,
+        "rank": 117
       },
       {
         "word": "дед",
         "count": 4,
-        "rank": 26
+        "rank": 118
       },
       {
-        "word": "россии",
-        "count": 3,
-        "rank": 27
+        "word": "этом",
+        "count": 4,
+        "rank": 119
       },
       {
-        "word": "какие",
-        "count": 3,
-        "rank": 28
+        "word": "новая",
+        "count": 4,
+        "rank": 120
       },
       {
-        "word": "ошибок",
+        "word": "недели",
+        "count": 4,
+        "rank": 121
+      },
+      {
+        "word": "себе",
+        "count": 4,
+        "rank": 122
+      },
+      {
+        "word": "может",
+        "count": 4,
+        "rank": 123
+      },
+      {
+        "word": "кто",
+        "count": 4,
+        "rank": 124
+      },
+      {
+        "word": "месяц",
+        "count": 4,
+        "rank": 125
+      },
+      {
+        "word": "дня",
+        "count": 4,
+        "rank": 126
+      },
+      {
+        "word": "бизнес",
+        "count": 4,
+        "rank": 127
+      },
+      {
+        "word": "падает",
+        "count": 4,
+        "rank": 128
+      },
+      {
+        "word": "экспертом",
+        "count": 4,
+        "rank": 129
+      },
+      {
+        "word": "вас",
+        "count": 4,
+        "rank": 130
+      },
+      {
+        "word": "отношения",
+        "count": 4,
+        "rank": 131
+      },
+      {
+        "word": "одну",
+        "count": 4,
+        "rank": 132
+      },
+      {
+        "word": "будущего",
+        "count": 4,
+        "rank": 133
+      },
+      {
+        "word": "ответы",
+        "count": 4,
+        "rank": 134
+      },
+      {
+        "word": "вопросы",
+        "count": 4,
+        "rank": 135
+      },
+      {
+        "word": "очень",
+        "count": 4,
+        "rank": 136
+      },
+      {
+        "word": "подряд",
+        "count": 4,
+        "rank": 137
+      },
+      {
+        "word": "сделок",
+        "count": 4,
+        "rank": 138
+      },
+      {
+        "word": "стрима",
+        "count": 4,
+        "rank": 139
+      },
+      {
+        "word": "приготовить",
+        "count": 4,
+        "rank": 140
+      },
+      {
+        "word": "итоги",
+        "count": 4,
+        "rank": 141
+      },
+      {
+        "word": "наготовила",
+        "count": 4,
+        "rank": 142
+      },
+      {
+        "word": "блюд",
+        "count": 4,
+        "rank": 143
+      },
+      {
+        "word": "уборки",
+        "count": 4,
+        "rank": 144
+      },
+      {
+        "word": "заданий",
+        "count": 4,
+        "rank": 145
+      },
+      {
+        "word": "озон",
         "count": 3,
-        "rank": 29
+        "rank": 146
+      },
+      {
+        "word": "wildberries",
+        "count": 3,
+        "rank": 147
+      },
+      {
+        "word": "советы",
+        "count": 3,
+        "rank": 148
+      },
+      {
+        "word": "вклад",
+        "count": 3,
+        "rank": 149
       },
       {
         "word": "карту",
         "count": 3,
-        "rank": 30
+        "rank": 150
       },
       {
-        "word": "работает",
+        "word": "оформить",
         "count": 3,
-        "rank": 31
+        "rank": 151
+      },
+      {
+        "word": "просто",
+        "count": 3,
+        "rank": 152
+      },
+      {
+        "word": "откладывать",
+        "count": 3,
+        "rank": 153
+      },
+      {
+        "word": "сделать",
+        "count": 3,
+        "rank": 154
+      },
+      {
+        "word": "пять",
+        "count": 3,
+        "rank": 155
       },
       {
         "word": "мошенников",
         "count": 3,
-        "rank": 32
+        "rank": 156
+      },
+      {
+        "word": "способы",
+        "count": 3,
+        "rank": 157
+      },
+      {
+        "word": "пенсия",
+        "count": 3,
+        "rank": 158
+      },
+      {
+        "word": "нее",
+        "count": 3,
+        "rank": 159
+      },
+      {
+        "word": "вот",
+        "count": 3,
+        "rank": 160
       },
       {
         "word": "дети",
         "count": 3,
-        "rank": 33
+        "rank": 161
       },
       {
         "word": "сейчас",
         "count": 3,
-        "rank": 34
+        "rank": 162
+      },
+      {
+        "word": "быстрее",
+        "count": 3,
+        "rank": 163
       },
       {
         "word": "цен",
         "count": 3,
-        "rank": 35
+        "rank": 164
+      },
+      {
+        "word": "ключевую",
+        "count": 3,
+        "rank": 165
       },
       {
         "word": "дефицит",
         "count": 3,
-        "rank": 36
+        "rank": 166
       },
       {
-        "word": "снова",
+        "word": "экономики",
         "count": 3,
-        "rank": 37
+        "rank": 167
       },
       {
-        "word": "бюджета",
+        "word": "финансовых",
         "count": 3,
-        "rank": 38
+        "rank": 168
       },
       {
-        "word": "разбор",
+        "word": "триллионов",
         "count": 3,
-        "rank": 39
+        "rank": 169
       },
       {
-        "word": "работу",
+        "word": "говорит",
         "count": 3,
-        "rank": 40
+        "rank": 170
       },
       {
-        "word": "куда",
+        "word": "решения",
         "count": 3,
-        "rank": 41
+        "rank": 171
       },
       {
-        "word": "ваших",
+        "word": "августа",
         "count": 3,
-        "rank": 42
+        "rank": 172
       },
       {
-        "word": "чего",
+        "word": "самая",
         "count": 3,
-        "rank": 43
+        "rank": 173
+      },
+      {
+        "word": "экономика",
+        "count": 3,
+        "rank": 174
+      },
+      {
+        "word": "делает",
+        "count": 3,
+        "rank": 175
+      },
+      {
+        "word": "бензин",
+        "count": 3,
+        "rank": 176
+      },
+      {
+        "word": "набиуллина",
+        "count": 3,
+        "rank": 177
+      },
+      {
+        "word": "безопасности",
+        "count": 3,
+        "rank": 178
+      },
+      {
+        "word": "способ",
+        "count": 3,
+        "rank": 179
+      },
+      {
+        "word": "копить",
+        "count": 3,
+        "rank": 180
+      },
+      {
+        "word": "причины",
+        "count": 3,
+        "rank": 181
+      },
+      {
+        "word": "человека",
+        "count": 3,
+        "rank": 182
       },
       {
         "word": "три",
         "count": 3,
-        "rank": 44
+        "rank": 183
       },
       {
         "word": "мама",
         "count": 3,
-        "rank": 45
+        "rank": 184
+      },
+      {
+        "word": "мужчине",
+        "count": 3,
+        "rank": 185
+      },
+      {
+        "word": "мой",
+        "count": 3,
+        "rank": 186
       },
       {
         "word": "сын",
         "count": 3,
-        "rank": 46
+        "rank": 187
       },
       {
         "word": "зарабатывает",
         "count": 3,
-        "rank": 47
+        "rank": 188
       },
       {
-        "word": "назад",
+        "word": "копейки",
         "count": 3,
-        "rank": 48
+        "rank": 189
       },
       {
         "word": "всю",
         "count": 3,
-        "rank": 49
+        "rank": 190
       },
       {
-        "word": "жизнь",
+        "word": "банк",
         "count": 3,
-        "rank": 50
+        "rank": 191
       },
       {
         "word": "бабушка",
         "count": 3,
-        "rank": 51
+        "rank": 192
       },
       {
-        "word": "бесплатно",
+        "word": "теперь",
         "count": 3,
-        "rank": 52
+        "rank": 193
+      },
+      {
+        "word": "всему",
+        "count": 3,
+        "rank": 194
+      },
+      {
+        "word": "семью",
+        "count": 3,
+        "rank": 195
       },
       {
         "word": "считаю",
         "count": 3,
-        "rank": 53
-      },
-      {
-        "word": "серебро",
-        "count": 2,
-        "rank": 54
-      },
-      {
-        "word": "инфляции",
-        "count": 2,
-        "rank": 55
-      },
-      {
-        "word": "wildberries",
-        "count": 2,
-        "rank": 56
-      },
-      {
-        "word": "самый",
-        "count": 2,
-        "rank": 57
-      },
-      {
-        "word": "конце",
-        "count": 2,
-        "rank": 58
-      },
-      {
-        "word": "накопить",
-        "count": 2,
-        "rank": 59
-      },
-      {
-        "word": "дебетовую",
-        "count": 2,
-        "rank": 60
-      },
-      {
-        "word": "годовых",
-        "count": 2,
-        "rank": 61
-      },
-      {
-        "word": "доход",
-        "count": 2,
-        "rank": 62
-      },
-      {
-        "word": "снять",
-        "count": 2,
-        "rank": 63
-      },
-      {
-        "word": "обходится",
-        "count": 2,
-        "rank": 64
-      },
-      {
-        "word": "оформить",
-        "count": 2,
-        "rank": 65
-      },
-      {
-        "word": "время",
-        "count": 2,
-        "rank": 66
-      },
-      {
-        "word": "сделать",
-        "count": 2,
-        "rank": 67
-      },
-      {
-        "word": "пять",
-        "count": 2,
-        "rank": 68
-      },
-      {
-        "word": "способы",
-        "count": 2,
-        "rank": 69
-      },
-      {
-        "word": "них",
-        "count": 2,
-        "rank": 70
-      },
-      {
-        "word": "работа",
-        "count": 2,
-        "rank": 71
-      },
-      {
-        "word": "купить",
-        "count": 2,
-        "rank": 72
-      },
-      {
-        "word": "моей",
-        "count": 2,
-        "rank": 73
-      },
-      {
-        "word": "попросила",
-        "count": 2,
-        "rank": 74
-      },
-      {
-        "word": "переписать",
-        "count": 2,
-        "rank": 75
-      },
-      {
-        "word": "нее",
-        "count": 2,
-        "rank": 76
-      },
-      {
-        "word": "было",
-        "count": 2,
-        "rank": 77
-      },
-      {
-        "word": "дальше",
-        "count": 2,
-        "rank": 78
-      },
-      {
-        "word": "отпуск",
-        "count": 2,
-        "rank": 79
-      },
-      {
-        "word": "мне",
-        "count": 2,
-        "rank": 80
-      },
-      {
-        "word": "подарили",
-        "count": 2,
-        "rank": 81
-      },
-      {
-        "word": "узнал",
-        "count": 2,
-        "rank": 82
-      },
-      {
-        "word": "деду",
-        "count": 2,
-        "rank": 83
-      },
-      {
-        "word": "зарплаты",
-        "count": 2,
-        "rank": 84
-      },
-      {
-        "word": "растут",
-        "count": 2,
-        "rank": 85
-      },
-      {
-        "word": "быстрее",
-        "count": 2,
-        "rank": 86
-      },
-      {
-        "word": "упали",
-        "count": 2,
-        "rank": 87
-      },
-      {
-        "word": "труда",
-        "count": 2,
-        "rank": 88
-      },
-      {
-        "word": "ставку",
-        "count": 2,
-        "rank": 89
-      },
-      {
-        "word": "экономики",
-        "count": 2,
-        "rank": 90
-      },
-      {
-        "word": "значит",
-        "count": 2,
-        "rank": 91
-      },
-      {
-        "word": "правило",
-        "count": 2,
-        "rank": 92
-      },
-      {
-        "word": "повлияет",
-        "count": 2,
-        "rank": 93
-      },
-      {
-        "word": "триллионов",
-        "count": 2,
-        "rank": 94
-      },
-      {
-        "word": "бизнеса",
-        "count": 2,
-        "rank": 95
-      },
-      {
-        "word": "ключевая",
-        "count": 2,
-        "rank": 96
-      },
-      {
-        "word": "ставка",
-        "count": 2,
-        "rank": 97
-      },
-      {
-        "word": "сбережения",
-        "count": 2,
-        "rank": 98
-      },
-      {
-        "word": "поехать",
-        "count": 2,
-        "rank": 99
-      },
-      {
-        "word": "чём",
-        "count": 2,
-        "rank": 100
-      },
-      {
-        "word": "экономика",
-        "count": 2,
-        "rank": 101
-      },
-      {
-        "word": "делает",
-        "count": 2,
-        "rank": 102
-      },
-      {
-        "word": "бензин",
-        "count": 2,
-        "rank": 103
-      },
-      {
-        "word": "сбережений",
-        "count": 2,
-        "rank": 104
-      },
-      {
-        "word": "больше",
-        "count": 2,
-        "rank": 105
-      },
-      {
-        "word": "разбираем",
-        "count": 2,
-        "rank": 106
-      },
-      {
-        "word": "ждать",
-        "count": 2,
-        "rank": 107
-      },
-      {
-        "word": "доверять",
-        "count": 2,
-        "rank": 108
-      },
-      {
-        "word": "лучше",
-        "count": 2,
-        "rank": 109
-      },
-      {
-        "word": "самозанятые",
-        "count": 2,
-        "rank": 110
-      },
-      {
-        "word": "получать",
-        "count": 2,
-        "rank": 111
-      },
-      {
-        "word": "расходы",
-        "count": 2,
-        "rank": 112
-      },
-      {
-        "word": "экономить",
-        "count": 2,
-        "rank": 113
-      },
-      {
-        "word": "ипотеке",
-        "count": 2,
-        "rank": 114
-      },
-      {
-        "word": "сэкономить",
-        "count": 2,
-        "rank": 115
-      },
-      {
-        "word": "даже",
-        "count": 2,
-        "rank": 116
-      },
-      {
-        "word": "копить",
-        "count": 2,
-        "rank": 117
-      },
-      {
-        "word": "нужны",
-        "count": 2,
-        "rank": 118
-      },
-      {
-        "word": "ипотеку",
-        "count": 2,
-        "rank": 119
-      },
-      {
-        "word": "риски",
-        "count": 2,
-        "rank": 120
-      },
-      {
-        "word": "начать",
-        "count": 2,
-        "rank": 121
-      },
-      {
-        "word": "впервые",
-        "count": 2,
-        "rank": 122
-      },
-      {
-        "word": "сказала",
-        "count": 2,
-        "rank": 123
-      },
-      {
-        "word": "перестала",
-        "count": 2,
-        "rank": 124
-      },
-      {
-        "word": "мой",
-        "count": 2,
-        "rank": 125
-      },
-      {
-        "word": "этом",
-        "count": 2,
-        "rank": 126
-      },
-      {
-        "word": "новая",
-        "count": 2,
-        "rank": 127
-      },
-      {
-        "word": "схема",
-        "count": 2,
-        "rank": 128
-      },
-      {
-        "word": "родители",
-        "count": 2,
-        "rank": 129
-      },
-      {
-        "word": "сыну",
-        "count": 2,
-        "rank": 130
-      },
-      {
-        "word": "копейки",
-        "count": 2,
-        "rank": 131
-      },
-      {
-        "word": "вернулась",
-        "count": 2,
-        "rank": 132
-      },
-      {
-        "word": "сидеть",
-        "count": 2,
-        "rank": 133
-      },
-      {
-        "word": "оказалось",
-        "count": 2,
-        "rank": 134
-      },
-      {
-        "word": "подарил",
-        "count": 2,
-        "rank": 135
-      },
-      {
-        "word": "две",
-        "count": 2,
-        "rank": 136
-      },
-      {
-        "word": "шесть",
-        "count": 2,
-        "rank": 137
-      },
-      {
-        "word": "отцу",
-        "count": 2,
-        "rank": 138
-      },
-      {
-        "word": "дали",
-        "count": 2,
-        "rank": 139
-      },
-      {
-        "word": "полгода",
-        "count": 2,
-        "rank": 140
-      },
-      {
-        "word": "начал",
-        "count": 2,
-        "rank": 141
-      },
-      {
-        "word": "теперь",
-        "count": 2,
-        "rank": 142
-      },
-      {
-        "word": "семью",
-        "count": 2,
-        "rank": 143
-      },
-      {
-        "word": "неделю",
-        "count": 2,
-        "rank": 144
-      },
-      {
-        "word": "жена",
-        "count": 2,
-        "rank": 145
-      },
-      {
-        "word": "внук",
-        "count": 2,
-        "rank": 146
-      },
-      {
-        "word": "тетя",
-        "count": 2,
-        "rank": 147
-      },
-      {
-        "word": "детям",
-        "count": 2,
-        "rank": 148
-      },
-      {
-        "word": "сад",
-        "count": 2,
-        "rank": 149
-      },
-      {
-        "word": "месяц",
-        "count": 2,
-        "rank": 150
-      },
-      {
-        "word": "нестабильность",
-        "count": 1,
-        "rank": 151
-      },
-      {
-        "word": "нефтяных",
-        "count": 1,
-        "rank": 152
-      },
-      {
-        "word": "котировок",
-        "count": 1,
-        "rank": 153
-      },
-      {
-        "word": "заплатим",
-        "count": 1,
-        "rank": 154
-      },
-      {
-        "word": "тариф",
-        "count": 1,
-        "rank": 155
-      },
-      {
-        "word": "премиального",
-        "count": 1,
-        "rank": 156
-      },
-      {
-        "word": "обслуживания",
-        "count": 1,
-        "rank": 157
-      },
-      {
-        "word": "ultra",
-        "count": 1,
-        "rank": 158
-      },
-      {
-        "word": "озон",
-        "count": 1,
-        "rank": 159
-      },
-      {
-        "word": "банке",
-        "count": 1,
-        "rank": 160
-      },
-      {
-        "word": "плюсы",
-        "count": 1,
-        "rank": 161
-      },
-      {
-        "word": "минусы",
-        "count": 1,
-        "rank": 162
-      },
-      {
-        "word": "отзывы",
-        "count": 1,
-        "rank": 163
-      },
-      {
-        "word": "клиентов",
-        "count": 1,
-        "rank": 164
-      },
-      {
-        "word": "защита",
-        "count": 1,
-        "rank": 165
-      },
-      {
-        "word": "игра",
-        "count": 1,
-        "rank": 166
-      },
-      {
-        "word": "нервах",
-        "count": 1,
-        "rank": 167
-      },
-      {
-        "word": "ищет",
-        "count": 1,
-        "rank": 168
-      },
-      {
-        "word": "складов",
-        "count": 1,
-        "rank": 169
-      },
-      {
-        "word": "казахстане",
-        "count": 1,
-        "rank": 170
-      },
-      {
-        "word": "логистическим",
-        "count": 1,
-        "rank": 171
-      },
-      {
-        "word": "рывком",
-        "count": 1,
-        "rank": 172
-      },
-      {
-        "word": "росстат",
-        "count": 1,
-        "rank": 173
-      },
-      {
-        "word": "средняя",
-        "count": 1,
-        "rank": 174
-      },
-      {
-        "word": "зарплата",
-        "count": 1,
-        "rank": 175
-      },
-      {
-        "word": "выросла",
-        "count": 1,
-        "rank": 176
-      },
-      {
-        "word": "секрета",
-        "count": 1,
-        "rank": 177
-      },
-      {
-        "word": "успешного",
-        "count": 1,
-        "rank": 178
-      },
-      {
-        "word": "инвестора",
-        "count": 1,
-        "rank": 179
-      },
-      {
-        "word": "прогореть",
-        "count": 1,
-        "rank": 180
-      },
-      {
-        "word": "бирже",
-        "count": 1,
-        "rank": 181
-      },
-      {
-        "word": "важный",
-        "count": 1,
-        "rank": 182
-      },
-      {
-        "word": "пункт",
-        "count": 1,
-        "rank": 183
-      },
-      {
-        "word": "чужой",
-        "count": 1,
-        "rank": 184
-      },
-      {
-        "word": "apple",
-        "count": 1,
-        "rank": 185
-      },
-      {
-        "word": "мошенники",
-        "count": 1,
-        "rank": 186
-      },
-      {
-        "word": "блокируют",
-        "count": 1,
-        "rank": 187
-      },
-      {
-        "word": "айфоны",
-        "count": 1,
-        "rank": 188
-      },
-      {
-        "word": "чужие",
-        "count": 1,
-        "rank": 189
-      },
-      {
-        "word": "советы",
-        "count": 1,
-        "rank": 190
-      },
-      {
-        "word": "деньгах",
-        "count": 1,
-        "rank": 191
-      },
-      {
-        "word": "работают",
-        "count": 1,
-        "rank": 192
-      },
-      {
-        "word": "причин",
-        "count": 1,
-        "rank": 193
-      },
-      {
-        "word": "возврата",
-        "count": 1,
-        "rank": 194
-      },
-      {
-        "word": "оспорить",
-        "count": 1,
-        "rank": 195
-      },
-      {
-        "word": "штраф",
-        "count": 1,
         "rank": 196
       },
       {
-        "word": "списание",
-        "count": 1,
+        "word": "пенсию",
+        "count": 3,
         "rank": 197
       },
       {
-        "word": "системы",
-        "count": 1,
+        "word": "ваши",
+        "count": 3,
         "rank": 198
       },
       {
-        "word": "налогообложения",
-        "count": 1,
+        "word": "сша",
+        "count": 3,
         "rank": 199
       },
       {
-        "word": "налоговый",
-        "count": 1,
+        "word": "покупки",
+        "count": 3,
         "rank": 200
       }
     ],
-    "unique_words_count": 16979,
-    "total_words_analyzed": 57647
+    "unique_words_count": 43736,
+    "total_words_analyzed": 214725
   },
   "ngrams": {
     "top_bigrams": [
+      {
+        "ngram": "минут стартует",
+        "count": 13
+      },
+      {
+        "ngram": "торговый стрим",
+        "count": 12
+      },
+      {
+        "ngram": "другие короткие",
+        "count": 9
+      },
+      {
+        "ngram": "короткие новости",
+        "count": 9
+      },
+      {
+        "ngram": "стрим канале",
+        "count": 9
+      },
+      {
+        "ngram": "индексные фонды",
+        "count": 7
+      },
+      {
+        "ngram": "мои инвестиции",
+        "count": 6
+      },
+      {
+        "ngram": "закрытой группе",
+        "count": 6
+      },
+      {
+        "ngram": "купил индексные",
+        "count": 5
+      },
+      {
+        "ngram": "сигналы закрытой",
+        "count": 5
+      },
+      {
+        "ngram": "стартует ‼️",
+        "count": 5
+      },
+      {
+        "ngram": "стоит покупать",
+        "count": 4
+      },
+      {
+        "ngram": "другие новости",
+        "count": 4
+      },
+      {
+        "ngram": "ответы вопросы",
+        "count": 4
+      },
+      {
+        "ngram": "стрим заработали",
+        "count": 4
+      },
+      {
+        "ngram": "заработали долларов",
+        "count": 4
+      },
+      {
+        "ngram": "заданий неделю",
+        "count": 4
+      },
       {
         "ngram": "посчитал сколько",
         "count": 3
@@ -2143,7 +2251,7 @@
         "count": 3
       },
       {
-        "ngram": "стоит покупать",
+        "ngram": "ключевую ставку",
         "count": 3
       },
       {
@@ -2152,6 +2260,54 @@
       },
       {
         "ngram": "считаю сколько",
+        "count": 3
+      },
+      {
+        "ngram": "новости экспертом",
+        "count": 3
+      },
+      {
+        "ngram": "каждый день",
+        "count": 3
+      },
+      {
+        "ngram": "самом деле",
+        "count": 3
+      },
+      {
+        "ngram": "снова купил",
+        "count": 3
+      },
+      {
+        "ngram": "торговая сессия",
+        "count": 3
+      },
+      {
+        "ngram": "подошла концу",
+        "count": 3
+      },
+      {
+        "ngram": "утренний торговый",
+        "count": 3
+      },
+      {
+        "ngram": "второй день",
+        "count": 3
+      },
+      {
+        "ngram": "марафон уборки",
+        "count": 3
+      },
+      {
+        "ngram": "вопросы про",
+        "count": 3
+      },
+      {
+        "ngram": "наготовила блюд",
+        "count": 3
+      },
+      {
+        "ngram": "девочки всем",
         "count": 3
       },
       {
@@ -2164,6 +2320,10 @@
       },
       {
         "ngram": "было дальше",
+        "count": 2
+      },
+      {
+        "ngram": "фондовый рынок",
         "count": 2
       },
       {
@@ -2187,161 +2347,145 @@
         "count": 2
       },
       {
+        "ngram": "самая дорогая",
+        "count": 2
+      },
+      {
+        "ngram": "делать чтобы",
+        "count": 2
+      },
+      {
+        "ngram": "где хранить",
+        "count": 2
+      },
+      {
+        "ngram": "время покупать",
+        "count": 2
+      },
+      {
         "ngram": "чего ждать",
         "count": 2
       },
       {
-        "ngram": "впервые сказала",
+        "ngram": "пассивный доход",
         "count": 2
       },
       {
-        "ngram": "мама ты",
+        "ngram": "сколько денег",
         "count": 2
-      },
-      {
-        "ngram": "новая схема",
-        "count": 2
-      },
-      {
-        "ngram": "схема мошенников",
-        "count": 2
-      },
-      {
-        "ngram": "нестабильность нефтяных",
-        "count": 1
-      },
-      {
-        "ngram": "нефтяных котировок",
-        "count": 1
-      },
-      {
-        "ngram": "котировок происходит",
-        "count": 1
-      },
-      {
-        "ngram": "происходит сколько",
-        "count": 1
-      },
-      {
-        "ngram": "сколько заплатим",
-        "count": 1
-      },
-      {
-        "ngram": "тариф премиального",
-        "count": 1
-      },
-      {
-        "ngram": "премиального обслуживания",
-        "count": 1
-      },
-      {
-        "ngram": "обслуживания ultra",
-        "count": 1
-      },
-      {
-        "ngram": "ultra озон",
-        "count": 1
-      },
-      {
-        "ngram": "озон банке",
-        "count": 1
-      },
-      {
-        "ngram": "банке плюсы",
-        "count": 1
-      },
-      {
-        "ngram": "плюсы минусы",
-        "count": 1
-      },
-      {
-        "ngram": "минусы отзывы",
-        "count": 1
-      },
-      {
-        "ngram": "отзывы клиентов",
-        "count": 1
-      },
-      {
-        "ngram": "серебро защита",
-        "count": 1
-      },
-      {
-        "ngram": "защита инфляции",
-        "count": 1
-      },
-      {
-        "ngram": "инфляции игра",
-        "count": 1
-      },
-      {
-        "ngram": "игра нервах",
-        "count": 1
-      },
-      {
-        "ngram": "wildberries ищет",
-        "count": 1
-      },
-      {
-        "ngram": "ищет кв",
-        "count": 1
-      },
-      {
-        "ngram": "кв складов",
-        "count": 1
-      },
-      {
-        "ngram": "складов казахстане",
-        "count": 1
-      },
-      {
-        "ngram": "казахстане стоит",
-        "count": 1
-      },
-      {
-        "ngram": "стоит логистическим",
-        "count": 1
-      },
-      {
-        "ngram": "логистическим рывком",
-        "count": 1
-      },
-      {
-        "ngram": "росстат средняя",
-        "count": 1
-      },
-      {
-        "ngram": "средняя зарплата",
-        "count": 1
-      },
-      {
-        "ngram": "зарплата россии",
-        "count": 1
-      },
-      {
-        "ngram": "россии выросла",
-        "count": 1
-      },
-      {
-        "ngram": "секрета успешного",
-        "count": 1
-      },
-      {
-        "ngram": "успешного инвестора",
-        "count": 1
-      },
-      {
-        "ngram": "инвестора прогореть",
-        "count": 1
       }
     ],
     "top_trigrams": [
+      {
+        "ngram": "другие короткие новости",
+        "count": 9
+      },
+      {
+        "ngram": "торговый стрим канале",
+        "count": 8
+      },
+      {
+        "ngram": "купил индексные фонды",
+        "count": 5
+      },
+      {
+        "ngram": "минут стартует ‼️",
+        "count": 5
+      },
+      {
+        "ngram": "сигналы закрытой группе",
+        "count": 4
+      },
+      {
+        "ngram": "другие новости экспертом",
+        "count": 3
+      },
+      {
+        "ngram": "снова купил индексные",
+        "count": 3
+      },
+      {
+        "ngram": "утренний торговый стрим",
+        "count": 3
+      },
+      {
+        "ngram": "стрим заработали долларов",
+        "count": 3
+      },
+      {
+        "ngram": "ответы вопросы про",
+        "count": 3
+      },
       {
         "ngram": "дефицит бюджета триллионов",
         "count": 2
       },
       {
         "ngram": "новая схема мошенников",
+        "count": 2
+      },
+      {
+        "ngram": "ключевую ставку какие",
+        "count": 2
+      },
+      {
+        "ngram": "доллар другие короткие",
+        "count": 2
+      },
+      {
+        "ngram": "кто самом деле",
+        "count": 2
+      },
+      {
+        "ngram": "про индексные фонды",
+        "count": 2
+      },
+      {
+        "ngram": "заработали доллара всего",
+        "count": 2
+      },
+      {
+        "ngram": "стрим сигналы закрытой",
+        "count": 2
+      },
+      {
+        "ngram": "торговая сессия подошла",
+        "count": 2
+      },
+      {
+        "ngram": "сессия подошла концу",
+        "count": 2
+      },
+      {
+        "ngram": "торговый стрим сегодня",
+        "count": 2
+      },
+      {
+        "ngram": "стрим сегодня канале",
+        "count": 2
+      },
+      {
+        "ngram": "стартует ‼️ торговый",
+        "count": 2
+      },
+      {
+        "ngram": "‼️ торговый стрим",
+        "count": 2
+      },
+      {
+        "ngram": "второй день подряд",
+        "count": 2
+      },
+      {
+        "ngram": "минут стартует торговый",
+        "count": 2
+      },
+      {
+        "ngram": "стартует торговый стрим",
+        "count": 2
+      },
+      {
+        "ngram": "один день жизни",
         "count": 2
       },
       {
@@ -2431,128 +2575,25 @@
       {
         "ngram": "стоит логистическим рывком",
         "count": 1
-      },
-      {
-        "ngram": "росстат средняя зарплата",
-        "count": 1
-      },
-      {
-        "ngram": "средняя зарплата россии",
-        "count": 1
-      },
-      {
-        "ngram": "зарплата россии выросла",
-        "count": 1
-      },
-      {
-        "ngram": "секрета успешного инвестора",
-        "count": 1
-      },
-      {
-        "ngram": "успешного инвестора прогореть",
-        "count": 1
-      },
-      {
-        "ngram": "инвестора прогореть бирже",
-        "count": 1
-      },
-      {
-        "ngram": "прогореть бирже самый",
-        "count": 1
-      },
-      {
-        "ngram": "бирже самый важный",
-        "count": 1
-      },
-      {
-        "ngram": "самый важный пункт",
-        "count": 1
-      },
-      {
-        "ngram": "важный пункт конце",
-        "count": 1
-      },
-      {
-        "ngram": "чужой apple id",
-        "count": 1
-      },
-      {
-        "ngram": "apple id мошенники",
-        "count": 1
-      },
-      {
-        "ngram": "id мошенники блокируют",
-        "count": 1
-      },
-      {
-        "ngram": "мошенники блокируют айфоны",
-        "count": 1
-      },
-      {
-        "ngram": "почему чужие советы",
-        "count": 1
-      },
-      {
-        "ngram": "чужие советы деньгах",
-        "count": 1
-      },
-      {
-        "ngram": "советы деньгах работают",
-        "count": 1
-      },
-      {
-        "ngram": "причин возврата денег",
-        "count": 1
-      },
-      {
-        "ngram": "возврата денег оспорить",
-        "count": 1
-      },
-      {
-        "ngram": "денег оспорить штраф",
-        "count": 1
-      },
-      {
-        "ngram": "оспорить штраф списание",
-        "count": 1
-      },
-      {
-        "ngram": "системы налогообложения россии",
-        "count": 1
-      },
-      {
-        "ngram": "налогообложения россии какие",
-        "count": 1
-      },
-      {
-        "ngram": "налоговый вычет вернуть",
-        "count": 1
-      },
-      {
-        "ngram": "вычет вернуть деньги",
-        "count": 1
-      },
-      {
-        "ngram": "вернуть деньги допустить",
-        "count": 1
       }
     ]
   },
   "title_patterns": {
     "patterns": {
       "number_list": {
-        "count": 4,
-        "percent": 2.4,
+        "count": 20,
+        "percent": 3.6,
         "examples": [
           "4 секрета успешного инвестора. Как не прогореть на бирже? Самый важный пункт в конце!",
           "6 причин для возврата денег: когда можно оспорить штраф или списание",
           "5 вопросов про аренду самокатов в 2026 году",
-          "6 стран, куда можно поехать без визы летом 2026"
+          "6 стран, куда можно поехать без визы летом 2026",
+          "5 правил счастливых отношений"
         ]
       },
       "how_to": {
-        "count": 9,
-        "percent": 5.5,
+        "count": 44,
+        "percent": 7.9,
         "examples": [
           "Как снять крупную сумму с карты в 2026 году",
           "Как уберечь детей от финансовых пирамид",
@@ -2562,8 +2603,8 @@
         ]
       },
       "quote": {
-        "count": 8,
-        "percent": 4.9,
+        "count": 17,
+        "percent": 3.0,
         "examples": [
           "\"Пенсии не имеют значения\": экономический разбор интервью Иллона Маска",
           "«Инвестиционная пауза» и полмиллиона банкротов. Куда катится экономика",
@@ -2573,18 +2614,19 @@
         ]
       },
       "question": {
-        "count": 4,
-        "percent": 2.4,
+        "count": 41,
+        "percent": 7.3,
         "examples": [
           "Финансовые блогеры: каким можно доверять, а каких лучше избегать?",
           "Могут ли самозанятые получать оплату наличными?",
           "Можно ли оформить карту родственнику или даже другу?",
-          "Платить смартфоном безопаснее, чем картой?"
+          "Платить смартфоном безопаснее, чем картой?",
+          "Экономика перегрелась?"
         ]
       },
       "colon_split": {
-        "count": 57,
-        "percent": 34.8,
+        "count": 130,
+        "percent": 23.2,
         "examples": [
           "Нестабильность нефтяных котировок: что происходит и сколько мы за это заплатим",
           "Тариф премиального обслуживания Ultra в Озон банке: плюсы, минусы, отзывы клиентов",
@@ -2594,8 +2636,8 @@
         ]
       },
       "personal_story": {
-        "count": 24,
-        "percent": 14.6,
+        "count": 54,
+        "percent": 9.6,
         "examples": [
           "Дочь попросила мать переписать на нее квартиру «на всякий случай». Мать отказала — и вот что было дальше",
           "Отец возил нас на море каждое лето на зарплату слесаря. Посчитал, во сколько такой отпуск обходится мне",
@@ -2606,7 +2648,7 @@
       },
       "age_mention": {
         "count": 8,
-        "percent": 4.9,
+        "percent": 1.4,
         "examples": [
           "Какие льготы положены пенсионеру после 70 лет",
           "Дед хранил миллион под матрасом 5 лет. Открыли — а денег осталось на половину Жигулей",
@@ -2616,8 +2658,8 @@
         ]
       },
       "money_amount": {
-        "count": 13,
-        "percent": 7.9,
+        "count": 15,
+        "percent": 2.7,
         "examples": [
           "Работал 35 лет, а пенсия — 15 тысяч. Посчитал, сколько стоит один год моей жизни в пенсионных баллах",
           "Доллар подбирается к 77 рублям. Что происходит с рублём и при чём тут Иран.",
@@ -2627,8 +2669,8 @@
         ]
       },
       "other": {
-        "count": 37,
-        "percent": 22.6,
+        "count": 231,
+        "percent": 41.2,
         "examples": [
           "Почему чужие советы о деньгах не работают",
           "С какого возраста можно завести дебетовую карту",
@@ -2638,52 +2680,60 @@
         ]
       }
     },
-    "most_common": "colon_split",
+    "most_common": "other",
     "by_channel": {
       "igorfaynman": "colon_split",
       "fincult": "number_list",
       "gazprombank": "colon_split",
-      "vzoprodengi": "personal_story"
+      "vzoprodengi": "personal_story",
+      "myfincons": "question",
+      "pavelrakov": "how_to",
+      "igorrybakov": "other",
+      "azbukadeneg": "other",
+      "navigator_finans": "colon_split",
+      "kapitalist": "other",
+      "ekonomim_dengi": "colon_split",
+      "budniminimalista": "other"
     }
   },
   "structure": {
     "paragraphs": {
-      "mean": 14.7,
-      "median": 11.0,
+      "mean": 22.2,
+      "median": 19.0,
       "distribution": {
-        "0-5": 0,
-        "5-10": 59,
-        "10-20": 65,
-        "20+": 40
+        "0-5": 25,
+        "5-10": 74,
+        "10-20": 194,
+        "20+": 267
       }
     },
     "headers": {
-      "mean": 3.3,
-      "articles_with_headers": 153,
-      "articles_without_headers": 11,
-      "percent_with_headers": 93.3
+      "mean": 2.6,
+      "articles_with_headers": 320,
+      "articles_without_headers": 240,
+      "percent_with_headers": 57.1
     },
     "images": {
-      "mean": 1.5,
-      "articles_with_images": 164,
-      "percent_with_images": 100.0
+      "mean": 2.2,
+      "articles_with_images": 529,
+      "percent_with_images": 94.5
     },
     "by_channel": {
       "igorfaynman": {
         "paragraphs": {
-          "mean": 12.8,
+          "mean": 12.9,
           "median": 11,
-          "total": 53
+          "total": 57
         },
         "headers": {
-          "mean": 2.4,
+          "mean": 2.5,
           "median": 2,
-          "total": 53
+          "total": 57
         },
         "images": {
           "mean": 2.6,
           "median": 2,
-          "total": 53
+          "total": 57
         }
       },
       "fincult": {
@@ -2705,77 +2755,213 @@
       },
       "gazprombank": {
         "paragraphs": {
-          "mean": 8.9,
-          "median": 8.5,
-          "total": 54
+          "mean": 9.0,
+          "median": 9,
+          "total": 55
         },
         "headers": {
-          "mean": 3.9,
-          "median": 4.0,
-          "total": 54
+          "mean": 4.0,
+          "median": 4,
+          "total": 55
         },
         "images": {
           "mean": 1.0,
-          "median": 1.0,
-          "total": 54
+          "median": 1,
+          "total": 55
         }
       },
       "vzoprodengi": {
         "paragraphs": {
-          "mean": 21.9,
-          "median": 21.5,
-          "total": 56
+          "mean": 21.8,
+          "median": 21,
+          "total": 59
         },
         "headers": {
           "mean": 3.7,
-          "median": 4.0,
-          "total": 56
+          "median": 4,
+          "total": 59
         },
         "images": {
           "mean": 1.0,
+          "median": 1,
+          "total": 59
+        }
+      },
+      "myfincons": {
+        "paragraphs": {
+          "mean": 30.8,
+          "median": 30.5,
+          "total": 52
+        },
+        "headers": {
+          "mean": 5.9,
+          "median": 4.0,
+          "total": 52
+        },
+        "images": {
+          "mean": 2.0,
+          "median": 1.5,
+          "total": 52
+        }
+      },
+      "pavelrakov": {
+        "paragraphs": {
+          "mean": 34.9,
+          "median": 33.0,
+          "total": 52
+        },
+        "headers": {
+          "mean": 3.1,
+          "median": 3.0,
+          "total": 52
+        },
+        "images": {
+          "mean": 1.9,
           "median": 1.0,
-          "total": 56
+          "total": 52
+        }
+      },
+      "igorrybakov": {
+        "paragraphs": {
+          "mean": 24.7,
+          "median": 20.5,
+          "total": 50
+        },
+        "headers": {
+          "mean": 0.1,
+          "median": 0.0,
+          "total": 50
+        },
+        "images": {
+          "mean": 1.2,
+          "median": 1.0,
+          "total": 50
+        }
+      },
+      "azbukadeneg": {
+        "paragraphs": {
+          "mean": 33.3,
+          "median": 34,
+          "total": 55
+        },
+        "headers": {
+          "mean": 0.0,
+          "median": 0,
+          "total": 55
+        },
+        "images": {
+          "mean": 1.5,
+          "median": 1,
+          "total": 55
+        }
+      },
+      "navigator_finans": {
+        "paragraphs": {
+          "mean": 23.0,
+          "median": 16,
+          "total": 23
+        },
+        "headers": {
+          "mean": 5.3,
+          "median": 5,
+          "total": 23
+        },
+        "images": {
+          "mean": 1.2,
+          "median": 1,
+          "total": 23
+        }
+      },
+      "kapitalist": {
+        "paragraphs": {
+          "mean": 8.1,
+          "median": 10.0,
+          "total": 52
+        },
+        "headers": {
+          "mean": 0.0,
+          "median": 0.0,
+          "total": 52
+        },
+        "images": {
+          "mean": 0.5,
+          "median": 0.0,
+          "total": 52
+        }
+      },
+      "ekonomim_dengi": {
+        "paragraphs": {
+          "mean": 20.1,
+          "median": 19,
+          "total": 55
+        },
+        "headers": {
+          "mean": 4.6,
+          "median": 3,
+          "total": 55
+        },
+        "images": {
+          "mean": 5.2,
+          "median": 4,
+          "total": 55
+        }
+      },
+      "budniminimalista": {
+        "paragraphs": {
+          "mean": 27.2,
+          "median": 24,
+          "total": 49
+        },
+        "headers": {
+          "mean": 0.5,
+          "median": 0,
+          "total": 49
+        },
+        "images": {
+          "mean": 5.9,
+          "median": 4,
+          "total": 49
         }
       }
     }
   },
   "publication_time": {
     "by_day_of_week": {
-      "Среда": 34,
-      "Четверг": 30,
-      "Пятница": 21,
-      "Понедельник": 36,
-      "Вторник": 25,
-      "Воскресенье": 9,
-      "Суббота": 9
+      "Среда": 89,
+      "Четверг": 96,
+      "Пятница": 108,
+      "Понедельник": 98,
+      "Вторник": 76,
+      "Воскресенье": 54,
+      "Суббота": 39
     },
     "by_hour": {
       "0": 0,
       "1": 0,
       "2": 0,
       "3": 0,
-      "4": 14,
-      "5": 0,
-      "6": 2,
-      "7": 6,
-      "8": 5,
-      "9": 13,
-      "10": 9,
-      "11": 8,
-      "12": 7,
-      "13": 32,
-      "14": 3,
-      "15": 12,
-      "16": 10,
-      "17": 17,
-      "18": 9,
-      "19": 11,
-      "20": 2,
-      "21": 2,
-      "22": 2,
-      "23": 0
+      "4": 17,
+      "5": 2,
+      "6": 17,
+      "7": 10,
+      "8": 12,
+      "9": 33,
+      "10": 26,
+      "11": 43,
+      "12": 59,
+      "13": 60,
+      "14": 41,
+      "15": 59,
+      "16": 32,
+      "17": 48,
+      "18": 22,
+      "19": 34,
+      "20": 21,
+      "21": 9,
+      "22": 11,
+      "23": 4
     },
-    "most_active_day": "Понедельник",
+    "most_active_day": "Пятница",
     "most_active_hour": 13
   }
 }

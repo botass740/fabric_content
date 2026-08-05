@@ -27,6 +27,10 @@ data/images/
 data/articles/
 data/app.sqlite3
 
+# SQLite WAL/SHM (служебные файлы, в git не нужны)
+*.db-shm
+*.db-wal
+
 # Playwright profile
 playwright_profile/
 

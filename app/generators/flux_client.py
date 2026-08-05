@@ -1,5 +1,7 @@
 import base64
 import logging
+import time
+
 import requests
 
 
@@ -17,10 +19,15 @@ class FluxClient:
         self.logger = logger or logging.getLogger(__name__)
         self.endpoint = base_url.rstrip("/") + "/images"
 
-    def generate_image(self, prompt: str) -> bytes:
+    def generate_image(self, prompt: str, attempts: int = 4) -> bytes:
         """
         Генерирует изображение по промту.
         Возвращает PNG bytes.
+
+        Провайдер (Black Forest Labs) отклоняет часть генераций модерацией
+        контента ("Content Moderated"), и это стохастически — один и тот же
+        промт то проходит, то нет. Поэтому повторяем при нестабильных ошибках
+        (4xx/5xx/сетевых) и логируем тело ответа (raise_for_status его теряет).
         """
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -35,22 +42,46 @@ class FluxClient:
 
         self.logger.info(f"Generating image with FLUX: {prompt[:100]}...")
 
-        try:
-            response = requests.post(
-                self.endpoint,
-                headers=headers,
-                json=payload,
-                timeout=120
-            )
-            response.raise_for_status()
+        last_status = None
+        for attempt in range(1, attempts + 1):
+            if attempt > 1:
+                self.logger.info(
+                    f"FLUX retry {attempt - 1}/{attempts - 1}, "
+                    f"waiting {2 * attempt}s..."
+                )
+                time.sleep(2 * attempt)
 
-            result = response.json()
-            b64_data = result["data"][0]["b64_json"]
-            image_bytes = base64.b64decode(b64_data)
+            try:
+                response = requests.post(
+                    self.endpoint,
+                    headers=headers,
+                    json=payload,
+                    timeout=120
+                )
+                last_status = response.status_code
 
-            self.logger.info(f"Image generated successfully ({len(image_bytes)} bytes)")
-            return image_bytes
+                if response.status_code == 200:
+                    result = response.json()
+                    b64_data = result["data"][0]["b64_json"]
+                    image_bytes = base64.b64decode(b64_data)
+                    self.logger.info(
+                        f"Image generated successfully ({len(image_bytes)} bytes)"
+                    )
+                    return image_bytes
 
-        except Exception as e:
-            self.logger.error(f"FLUX generation failed: {e}")
-            raise
+                # Логируем тело ответа — оно объясняет причину отклонения.
+                body = response.text[:2000]
+                self.logger.warning(
+                    f"FLUX attempt {attempt}/{attempts} failed: "
+                    f"HTTP {response.status_code}: {body}"
+                )
+
+            except requests.exceptions.RequestException as e:
+                self.logger.warning(
+                    f"FLUX attempt {attempt}/{attempts} network error: {e}"
+                )
+
+        raise RuntimeError(
+            f"FLUX generation failed after {attempts} attempts, "
+            f"last HTTP status: {last_status}"
+        )

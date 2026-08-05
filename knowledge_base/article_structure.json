@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-08-02T17:26:20.249894+00:00",
+  "corpus_size": 560,
+  "recommended_length": {
+    "min_words": 400,
+    "max_words": 900,
+    "optimal_words": 483,
+    "note": "Медиана корпуса (566 ср.). vzoprodengi длиннее (800-1200), igorfaynman короче (300-500)."
+  },
+  "recommended_structure": {
+    "paragraphs_min": 8,
+    "paragraphs_max": 25,
+    "paragraphs_optimal": 14,
+    "use_headers": true,
+    "headers_count_optimal": 2,
+    "headers_note": "57.1% статей используют подзаголовки h2/h3",
+    "use_images": true,
+    "images_count_optimal": 1,
+    "images_note": "94.5% статей имеют обложку, 2.2 ср. изображений на статью"
+  },
+  "by_channel_style": {
+    "azbukadeneg": {
+      "style": "educational_short",
+      "avg_words": 406.3,
+      "avg_paragraphs": 33.3,
+      "typical_pattern": "how_to",
+      "description": "Короткие обучающие заметки по финансовой грамотности"
+    },
+    "budniminimalista": {
+      "style": "minimalist_lifestyle",
+      "avg_words": 336.3,
+      "avg_paragraphs": 27.2,
+      "typical_pattern": "how_to",
+      "description": "Истории и советы о минимализме и разумном потреблении"
+    },
+    "ekonomim_dengi": {
+      "style": "longread_economics",
+      "avg_words": 948.5,
+      "avg_paragraphs": 20.1,
+      "typical_pattern": "colon_split",
+      "description": "Длинные разборы экономических тем и макростатистики"
+    },
+    "fincult": {
+      "style": "general",
+      "avg_words": 1167.0,
+      "avg_paragraphs": 24.0,
+      "typical_pattern": "other",
+      "description": ""
+    },
+    "gazprombank": {
+      "style": "educational",
+      "avg_words": 323.8,
+      "avg_paragraphs": 9.0,
+      "typical_pattern": "how_to",
+      "description": "Короткие образовательные материалы и инструкции"
+    },
+    "igorfaynman": {
+      "style": "analytical_news",
+      "avg_words": 424.3,
+      "avg_paragraphs": 12.9,
+      "typical_pattern": "colon_split",
+      "description": "Короткие аналитические заметки на актуальные темы"
+    },
+    "igorrybakov": {
+      "style": "storytelling_advice",
+      "avg_words": 978.7,
+      "avg_paragraphs": 24.7,
+      "typical_pattern": "personal_story",
+      "description": "Истории из жизни с элементами финансового консультирования"
+    },
+    "kapitalist": {
+      "style": "micro_notes",
+      "avg_words": 47.9,
+      "avg_paragraphs": 8.1,
+      "typical_pattern": "other",
+      "description": "Короткие заметки и цитаты по финансам"
+    },
+    "myfincons": {
+      "style": "professional_advice",
+      "avg_words": 711.1,
+      "avg_paragraphs": 30.8,
+      "typical_pattern": "question",
+      "description": "Профессиональные советы финансового консультанта"
+    },
+    "navigator_finans": {
+      "style": "guide",
+      "avg_words": 660.8,
+      "avg_paragraphs": 23.0,
+      "typical_pattern": "colon_split",
+      "description": "Подробные гиды и разборы финансовых продуктов"
+    },
+    "pavelrakov": {
+      "style": "expert_opinion",
+      "avg_words": 578.1,
+      "avg_paragraphs": 34.9,
+      "typical_pattern": "colon_split",
+      "description": "Экспертное мнение по рынкам и инвестициям"
+    },
+    "vzoprodengi": {
+      "style": "storytelling",
+      "avg_words": 838.0,
+      "avg_paragraphs": 21.8,
+      "typical_pattern": "personal_story",
+      "description": "Длинные истории о людях и деньгах с моралью"
+    }
+  },
+  "paragraph_recommendations": {
+    "opening": "1-2 абзаца, хук + контекст проблемы",
+    "body": "8-15 абзацев, раскрытие темы с подзаголовками",
+    "conclusion": "1-2 абзаца, вывод или призыв к действию"
+  }
+}
