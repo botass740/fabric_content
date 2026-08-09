@@ -1,7 +1,82 @@
 import re
 import logging
+from app.generators.knowledge_helper import get_knowledge_base
 from app.generators.llm import get_llm_client
 from app.generators.utils import load_prompt
+
+
+def _build_knowledge_context(logger: logging.Logger) -> str:
+    """Собирает блок контекста из базы знаний для промпта статьи.
+
+    Добавляет ориентиры по объёму/структуре из корпуса и реальные примеры
+    сильных хуков. Возвращает пустую строку, если база знаний недоступна —
+    тогда генерация работает как раньше (обратная совместимость).
+    """
+    try:
+        kb = get_knowledge_base()
+        if not kb.is_loaded():
+            logger.info("Knowledge base not loaded — article without KB context")
+            return ""
+
+        structure = kb._data.get("article_structure", {})
+        length_info = structure.get("recommended_length", {})
+        rec_struct = structure.get("recommended_structure", {})
+        hook_types = kb._data.get("hooks", {}).get("hook_types", {})
+
+        optimal_words = length_info.get("optimal_words")
+        paragraphs = rec_struct.get("paragraphs_optimal")
+        headers = rec_struct.get("headers_count_optimal")
+
+        structure_text = "СТРУКТУРА (ориентиры по реальным статьям корпуса):\n"
+        if optimal_words:
+            structure_text += f"- Оптимальный объём: ~{optimal_words} слов\n"
+        if paragraphs:
+            structure_text += f"- Абзацев: ~{paragraphs}\n"
+        if headers:
+            structure_text += (
+                f"- Подзаголовков: до {headers} (как отдельные строки-абзацы, "
+                f"без markdown-разметки ##)\n"
+            )
+        structure_text += "- Драматургия: вступление-хук → основная часть → финал на действии\n"
+
+        # Реальные типы хуков с рабочим примером (пропускаем обобщённый тип "other"
+        # и типы без примеров; длинные новостные сводки не берём)
+        hooks_text = "СИЛЬНЫЕ ХУКИ (типы и примеры из корпуса 560 статей):\n"
+        picked = 0
+        for htype, hdata in hook_types.items():
+            if htype == "other":
+                continue
+            examples = [
+                e for e in hdata.get("examples", [])
+                if isinstance(e, str) and e.strip() and len(e) < 160
+            ]
+            if not examples:
+                continue
+            template = hdata.get("template", "?")
+            ex = re.sub(r"\s+", " ", examples[0]).strip()[:120]
+            hooks_text += f"- {htype} (шаблон: «{template}»): {ex}\n"
+            picked += 1
+            if picked >= 3:
+                break
+
+        logger.info(
+            "Knowledge base applied to article prompt: "
+            "%d hook types, words=%s, paragraphs=%s",
+            picked,
+            optimal_words,
+            paragraphs,
+        )
+
+        return (
+            "ДАЙДЖЕСТ ИЗ БАЗЫ ЗНАНИЙ (на основе анализа 560 финансовых статей Дзена).\n"
+            "Используй для выбора хук-открытия и объёма, но фразы и детали бери из плана "
+            "и актуального фона.\n\n"
+            f"{structure_text}\n{hooks_text}\n"
+            "ОРИГИНАЛЬНЫЕ ИНСТРУКЦИИ:\n"
+        )
+    except Exception as e:
+        logger.warning("Knowledge base enrichment failed, falling back to default prompt: %s", e)
+        return ""
 
 
 def _clean_text(text: str) -> str:
@@ -90,7 +165,7 @@ def generate_article(
     logger = logging.getLogger(__name__)
 
     prompt_text = load_prompt(settings, "article_prompt.txt")
-    user_prompt = prompt_text.format(
+    prompt_text = prompt_text.format(
         topic=topic,
         title=title,
         plan=plan,
@@ -99,6 +174,9 @@ def generate_article(
         format=format,
         live_triggers=live_triggers,
     )
+
+    kb_context = _build_knowledge_context(logger)
+    user_prompt = kb_context + prompt_text if kb_context else prompt_text
 
     client = get_llm_client(settings, logger)
 
