@@ -1,6 +1,6 @@
 # Dzen_2 — состояние проекта
 
-**Обновлено:** 2026-07-31
+**Обновлено:** 2026-08-09
 
 **Назначение:** автогенерация и публикация статей в Яндекс.Дзен (ниша «финансы, заработок, бытовая психология денег»). Управление через Telegram-бота. Локальная разработка на Windows (`F:\Zerocoder\Dzen_2`), боевой запуск — на VPS.
 
@@ -14,13 +14,14 @@
 
 | Сервис | Как подключаемся | Важно |
 |--------|------------------|-------|
-| Telegram Bot API | Cloudflare Worker `telegram-api-proxy.botass740.workers.dev` | **НЕ УДАЛЯТЬ.** Без него VPS вообще не видит Telegram |
+| Telegram Bot API | **Squid HTTP proxy на Хельсинки VPS → SSH-туннель (autossh)** — тот же путь, что OpenRouter | С 2026-08-09. Cloudflare Worker `telegram-api-proxy.botass740.workers.dev` **больше НЕ используется** (закомментирован в `.env`, бэкап `.env.cf-backup`): воркер резал загрузки файлов >~2 КБ, из-за этого фото-превью статей (107-158 КБ) никогда не доходило. Worker остаётся запасным вариантом — вернуть = раскомментировать `TELEGRAM_API_BASE_URL` в `.env` |
 | OpenRouter (LLM + FLUX) | Squid HTTP proxy на Хельсинки VPS → SSH-туннель (autossh) | Cloudflare Workers (и Vercel) заблокированы OpenRouter по гео. Squid на `89.125.113.2:19502` через SSH-туннель с Московского VPS (localhost:3128). |
 
-**OpenRouter proxy chain:** Moscow VPS → autossh SSH tunnel (port 19502) → Helsinki VPS → Squid (127.0.0.1:3128) → internet
-**Telegram proxy chain:** Moscow VPS → Cloudflare Worker `telegram-api-proxy.botass740.workers.dev` → Telegram API
+**Прокси-цепочки (обе от Московского VPS):**
+- **OpenRouter / Telegram:** Moscow VPS → autossh SSH tunnel (port 19502) → Helsinki VPS → Squid (127.0.0.1:3128) → internet / api.telegram.org
+- Telegram сейчас идёт **напрямую в api.telegram.org** через `HTTPS_PROXY=http://127.0.0.1:3128` (`TELEGRAM_API_BASE_URL` пустой) — multipart-файлы до 100+ КБ проходят за ~1s.
 
-Адреса прокси подставляются через `.env`: `TELEGRAM_API_BASE_URL`, `OPENROUTER_BASE_URL`, `HTTP_PROXY`/`HTTPS_PROXY`.
+Адреса прокси подставляются через `.env`: `HTTP_PROXY`/`HTTPS_PROXY` (Squid-туннель), `OPENROUTER_BASE_URL`; `TELEGRAM_API_BASE_URL` закомментирован (воркер на случай отката).
 
 **Секреты:** в `.env` лежат API-ключи и токен бота. В логах, которые присылает пользователь, токен бота виден внутри URL прокси — никогда не повторять его в ответах.
 
@@ -35,14 +36,16 @@
 - Обложки: FLUX через OpenRouter. `flux_client.py` принимает `base_url` (был захардкожен `openrouter.ai` — исправлено, теперь тоже через прокси). Fallback на PIL-placeholder при сбое.
 - Промты переписаны под качество: квоты на цифры/диалоги/бренды, запрет афоризмов, постпроцессор `_cut_second_ending()`.
 
-### Устойчивость доставки в Telegram (сделано в этой сессии)
-Проблема была в том, что статья и обложка генерировались нормально, но превью не доходило до Telegram — бесплатный прокси-воркер рвал соединение на больших загрузках. Один упавший `send` ронял всю выдачу превью, и пользователь видел ложное «Ошибка генерации».
+### Устойчивость доставки в Telegram
+Ранняя проблема была в том, что статья и обложка генерировались нормально, но превью не доходило до Telegram — бесплатный прокси-воркер рвал соединение на больших загрузках. Сначала добавили ретраи/сжатие (ниже), но это не лечило корень.
 
-Что добавлено в `app/telegram/bot.py`:
-- Таймауты в **обеих** ветках `ApplicationBuilder` (прокси и прямая): `connect/read 30s`, `write 60s`, `pool 30s`. Дефолтные 5 секунд через прокси не выживали.
+**2026-08-09 — корень найден и убран:** воркер-прокси (`telegram-api-proxy.botass740.workers.dev`) вообще не пропускает multipart-аплоады крупнее пары КБ (измерено с VPS: 29 КБ уже висло, ответа нет даже за 180 s; sendMessage-JSON при этом проходил). Наши сжатые превью (107-158 КБ) валились всегда. Решение: **перевели Telegram на тот же Squid-туннель Хельсинки, что и OpenRouter** (`HTTPS_PROXY` env → api.telegram.org напрямую). Проверено вживую: фото 121 КБ (реальное превью статьи #34) ушло за секунды; `getMe`/`getUpdates` (лонг-поллинг) работают. Cloudflare Worker закомментирован в `.env` (бэкап `.env.cf-backup`).
+
+Оставшиеся защитные меры в `app/telegram/bot.py`:
+- Таймауты в **обеих** ветках `ApplicationBuilder`: `connect/read 30s`, `write 60s`, `pool 30s`.
 - `_retry_send(coro_factory, what=, attempts=4)` — ретраи с backoff на `NetworkError`/`TimedOut`, уважает `RetryAfter`.
-- `_compress_for_preview(image_path, max_side=1280, quality=82)` — PIL, PNG 1.6 МБ → JPEG ~150–250 КБ.
-- Доставка превью сделана нефатальной. Если превью не ушло, но статья создана — честное сообщение «Статья готова (ID: N), но превью не доставилось из-за сети. Открой её через /list или /queue».
+- `_compress_for_preview(image_path, max_side=1280, quality=82)` — PIL, PNG 1.6 МБ → JPEG ~100-160 КБ.
+- Доставка превью нефатальна: если превью не ушло, но статья создана — сообщение «Статья готова (ID: N) … Открой её через /list или /queue».
 
 **Важный нюанс про две картинки:** сжатие применяется **только к превью в Telegram**. В Дзен через `file_chooser.set_files()` уходит оригинальный файл (`dzen_publisher.py:303`) — качество обложки не страдает.
 
