@@ -637,6 +637,28 @@ async def list_articles_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     await update.message.reply_text("\n".join(lines))
 
 
+# ========================= Error handler =========================
+
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Глобальный обработчик ошибок.
+
+    Раньше исключения в хендлерах гасились молча: прокси рвёт соединение,
+    апдейты переставали обрабатываться без единой строчки в логах. Теперь
+    любая ошибка пишется в журнал и пробуем уведомить админа.
+    """
+    logger.exception("Unhandled exception in update handler", exc_info=context.error)
+    if update is not None and hasattr(update, "effective_user"):
+        user = getattr(update, "effective_user", None)
+        if user is not None:
+            try:
+                await context.bot.send_message(
+                    chat_id=user.id,
+                    text="⚠️ Ошибка в боте, см. логи.",
+                )
+            except Exception:
+                pass
+
+
 # ========================= Callback Handler =========================
 
 async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -649,6 +671,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         return
 
     data = query.data
+    logger.info("Callback: %s (user=%s)", data, query.from_user.id)
 
     # Trend Layer callbacks (без article_id)
     if data == "trends_apply":
@@ -719,6 +742,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
         publisher: DzenPublisher = context.application.bot_data.get("publisher")
 
+        logger.info("Publishing article #%d via button", article_id)
         db.set_status(article_id, STATUS_APPROVED)
         try:
             await query.answer("Публикую...")
@@ -738,6 +762,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
             if result.ok:
                 db.set_status(article_id, STATUS_PUBLISHED)
+                logger.info("Article #%d published via button (url=%s)", article_id, result.url)
                 msg = f"Статья #{article_id} опубликована!"
                 if result.url:
                     msg += f"\nURL: {result.url}"
@@ -746,6 +771,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
                     text=msg,
                 )
             else:
+                logger.warning("Publish failed for article #%d: %s", article_id, result.error)
                 msg = f"Ошибка публикации: {result.error}"
                 if result.screenshot_path:
                     msg += f"\nСкриншот: {result.screenshot_path}"
@@ -775,6 +801,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         if not article:
             await query.answer("Статья не найдена.")
             return
+        logger.info("Regenerating cover for article #%d", article_id)
         await query.answer("Генерирую новую обложку...")
         try:
             new_image = await asyncio.to_thread(
@@ -815,6 +842,7 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
     # Кнопка: Перегенерировать
     elif action == "regen":
+        logger.info("Regenerating article #%d via button", article_id)
         await query.answer("Перегенерирую... подождите.")
         old = db.get_article(article_id)
         if not old:
@@ -1071,6 +1099,12 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
             .read_timeout(30.0)
             .write_timeout(60.0)
             .pool_timeout(30.0)
+            # Поллинг: выделенный пул из 1 соединения + таймаут под лонг-полл.
+            # Прокси периодически рвёт соединения, оставляя их в CLOSE-WAIT;
+            # маленький пул заставляет пересоздавать соединение, вместо того
+            # чтобы вечно переиспользовать мёртвое (кнопки "умирали" молча).
+            .get_updates_read_timeout(55.0)
+            .get_updates_connection_pool_size(1)
             .build()
         )
         logger.info(f"Using Cloudflare proxy: {settings.telegram_api_base_url}")
@@ -1082,6 +1116,8 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
             .read_timeout(30.0)
             .write_timeout(60.0)
             .pool_timeout(30.0)
+            .get_updates_read_timeout(55.0)
+            .get_updates_connection_pool_size(1)
             .build()
         )
         logger.info("Using direct Telegram API connection")
@@ -1099,6 +1135,7 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
     application.add_handler(CommandHandler("set_weekly", cmd_set_weekly))
     application.add_handler(CommandHandler("show_trends", cmd_show_trends))
     application.add_handler(CallbackQueryHandler(on_callback))
+    application.add_error_handler(error_handler)
 
     application.bot_data["autogen_lock"] = asyncio.Lock()
     if settings.telegram_admin_id is None:
