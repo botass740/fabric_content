@@ -152,10 +152,28 @@ class KnowledgeBuilder:
         },
     }
 
-    def __init__(self) -> None:
-        """Инициализация: создаёт папку knowledge_base, загружает статистику,
-        подключается к БД, настраивает логгер."""
+    def __init__(
+        self,
+        db_path: str | None = None,
+        statistics_path: str | None = None,
+        knowledge_dir: str | None = None,
+    ) -> None:
+        """Инициализация: создаёт папку базы знаний, загружает статистику,
+        подключается к БД, настраивает логгер.
+
+        Пути можно переопределить под тематику канала (см. tools/run_knowledge_builder.py).
+        None = значение по умолчанию (константы класса).
+
+        Args:
+            db_path: Путь к research.db.
+            statistics_path: Путь к файлу статистики.
+            knowledge_dir: Папка для базы знаний.
+        """
         self.logger = self._setup_logger()
+        # Тематические пути: аргумент или дефолт из констант класса
+        self.KNOWLEDGE_BASE_DIR = knowledge_dir or self.KNOWLEDGE_BASE_DIR
+        self.STATISTICS_PATH = statistics_path or self.STATISTICS_PATH
+        self.DB_PATH = db_path or self.DB_PATH
         self._ensure_knowledge_base_dir()
         self.stats: dict[str, Any] = self._load_statistics()
         self.db_conn: sqlite3.Connection = self._connect_db()

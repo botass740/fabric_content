@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T17:26:20.969773+00:00",
+  "generated_at": "2026-08-10T17:06:41.335397+00:00",
   "files_created": [
     "title_patterns",
     "vocabulary",
@@ -10,5 +10,5 @@
   "statistics_source": "data/statistics_report.json",
   "articles_analyzed": 560,
   "corpus_channels": 34,
-  "build_time_seconds": 0.78
+  "build_time_seconds": 1.04
 }

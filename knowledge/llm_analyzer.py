@@ -39,13 +39,13 @@ class LLMAnalyzer:
     def __init__(
         self,
         model_override: str | None = None,
-        knowledge_base_dir: str | None = None,
+        knowledge_dir: str | None = None,
     ):
         """Инициализировать анализатор.
 
         Args:
             model_override: Принудительная модель (поверх settings).
-            knowledge_base_dir: Путь к knowledge_base/ (по умолчанию
+            knowledge_dir: Путь к папке базы знаний (по умолчанию
                 KNOWLEDGE_BASE_DIR относительно корня проекта).
         """
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -65,9 +65,9 @@ class LLMAnalyzer:
         # Переопределение модели, если нужно
         self._model_override = model_override
 
-        # Путь к knowledge_base
-        if knowledge_base_dir:
-            self._kb_path = Path(knowledge_base_dir)
+        # Путь к базе знаний
+        if knowledge_dir:
+            self._kb_path = Path(knowledge_dir)
         else:
             self._kb_path = (
                 self.settings.project_root / self.KNOWLEDGE_BASE_DIR

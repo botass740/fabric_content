@@ -4,12 +4,14 @@ CLI: запуск LLM-анализа базы знаний.
 
 Использование:
   python tools/run_llm_analyzer.py
+  python tools/run_llm_analyzer.py --knowledge-dir knowledge_base_health
 
 Результаты:
-  - knowledge_base/llm_analysis.json
-  - knowledge_base/RECOMMENDATIONS.md
+  - <knowledge-dir>/llm_analysis.json
+  - <knowledge-dir>/RECOMMENDATIONS.md
 """
 
+import argparse
 import asyncio
 import sys
 import os
@@ -22,13 +24,23 @@ from knowledge.llm_analyzer import LLMAnalyzer
 
 async def main() -> None:
     """Запустить LLM-анализ и вывести сводку."""
+    parser = argparse.ArgumentParser(
+        description="LLM-анализ базы знаний"
+    )
+    parser.add_argument(
+        "--knowledge-dir",
+        default="knowledge_base",
+        help="Папка с базой знаний (по умолчанию knowledge_base)",
+    )
+    args = parser.parse_args()
+
     print("=" * 60)
     print("LLM Анализ базы знаний")
     print("=" * 60)
     print()
-    print("Загружаем агрегированные данные из knowledge_base/...")
+    print(f"Загружаем агрегированные данные из {args.knowledge_dir}/...")
 
-    analyzer = LLMAnalyzer()
+    analyzer = LLMAnalyzer(knowledge_dir=args.knowledge_dir)
 
     print("Отправляем запрос в Claude...")
     print("(это займёт 30-60 секунд)")
@@ -50,8 +62,8 @@ async def main() -> None:
         analyzer.save_analysis(result)
 
         print("Результаты сохранены:")
-        print("  knowledge_base/llm_analysis.json")
-        print("  knowledge_base/RECOMMENDATIONS.md")
+        print(f"  {args.knowledge_dir}/llm_analysis.json")
+        print(f"  {args.knowledge_dir}/RECOMMENDATIONS.md")
         print()
 
         print("=" * 60)

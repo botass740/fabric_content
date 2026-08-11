@@ -1,21 +1,34 @@
 import json
 import logging
+import os
 from pathlib import Path
 from typing import Dict, List, Optional
 
 
 class KnowledgeBase:
-    """Читает и предоставляет данные из knowledge_base/.
+    """Читает и предоставляет данные из папки базы знаний.
+
+    Папка определяется с приоритетом:
+      1. Аргумент конструктора knowledge_dir
+      2. Переменная окружения KNOWLEDGE_BASE_DIR
+      3. Дефолт "knowledge_base"
 
     Загружает все JSON-файлы при инициализации. Ошибки чтения/парсинга
     отдельных файлов не фатальны — файл просто пропускается, остальные
     продолжают работать. Это гарантирует обратную совместимость: если
-    knowledge_base/ отсутствует или повреждён, генератор работает как раньше.
+    база знаний отсутствует или повреждена, генератор работает как раньше.
     """
 
-    KNOWLEDGE_DIR = Path("knowledge_base")
-
-    def __init__(self):
+    def __init__(self, knowledge_dir: str | None = None):
+        # Приоритет:
+        # 1. Аргумент конструктора
+        # 2. Переменная окружения KNOWLEDGE_BASE_DIR
+        # 3. Дефолт "knowledge_base"
+        if knowledge_dir:
+            self.KNOWLEDGE_DIR = Path(knowledge_dir)
+        else:
+            env_dir = os.environ.get("KNOWLEDGE_BASE_DIR")
+            self.KNOWLEDGE_DIR = Path(env_dir or "knowledge_base")
         self._data = {}
         self._logger = logging.getLogger(__name__)
         self._load_all()
@@ -89,9 +102,22 @@ class KnowledgeBase:
 _kb_instance = None
 
 
-def get_knowledge_base() -> KnowledgeBase:
-    """Получить синглтон базы знаний."""
+def get_knowledge_base(
+    knowledge_dir: str | None = None,
+) -> KnowledgeBase:
+    """Получить синглтон базы знаний.
+
+    Параметр knowledge_dir учитывается только при первом создании
+    синглтона. Для смены тематики (переключения на другую папку)
+    сначала вызовите reset_knowledge_base().
+    """
     global _kb_instance
     if _kb_instance is None:
-        _kb_instance = KnowledgeBase()
+        _kb_instance = KnowledgeBase(knowledge_dir)
     return _kb_instance
+
+
+def reset_knowledge_base() -> None:
+    """Сбросить синглтон (для тестов или смены тематики)."""
+    global _kb_instance
+    _kb_instance = None
