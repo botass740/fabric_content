@@ -77,18 +77,22 @@ class DzenPublisher:
 
                 page.set_default_timeout(60000)
 
-                # ШАГ 1: Открываем главную Дзена
+                # ШАГ 1: Открываем главную Дзена.
+                # DOMContentLoaded у dzen нестабилен (6-60+с) и упирался в таймаут 60с,
+                # из-за чего публикации падали. Ждём только commit навигации (быстрый),
+                # а реальную готовность UI определяем ожиданием иконки профиля ниже.
                 self.logger.info("Step 1: Opening dzen.ru")
-                page.goto("https://dzen.ru", wait_until="domcontentloaded")
+                page.goto("https://dzen.ru", wait_until="commit", timeout=30000)
                 sleep_rand(page, 2.0, 3.0)
 
-                # Проверка авторизации
+                # Проверка авторизации (после паузы, чтобы SPA успело применить редирект)
                 if "passport" in page.url or "login" in page.url:
                     self.logger.warning("Not authorized!")
                     screenshot = safe_screenshot(page, self.settings.logs_dir, "not_authorized")
                     return PublishResult(ok=False, error="Not authorized", screenshot_path=screenshot)
 
-                # ШАГ 2: Кликаем иконку профиля
+                # ШАГ 2: ждём появления иконки профиля (явное ожидание вместо
+                # ненадёжного DOMContentLoaded) и кликаем
                 self.logger.info("Step 2: Clicking profile icon")
                 profile_clicked = False
                 profile_selectors = [
@@ -100,12 +104,12 @@ class DzenPublisher:
                 for sel in profile_selectors:
                     try:
                         loc = page.locator(sel).first
-                        if loc.is_visible():
-                            loc.click()
-                            sleep_rand(page, 1.0, 2.0)
-                            profile_clicked = True
-                            self.logger.info(f"Profile clicked via: {sel}")
-                            break
+                        loc.wait_for(state="visible", timeout=60000)
+                        loc.click()
+                        sleep_rand(page, 1.0, 2.0)
+                        profile_clicked = True
+                        self.logger.info(f"Profile clicked via: {sel}")
+                        break
                     except Exception:
                         continue
 
