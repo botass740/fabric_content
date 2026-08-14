@@ -350,10 +350,90 @@ async def queue_summary_job(context: ContextTypes.DEFAULT_TYPE) -> None:
     logger.info(f"Queue summary: sent, {len(articles)} pending")
 
 
-async def autogen_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+AUTOGEN_CATCHUP_INTERVAL_S = 15 * 60
+AUTOGEN_CATCHUP_GRACE_S = 2 * 60 * 60  # слот «просрочен» только через 2ч после его времени
+
+
+def _slot_key(day: dt.date, slot_hour: int) -> str:
+    return f"{day:%Y-%m-%d}|{slot_hour:02d}"
+
+
+def _autogen_backfill_today(db: Database) -> None:
+    """On boot, mark today's already-fulfilled slots so catch-up doesn't re-generate them.
+
+    Until the autogen_slots table is populated, any passed slot looks "missed".
+    Match each slot against articles created in its UTC window (slot time +3h,
+    which covers the 0-30min random delay plus generation time).
+    """
+    now = dt.datetime.now(MSK)
+    windows: list[tuple[str, str, str]] = []
+    for t in AUTOGEN_TIMES:
+        slot_msk = dt.datetime.combine(now.date(), t, tzinfo=MSK)
+        if now < slot_msk + dt.timedelta(seconds=AUTOGEN_CATCHUP_GRACE_S):
+            continue  # слот ещё не «просрочен» — догонять рано
+        slot_utc = slot_msk.astimezone(dt.timezone.utc)
+        start_utc = slot_utc.strftime("%Y-%m-%d %H:%M:%S")
+        end_utc = (slot_utc + dt.timedelta(hours=3)).strftime("%Y-%m-%d %H:%M:%S")
+        windows.append((_slot_key(now.date(), t.hour), start_utc, end_utc))
+    if windows:
+        db.backfill_autogen_slots(windows)
+
+
+async def _run_autogen_generation(
+    context: ContextTypes.DEFAULT_TYPE, slot_key: str | None
+) -> None:
+    """Generate one article, record the slot, send preview. Shared by slot & catch-up."""
     settings = context.application.bot_data["settings"]
     db: Database = context.application.bot_data["db"]
     chat_id = settings.telegram_admin_id
+
+    article_id = None
+    try:
+        logger.info("Autogen: generating article")
+        topic, title, content, image_path = await asyncio.to_thread(
+            generate_full_article_payload, settings, db
+        )
+        article_id = db.create_article(
+            title=title,
+            content=content,
+            image_path=image_path,
+            status=STATUS_GENERATED,
+        )
+        article = db.get_article(article_id)
+        if slot_key is not None:
+            db.mark_autogen_slot(slot_key, article_id)
+
+        await _retry_send(
+            lambda: context.bot.send_message(
+                chat_id, "⏰ Статья по расписанию готова. Проверь и опубликуй:"
+            ),
+            what="autogen-header",
+        )
+        await send_article_preview(bot=context.bot, chat_id=chat_id, article=article)
+        logger.info(f"Autogen: article #{article_id} generated, preview sent")
+    except Exception:
+        logger.exception("Autogen: generation failed")
+        if article_id is not None:
+            text = (
+                f"⏰ Статья по расписанию готова (ID: {article_id}), "
+                f"но превью не доставилось. Открой через /list или /queue."
+            )
+        else:
+            text = "⏰ Автогенерация упала, см. логи: journalctl -u dzen-bot"
+        await _retry_send(
+            lambda: context.bot.send_message(chat_id, text),
+            what="autogen-error",
+        )
+
+
+async def autogen_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+    settings = context.application.bot_data["settings"]
+    db: Database = context.application.bot_data["db"]
+
+    # Какой слот запустил этот джоб — для записи «слот отработан» в БД
+    job_data = (context.job.data or {}) if context.job else {}
+    slot_hour = job_data.get("slot_hour")
+    slot_key = _slot_key(dt.datetime.now(MSK).date(), slot_hour) if slot_hour else None
 
     # Случайный сдвиг, чтобы статьи не выходили каждый день секунда в секунду
     delay = random.randint(0, AUTOGEN_MAX_DELAY_S)
@@ -366,41 +446,38 @@ async def autogen_job(context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     async with lock:
-        article_id = None
-        try:
-            logger.info("Autogen: generating article")
-            topic, title, content, image_path = await asyncio.to_thread(
-                generate_full_article_payload, settings, db
-            )
-            article_id = db.create_article(
-                title=title,
-                content=content,
-                image_path=image_path,
-                status=STATUS_GENERATED,
-            )
-            article = db.get_article(article_id)
+        # Пока спали по задержке, догон мог уже заполнить слот — тогда пропускаем
+        if slot_key and db.autogen_slot_done(slot_key):
+            logger.info(f"Autogen: slot {slot_key} already filled, skipping")
+            return
+        await _run_autogen_generation(context, slot_key)
 
-            await _retry_send(
-                lambda: context.bot.send_message(
-                    chat_id, "⏰ Статья по расписанию готова. Проверь и опубликуй:"
-                ),
-                what="autogen-header",
+
+async def autogen_catchup_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Догон пропущенного слота: если слот уже давно прошёл, а статьи нет — генерируем."""
+    settings = context.application.bot_data["settings"]
+    db: Database = context.application.bot_data["db"]
+    now = dt.datetime.now(MSK)
+    lock: asyncio.Lock = context.application.bot_data["autogen_lock"]
+
+    for t in AUTOGEN_TIMES:
+        slot_time = dt.datetime.combine(now.date(), t, tzinfo=MSK)
+        if now < slot_time + dt.timedelta(seconds=AUTOGEN_CATCHUP_GRACE_S):
+            continue  # слот ещё не «просрочен»
+        slot_key = _slot_key(now.date(), t.hour)
+        if db.autogen_slot_done(slot_key):
+            continue  # слот отработан штатно или уже догнан
+        if lock.locked():
+            logger.info(
+                f"Autogen catch-up: slot {slot_key} missed but a cycle is running, retry later"
             )
-            await send_article_preview(bot=context.bot, chat_id=chat_id, article=article)
-            logger.info(f"Autogen: article #{article_id} generated, preview sent")
-        except Exception:
-            logger.exception("Autogen: generation failed")
-            if article_id is not None:
-                text = (
-                    f"⏰ Статья по расписанию готова (ID: {article_id}), "
-                    f"но превью не доставилось. Открой через /list или /queue."
-                )
-            else:
-                text = "⏰ Автогенерация упала, см. логи: journalctl -u dzen-bot"
-            await _retry_send(
-                lambda: context.bot.send_message(chat_id, text),
-                what="autogen-error",
-            )
+            continue
+        logger.warning(f"Autogen catch-up: slot {slot_key} missed, generating now")
+        async with lock:
+            if db.autogen_slot_done(slot_key):
+                continue
+            await _run_autogen_generation(context, slot_key)
+        return  # один догон за тик, остальные — следующими тиками
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -1145,13 +1222,22 @@ def run_bot(settings, db: Database, publisher: DzenPublisher = None) -> None:
             "Autogen disabled: JobQueue unavailable, install python-telegram-bot[job-queue]"
         )
     else:
+        _autogen_backfill_today(db)  # чтобы догон не сгенерировал дубль уже готового слота
         for t in AUTOGEN_TIMES:
             application.job_queue.run_daily(
                 autogen_job, time=t, name=f"autogen_{t.hour:02d}",
+                data={"slot_hour": t.hour},
                 job_kwargs={"misfire_grace_time": 300},
             )
         times_str = ", ".join(f"{t.hour:02d}:{t.minute:02d}" for t in AUTOGEN_TIMES)
         logger.info(f"Autogen scheduled daily at {times_str} MSK (+0-30 min random delay)")
+        application.job_queue.run_repeating(
+            autogen_catchup_job,
+            interval=AUTOGEN_CATCHUP_INTERVAL_S,
+            first=AUTOGEN_CATCHUP_INTERVAL_S,
+            name="autogen_catchup",
+        )
+        logger.info("Autogen catch-up scheduler enabled (missed slots are regenerated)")
         application.job_queue.run_daily(
             queue_summary_job, time=QUEUE_SUMMARY_TIME, name="queue_summary",
             job_kwargs={"misfire_grace_time": 300},

@@ -69,6 +69,12 @@ class Database:
 
                 CREATE INDEX IF NOT EXISTS idx_used_topics_created_at
                     ON used_topics(created_at);
+
+                CREATE TABLE IF NOT EXISTS autogen_slots (
+                    slot_key   TEXT PRIMARY KEY,
+                    article_id INTEGER,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                );
             """)
             conn.commit()
             self.logger.info("Database schema initialized")
@@ -157,6 +163,73 @@ class Database:
             article_id = cursor.lastrowid
             self.logger.info(f"Created article #{article_id}: {title[:50]}")
             return article_id
+        finally:
+            conn.close()
+
+    def mark_autogen_slot(self, slot_key: str, article_id: int) -> None:
+        """Record that today's autogen slot produced an article (idempotent)."""
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                """INSERT INTO autogen_slots (slot_key, article_id, created_at)
+                   VALUES (?, ?, CURRENT_TIMESTAMP)
+                   ON CONFLICT(slot_key) DO UPDATE SET article_id = excluded.article_id""",
+                (slot_key, article_id),
+            )
+            conn.commit()
+            self.logger.info(f"Autogen slot {slot_key} marked done (article #{article_id})")
+        finally:
+            conn.close()
+
+    def autogen_slot_done(self, slot_key: str) -> bool:
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT 1 FROM autogen_slots WHERE slot_key = ?", (slot_key,)
+            )
+            return cursor.fetchone() is not None
+        finally:
+            conn.close()
+
+    def backfill_autogen_slots(
+        self, slot_windows_utc: list[tuple[str, str, str]]
+    ) -> None:
+        """Seed today's fulfilled autogen slots from existing articles.
+
+        Migration safety net: on first run of the catch-up feature, the new
+        autogen_slots table is empty, so an already-generated morning/afternoon
+        article would otherwise be mistaken for a "missed" slot and re-generated.
+        Each tuple is (slot_key, start_utc, end_utc); a slot is marked done if any
+        article was created inside that UTC window. Idempotent.
+        """
+        conn = self.connect()
+        try:
+            cursor = conn.cursor()
+            for slot_key, start_utc, end_utc in slot_windows_utc:
+                cursor.execute(
+                    "SELECT 1 FROM autogen_slots WHERE slot_key = ?", (slot_key,)
+                )
+                if cursor.fetchone():
+                    continue
+                cursor.execute(
+                    "SELECT id FROM articles "
+                    "WHERE created_at >= ? AND created_at <= ? "
+                    "ORDER BY id LIMIT 1",
+                    (start_utc, end_utc),
+                )
+                row = cursor.fetchone()
+                if row:
+                    cursor.execute(
+                        "INSERT OR IGNORE INTO autogen_slots (slot_key, article_id) "
+                        "VALUES (?, ?)",
+                        (slot_key, row["id"]),
+                    )
+                    self.logger.info(
+                        f"Autogen backfill: slot {slot_key} <- article #{row['id']}"
+                    )
+            conn.commit()
         finally:
             conn.close()
 
