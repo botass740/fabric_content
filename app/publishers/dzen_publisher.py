@@ -91,51 +91,86 @@ class DzenPublisher:
                     screenshot = safe_screenshot(page, self.settings.logs_dir, "not_authorized")
                     return PublishResult(ok=False, error="Not authorized", screenshot_path=screenshot)
 
-                # ШАГ 2: ждём появления иконки профиля (явное ожидание вместо
-                # ненадёжного DOMContentLoaded) и кликаем
-                self.logger.info("Step 2: Clicking profile icon")
-                profile_clicked = False
-                profile_selectors = [
-                    "[class*='profile']",
-                    "[class*='avatar']",
-                    "[class*='Avatar']",
-                    "[data-testid='user-avatar']",
+                # ШАГ 2: сначала пробуем найти «Создать публикацию» прямо на странице
+                # (новый UI dzen показывает её без меню профиля). Если нет —
+                # пробуем через иконку профиля (старый путь).
+                self.logger.info("Step 2: Looking for 'Создать публикацию' on page...")
+                create_pub_selectors = [
+                    "button:has-text('Создать публикацию')",
+                    "a:has-text('Создать публикацию')",
+                    "span:has-text('Создать публикацию')",
+                    "div:has-text('Создать публикацию') >> visible=true",
                 ]
-                for sel in profile_selectors:
+                create_found = False
+                for sel in create_pub_selectors:
                     try:
                         loc = page.locator(sel).first
-                        loc.wait_for(state="visible", timeout=60000)
-                        loc.click()
-                        sleep_rand(page, 1.0, 2.0)
-                        profile_clicked = True
-                        self.logger.info(f"Profile clicked via: {sel}")
-                        break
+                        if loc.is_visible():
+                            loc.click()
+                            sleep_rand(page, 1.5, 2.5)
+                            create_found = True
+                            self.logger.info(f"'Создать публикацию' clicked via: {sel}")
+                            break
                     except Exception:
                         continue
 
-                if not profile_clicked:
-                    screenshot = safe_screenshot(page, self.settings.logs_dir, "profile_not_found")
-                    return PublishResult(ok=False, error="Profile icon not found", screenshot_path=screenshot)
+                # если кнопка не найдена напрямую — пробуем через меню профиля
+                if not create_found:
+                    self.logger.info("Step 2 alt: clicking profile icon to open menu")
+                    profile_clicked = False
+                    profile_selectors = [
+                        "[class*='profile']",
+                        "[class*='avatar']",
+                        "[class*='Avatar']",
+                        "[data-testid='user-avatar']",
+                    ]
+                    for sel in profile_selectors:
+                        try:
+                            loc = page.locator(sel).first
+                            loc.wait_for(state="visible", timeout=60000)
+                            loc.click()
+                            sleep_rand(page, 1.0, 2.0)
+                            profile_clicked = True
+                            self.logger.info(f"Profile clicked via: {sel}")
+                            break
+                        except Exception:
+                            continue
 
-                # ШАГ 3: Кликаем "Создать публикацию"
-                self.logger.info("Step 3: Clicking 'Создать публикацию'")
-                create_pub_btn = page.locator("button:has-text('Создать публикацию')").first
-                if create_pub_btn.is_visible():
-                    create_pub_btn.click()
-                    sleep_rand(page, 1.0, 2.0)
-                else:
-                    screenshot = safe_screenshot(page, self.settings.logs_dir, "create_pub_not_found")
-                    return PublishResult(ok=False, error="'Создать публикацию' not found", screenshot_path=screenshot)
+                    if not profile_clicked:
+                        screenshot = safe_screenshot(page, self.settings.logs_dir, "profile_not_found")
+                        return PublishResult(ok=False, error="Profile icon not found", screenshot_path=screenshot)
 
-                # ШАГ 4: Кликаем "Написать статью"
-                self.logger.info("Step 4: Clicking 'Написать статью'")
+                    # ШАГ 3: Кликаем "Создать публикацию" в меню профиля
+                    self.logger.info("Step 3: Clicking 'Создать публикацию' in profile menu")
+                    create_found = False
+                    for sel in create_pub_selectors:
+                        try:
+                            loc = page.locator(sel).first
+                            if loc.is_visible():
+                                loc.click()
+                                sleep_rand(page, 1.5, 2.5)
+                                create_found = True
+                                self.logger.info(f"'Создать публикацию' clicked via: {sel}")
+                                break
+                        except Exception:
+                            continue
+
+                    if not create_found:
+                        screenshot = safe_screenshot(page, self.settings.logs_dir, "create_pub_not_found")
+                        return PublishResult(ok=False, error="'Создать публикацию' not found", screenshot_path=screenshot)
+
+                # ШАГ 4: Кликаем "Написать статью" / "Создать статью"
+                self.logger.info("Step 4: Clicking article type")
                 article_clicked = False
                 article_selectors = [
                     "button:has-text('Создать статью')",
                     "button:has-text('Написать статью')",
-                    "button:has-text('Статья')",
                     "a:has-text('Создать статью')",
                     "a:has-text('Написать статью')",
+                    "button:has-text('Статья')",
+                    "a:has-text('Статья')",
+                    "span:has-text('Статья') >> visible=true",
+                    "[class*='article'] >> visible=true",
                 ]
                 for sel in article_selectors:
                     try:
