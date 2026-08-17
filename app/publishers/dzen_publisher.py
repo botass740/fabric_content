@@ -1,3 +1,4 @@
+import time
 import pyperclip
 import random
 import logging
@@ -164,29 +165,42 @@ class DzenPublisher:
             finally:
                 context.close()
 
-    def _wait_for_editor(self, page, timeout_s: float = 90.0) -> bool:
+    def _wait_for_editor(self, page, timeout_s: float = 150.0) -> bool:
         """Ждёт появления поля контента нового Quill-редактора (`ql-editor`).
 
-        Редактор новой статьи грузится в SPA десятки секунд на слабом VPS,
-        поэтому поллим селектор в цикле, а не ждём один раз с таймаутом.
+        Редактор новой статьи грузится в SPA десятки секунд на слабом VPS и
+        иногда не рендерится с первого раза (проверено на #55). Черновик при
+        этом уже создан (URL .../editor/<id>), поэтому ретраим: если поля нет
+        15 сек и мы на URL редактора — перезагружаем страницу заново.
         """
         deadline = timeout_s * 1000
         waited = 0.0
+        last_reload_at = -20000
+        reloads = 0
         while waited < deadline:
             try:
-                n = page.locator(self.CONTENT_FIELD).count()
-                if n >= 1:
-                    try:
-                        page.locator(self.TITLE_FIELD).first.wait_for(state="visible", timeout=5000)
-                    except Exception:
-                        pass
+                if page.locator(self.CONTENT_FIELD).count() >= 1:
                     return True
             except Exception:
                 pass
-            page.wait_for_timeout(2000)
+
             waited += 2000
-            if int(waited) % 10000 == 0:
-                self.logger.info(f"Waiting for editor... {int(waited/1000)}s")
+            is_editor_url = "/editor/" in page.url
+            # Перезагрузка черновика, если поля не появились спустя ~15 сек на редакторе
+            if is_editor_url and (waited - last_reload_at) >= 15000 and reloads < 4:
+                self.logger.info(f"Editor not rendering ({int(waited/1000)}s) — reloading draft editor")
+                try:
+                    page.reload(wait_until="commit", timeout=30000)
+                    reloads += 1
+                    last_reload_at = waited
+                    page.wait_for_timeout(3000)
+                    continue
+                except Exception as e:
+                    self.logger.warning(f"reload failed: {e}")
+
+            page.wait_for_timeout(2000)
+            if int(waited) % 20000 == 0:
+                self.logger.info(f"Waiting for editor... {int(waited/1000)}s (url={page.url[:70]})")
         return False
 
     def _fill_and_publish(
