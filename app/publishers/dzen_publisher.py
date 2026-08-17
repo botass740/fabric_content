@@ -34,6 +34,16 @@ def safe_screenshot(page: Page, logs_dir: Path, prefix: str = "dzen_fail") -> st
 class DzenPublisher:
     """Publisher for Dzen platform using Playwright."""
 
+    # Селекторы новой студии/редактора (dzen 17.08.2026).
+    # Старый путь через аватар на главной («Создать публикацию» в меню) больше не существует:
+    # dzen перевёл создание в студию /profile/editor/new/...
+    CREATE_BTN = "[class*='publications-layout__button-NT']"
+    MENU_WRITE_ARTICLE = "span:has-text('Написать статью')"
+    TITLE_FIELD = "div[contenteditable][data-placeholder='Заголовок' i]"
+    CONTENT_FIELD = "div.ql-editor[contenteditable]"
+    FILE_INPUT = "input[type=file]"
+    PUBLISH_BTN = "[data-testid='article-publish-btn']"
+
     def __init__(self, settings, logger):
         self.settings = settings
         self.logger = logger
@@ -77,12 +87,14 @@ class DzenPublisher:
 
                 page.set_default_timeout(60000)
 
-                # ШАГ 1: Открываем главную Дзена.
-                # DOMContentLoaded у dzen нестабилен (6-60+с) и упирался в таймаут 60с,
-                # из-за чего публикации падали. Ждём только commit навигации (быстрый),
-                # а реальную готовность UI определяем ожиданием иконки профиля ниже.
-                self.logger.info("Step 1: Opening dzen.ru")
-                page.goto("https://dzen.ru", wait_until="commit", timeout=30000)
+                # ШАГ 1: Открываем студию блогера (страница публикаций).
+                # Старый вход через главную dzen.ru + аватар мёртв — создание переехало сюда.
+                self.logger.info("Step 1: Opening dzen studio (publications)")
+                page.goto(
+                    "https://dzen.ru/profile/editor/new/publications/?state=draft",
+                    wait_until="commit",
+                    timeout=30000,
+                )
                 sleep_rand(page, 2.0, 3.0)
 
                 # Проверка авторизации (после паузы, чтобы SPA успело применить редирект)
@@ -91,119 +103,52 @@ class DzenPublisher:
                     screenshot = safe_screenshot(page, self.settings.logs_dir, "not_authorized")
                     return PublishResult(ok=False, error="Not authorized", screenshot_path=screenshot)
 
-                # ШАГ 2: сначала пробуем найти «Создать публикацию» прямо на странице
-                # (новый UI dzen показывает её без меню профиля). Если нет —
-                # пробуем через иконку профиля (старый путь).
-                self.logger.info("Step 2: Looking for 'Создать публикацию' on page...")
-                create_pub_selectors = [
-                    "button:has-text('Создать публикацию')",
-                    "a:has-text('Создать публикацию')",
-                    "span:has-text('Создать публикацию')",
-                    "div:has-text('Создать публикацию') >> visible=true",
-                ]
-                create_found = False
-                for sel in create_pub_selectors:
-                    try:
-                        loc = page.locator(sel).first
-                        if loc.is_visible():
-                            loc.click()
-                            sleep_rand(page, 1.5, 2.5)
-                            create_found = True
-                            self.logger.info(f"'Создать публикацию' clicked via: {sel}")
-                            break
-                    except Exception:
-                        continue
+                # ШАГ 2: Кнопка «Создать» в студии (открывает меню «Написать статью» / «Загрузить видео»)
+                self.logger.info("Step 2: Looking for create button in studio...")
+                create_btn = page.locator(self.CREATE_BTN).first
+                try:
+                    create_btn.wait_for(state="visible", timeout=60000)
+                    create_btn.click()
+                    sleep_rand(page, 1.5, 2.5)
+                    self.logger.info("Create button clicked")
+                except Exception as e:
+                    screenshot = safe_screenshot(page, self.settings.logs_dir, "create_btn_not_found")
+                    return PublishResult(
+                        ok=False,
+                        error=f"'Create' button in studio not found: {e}",
+                        screenshot_path=screenshot,
+                    )
 
-                # если кнопка не найдена напрямую — пробуем через меню профиля
-                if not create_found:
-                    self.logger.info("Step 2 alt: clicking profile icon to open menu")
-                    profile_clicked = False
-                    profile_selectors = [
-                        "[class*='profile']",
-                        "[class*='avatar']",
-                        "[class*='Avatar']",
-                        "[data-testid='user-avatar']",
-                    ]
-                    for sel in profile_selectors:
-                        try:
-                            loc = page.locator(sel).first
-                            loc.wait_for(state="visible", timeout=60000)
-                            loc.click()
-                            sleep_rand(page, 1.0, 2.0)
-                            profile_clicked = True
-                            self.logger.info(f"Profile clicked via: {sel}")
-                            break
-                        except Exception:
-                            continue
+                # ШАГ 3: В меню — «Написать статью»
+                self.logger.info("Step 3: Clicking 'Написать статью' in create menu")
+                try:
+                    write_article = page.locator(self.MENU_WRITE_ARTICLE).first
+                    write_article.wait_for(state="visible", timeout=15000)
+                    write_article.click()
+                    sleep_rand(page, 2.0, 3.0)
+                    self.logger.info("'Написать статью' clicked")
+                except Exception as e:
+                    screenshot = safe_screenshot(page, self.settings.logs_dir, "write_article_btn_not_found")
+                    return PublishResult(
+                        ok=False,
+                        error=f"'Написать статью' in create menu not found: {e}",
+                        screenshot_path=screenshot,
+                    )
 
-                    if not profile_clicked:
-                        screenshot = safe_screenshot(page, self.settings.logs_dir, "profile_not_found")
-                        return PublishResult(ok=False, error="Profile icon not found", screenshot_path=screenshot)
-
-                    # ШАГ 3: Кликаем "Создать публикацию" в меню профиля
-                    self.logger.info("Step 3: Clicking 'Создать публикацию' in profile menu")
-                    create_found = False
-                    for sel in create_pub_selectors:
-                        try:
-                            loc = page.locator(sel).first
-                            if loc.is_visible():
-                                loc.click()
-                                sleep_rand(page, 1.5, 2.5)
-                                create_found = True
-                                self.logger.info(f"'Создать публикацию' clicked via: {sel}")
-                                break
-                        except Exception:
-                            continue
-
-                    if not create_found:
-                        screenshot = safe_screenshot(page, self.settings.logs_dir, "create_pub_not_found")
-                        return PublishResult(ok=False, error="'Создать публикацию' not found", screenshot_path=screenshot)
-
-                # ШАГ 4: Кликаем "Написать статью" / "Создать статью"
-                self.logger.info("Step 4: Clicking article type")
-                article_clicked = False
-                article_selectors = [
-                    "button:has-text('Создать статью')",
-                    "button:has-text('Написать статью')",
-                    "a:has-text('Создать статью')",
-                    "a:has-text('Написать статью')",
-                    "button:has-text('Статья')",
-                    "a:has-text('Статья')",
-                    "span:has-text('Статья') >> visible=true",
-                    "[class*='article'] >> visible=true",
-                ]
-                for sel in article_selectors:
-                    try:
-                        loc = page.locator(sel).first
-                        if loc.is_visible():
-                            loc.click()
-                            sleep_rand(page, 2.0, 3.0)
-                            article_clicked = True
-                            self.logger.info(f"Article editor opened via: {sel}")
-                            break
-                    except Exception:
-                        continue
-
-                if not article_clicked:
-                    screenshot = safe_screenshot(page, self.settings.logs_dir, "article_btn_not_found")
-                    return PublishResult(ok=False, error="'Создать статью' not found", screenshot_path=screenshot)
-
-                sleep_rand(page, 2.0, 3.0)
-
-                # Редактор может открыться в новой вкладке и грузится долго на слабом VPS
-                editor_page = self._wait_for_editor_page(context, page)
-                if editor_page is None:
+                # Редактор новой статьи (Quill). Открывается в той же вкладке,
+                # внутри SPA: /profile/editor/new/editor/<id>. Грузится на слабом VPS медленно.
+                self.logger.info("Step 4: Waiting for article editor to load...")
+                editor_ready = self._wait_for_editor(page)
+                if not editor_ready:
                     self.logger.warning(
-                        f"Editor fields never appeared. Pages: {[p.url for p in context.pages]}"
+                        f"Editor fields never appeared. url={page.url}"
                     )
                     screenshot = safe_screenshot(page, self.settings.logs_dir, "editor_not_loaded")
                     return PublishResult(
                         ok=False,
-                        error="Editor did not load (no DraftEditor fields)",
+                        error="Editor did not load (no ql-editor field)",
                         screenshot_path=screenshot,
                     )
-                page = editor_page
-                page.bring_to_front()
                 self.logger.info(f"Editor URL: {page.url}")
 
                 return self._fill_and_publish(page, title=title, content=content, image_path=image_path)
@@ -219,26 +164,30 @@ class DzenPublisher:
             finally:
                 context.close()
 
-    def _wait_for_editor_page(self, context, current_page, timeout_s: float = 60.0):
-        """Ищет вкладку с загрузившимся редактором (есть DraftEditor-поля).
+    def _wait_for_editor(self, page, timeout_s: float = 90.0) -> bool:
+        """Ждёт появления поля контента нового Quill-редактора (`ql-editor`).
 
-        Редактор может открыться в новой вкладке, а на слабом VPS его
-        JS-бандл грузится десятки секунд — поэтому опрашиваем все вкладки.
+        Редактор новой статьи грузится в SPA десятки секунд на слабом VPS,
+        поэтому поллим селектор в цикле, а не ждём один раз с таймаутом.
         """
-        selector = 'div.notranslate.public-DraftEditor-content[role="textbox"]'
         deadline = timeout_s * 1000
         waited = 0.0
         while waited < deadline:
-            for p in context.pages:
-                try:
-                    if p.locator(selector).count() >= 2:
-                        return p
-                except Exception:
-                    continue
-            current_page.wait_for_timeout(2000)
+            try:
+                n = page.locator(self.CONTENT_FIELD).count()
+                if n >= 1:
+                    try:
+                        page.locator(self.TITLE_FIELD).first.wait_for(state="visible", timeout=5000)
+                    except Exception:
+                        pass
+                    return True
+            except Exception:
+                pass
+            page.wait_for_timeout(2000)
             waited += 2000
-            self.logger.info(f"Waiting for editor... {int(waited/1000)}s, pages={len(context.pages)}")
-        return None
+            if int(waited) % 10000 == 0:
+                self.logger.info(f"Waiting for editor... {int(waited/1000)}s")
+        return False
 
     def _fill_and_publish(
         self,
@@ -254,45 +203,12 @@ class DzenPublisher:
         )
 
         # ================================================================
-        # ШАГ 1: Найти все DraftEditor поля и разделить по Y-позиции
+        # ШАГ 1: Вставить заголовок через буфер обмена (Ctrl+V)
         # ================================================================
-        self.logger.info("Step 1: Locating editor fields")
-        sleep_rand(page, 1.0, 2.0)
-
+        self.logger.info("Step 1: Filling title")
         try:
-            fields = page.evaluate("""
-                () => {
-                    const els = document.querySelectorAll(
-                        'div.notranslate.public-DraftEditor-content[role="textbox"]'
-                    );
-                    return Array.from(els).map((el, i) => {
-                        const r = el.getBoundingClientRect();
-                        return {index: i, x: r.x, y: r.y, width: r.width, height: r.height};
-                    });
-                }
-            """)
-            self.logger.info(f"Found DraftEditor fields: {fields}")
-        except Exception as e:
-            screenshot = safe_screenshot(page, self.settings.logs_dir, "fields_not_found")
-            return PublishResult(ok=False, error=f"Cannot locate editor fields: {e}", screenshot_path=screenshot)
-
-        if len(fields) < 2:
-            screenshot = safe_screenshot(page, self.settings.logs_dir, "fields_not_enough")
-            return PublishResult(ok=False, error=f"Expected 2 fields, got {len(fields)}", screenshot_path=screenshot)
-
-        fields_sorted = sorted(fields, key=lambda f: f["y"])
-        title_idx = fields_sorted[0]["index"]
-        content_idx = fields_sorted[1]["index"]
-        self.logger.info(f"Title field index={title_idx}, content field index={content_idx}")
-
-        # ================================================================
-        # ШАГ 2: Вставить заголовок через буфер обмена (Ctrl+V)
-        # ================================================================
-        self.logger.info("Step 2: Filling title")
-        try:
-            title_loc = page.locator(
-                'div.notranslate.public-DraftEditor-content[role="textbox"]'
-            ).nth(title_idx)
+            title_loc = page.locator(self.TITLE_FIELD).first
+            title_loc.wait_for(state="visible", timeout=30000)
             title_loc.click()
             sleep_rand(page, 0.5, 1.0)
             page.keyboard.press("Control+A")
@@ -302,7 +218,8 @@ class DzenPublisher:
             pyperclip.copy(title)
             page.keyboard.press("Control+V")
             sleep_rand(page, 0.5, 1.0)
-            self.logger.info("Title pasted via clipboard")
+            got = title_loc.inner_text().strip()
+            self.logger.info(f"Title pasted via clipboard (pasted_len={len(got)})")
         except Exception as e:
             screenshot = safe_screenshot(page, self.settings.logs_dir, "title_error")
             return PublishResult(ok=False, error=f"Title error: {e}", screenshot_path=screenshot)
@@ -310,93 +227,18 @@ class DzenPublisher:
         sleep_rand(page, 1.0, 1.5)
 
         # ================================================================
-        # ШАГ 3: Загрузка обложки через file chooser
+        # ШАГ 2: Загрузка обложки — прямой <input type=file> в редакторе
         # ================================================================
         if image_path and Path(image_path).exists():
-            self.logger.info(f"Step 3: Uploading cover image: {image_path}")
+            self.logger.info(f"Step 2: Uploading cover image: {image_path}")
             try:
-                # Кликаем в поле контента чтобы появилась иконка +
-                content_loc = page.locator(
-                    'div.notranslate.public-DraftEditor-content[role="textbox"]'
-                ).nth(content_idx)
-                content_loc.click()
-                sleep_rand(page, 0.5, 1.0)
-                page.keyboard.press("Control+Home")
-                sleep_rand(page, 0.5, 1.0)
-
-                # Ищем кнопку + (добавить блок)
-                plus_selectors = [
-                    '[class*="editorBlockButton"]',
-                    '[class*="block-button"]',
-                    '[class*="blockButton"]',
-                    '[class*="side-toolbar"]',
-                    '[class*="sideToolbar"]',
-                    '[class*="addButton"]',
-                ]
-
-                clicked = False
-                for sel in plus_selectors:
-                    try:
-                        btn = page.locator(sel).first
-                        if btn.count() > 0 and btn.is_visible():
-                            btn.click()
-                            sleep_rand(page, 0.3, 0.5)
-                            self.logger.info(f"Clicked + button: {sel}")
-                            clicked = True
-                            break
-                    except:
-                        continue
-
-                if clicked:
-                    sleep_rand(page, 0.3, 0.5)
-                    img_selectors = [
-                        '[class*="image-popup"]',
-                        '[class*="imageButton"]',
-                        '[class*="image"]',
-                        '[aria-label*="зображени"]',
-                        '[title*="зображени"]',
-                    ]
-                    for sel in img_selectors:
-                        try:
-                            btn = page.locator(sel).first
-                            if btn.count() > 0 and btn.is_visible():
-                                btn.click()
-                                self.logger.info(f"Clicked image button: {sel}")
-                                sleep_rand(page, 0.5, 1.0)
-                                break
-                        except:
-                            continue
-
-                # Теперь popup открыт — кликаем на кнопку "Загрузите файл"
-                with page.expect_file_chooser(timeout=10000) as fc_info:
-                    upload_btn = page.locator('[class*="image-popup__fileButton"]').first
-                    upload_btn.click()
-                    self.logger.info("Clicked 'Загрузите файл' button")
-
-                # Загружаем файл через перехваченный file chooser
-                file_chooser = fc_info.value
-                file_chooser.set_files(str(image_path))
-                sleep_rand(page, 2.0, 3.0)
-                self.logger.info("Cover image uploaded successfully")
-
-                # Ждём пока файл загрузится на сервер и popup закроется
-                self.logger.info("Waiting for file to upload and popup to close...")
-                try:
-                    # Ждём исчезновения кнопки "Загрузите файл"
-                    page.wait_for_selector(
-                        '[class*="image-popup__fileButton"]',
-                        state="hidden",
-                        timeout=15000
-                    )
-                    self.logger.info("File uploaded, popup closed")
-                except:
-                    self.logger.warning("Upload timeout, trying Escape")
-                    page.keyboard.press("Escape")
-                    sleep_rand(page, 1.0, 1.5)
-
-                sleep_rand(page, 1.5, 2.0)
-
+                file_input = page.locator(self.FILE_INPUT).first
+                file_input.set_input_files(str(image_path))
+                sleep_rand(page, 3.0, 4.0)
+                imgs = page.locator("img").count()
+                self.logger.info(f"Cover image uploaded via input[type=file] (imgs={imgs})")
             except Exception as e:
+                # Обложка некритична: неудача не должна ронять публикацию
                 self.logger.warning(f"Cover upload failed (non-critical): {e}")
                 safe_screenshot(page, self.settings.logs_dir, "cover_fail")
         else:
@@ -404,163 +246,127 @@ class DzenPublisher:
 
         sleep_rand(page, 1.0, 1.5)
 
-
-        # ШАГ 4: Вставить контент
         # ================================================================
-        self.logger.info("Step 4: Filling content")
+        # ШАГ 3: Вставить контент (вставка с \n\n → отдельные <p>-блоки в Quill)
+        # ================================================================
+        self.logger.info("Step 3: Filling content")
         try:
-            content_loc = page.locator(
-                'div.notranslate.public-DraftEditor-content[role="textbox"]'
-            ).nth(content_idx)
+            content_loc = page.locator(self.CONTENT_FIELD).first
             content_loc.click()
             sleep_rand(page, 0.5, 1.0)
             page.keyboard.press("Control+A")
-            page.keyboard.press("Control+End")
+            page.keyboard.press("Backspace")
             sleep_rand(page, 0.3, 0.5)
 
             # Форсируем фокус через JS
-            page.evaluate(f"""
-                () => {{
-                    const editors = document.querySelectorAll(
-                        'div.notranslate.public-DraftEditor-content[role="textbox"]'
-                    );
-                    if (editors.length > {content_idx}) {{
-                        const el = editors[{content_idx}];
-                        el.focus();
-                        const sel = window.getSelection();
-                        const range = document.createRange();
-                        range.selectNodeContents(el);
-                        range.collapse(false);
-                        sel.removeAllRanges();
-                        sel.addRange(range);
-                    }}
-                }}
-            """)
+            page.evaluate("""() => {
+                const el = document.querySelector('div.ql-editor[contenteditable]');
+                if (el) {
+                    el.focus();
+                    const sel = window.getSelection();
+                    const range = document.createRange();
+                    range.selectNodeContents(el);
+                    range.collapse(false);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            }""")
             sleep_rand(page, 0.3, 0.5)
 
-            # Печатаем по абзацам с Shift+Enter между ними
-            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
-            self.logger.info(f"Typing {len(paragraphs)} paragraphs")
+            # Вставка целиком: Quill сам раскладывает \n\n на отдельные <p>-блоки.
+            # Проверено на живом редакторе (17.08.2026).
+            pyperclip.copy(content)
+            page.keyboard.press("Control+V")
+            sleep_rand(page, 2.0, 3.0)
+            pasted_len = len(content_loc.inner_text().strip())
+            self.logger.info(f"Content pasted (pasted_len={pasted_len}, expected~{len(content)})")
 
-            for i, para in enumerate(paragraphs):
-                # Печатаем абзац кусками
-                for j in range(0, len(para), 500):
-                    page.keyboard.type(para[j:j+500], delay=0)
-                    sleep_rand(page, 0.02, 0.05)
+            # Если вставка проглотилась (слабый VPS) — печатаем по абзацам.
+            if pasted_len < len(content) * 0.6:
+                self.logger.warning("Paste swallowed — falling back to typing by paragraphs")
+                content_loc.click()
+                sleep_rand(page, 0.5, 1.0)
+                page.keyboard.press("Control+A")
+                page.keyboard.press("Backspace")
+                sleep_rand(page, 0.3, 0.5)
 
-                # Между абзацами — Shift+Enter (мягкий перенос, без большого отступа)
-                if i < len(paragraphs) - 1:
-                    page.keyboard.press("Shift+Enter")
-                    page.keyboard.press("Shift+Enter")
-                    sleep_rand(page, 0.1, 0.2)
+                paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+                self.logger.info(f"Typing {len(paragraphs)} paragraphs")
+
+                for i, para in enumerate(paragraphs):
+                    for j in range(0, len(para), 500):
+                        page.keyboard.type(para[j:j + 500], delay=0)
+                        sleep_rand(page, 0.02, 0.05)
+
+                    if i < len(paragraphs) - 1:
+                        page.keyboard.press("Enter")
+                        page.keyboard.press("Enter")
+                        sleep_rand(page, 0.1, 0.2)
 
             sleep_rand(page, 1.0, 2.0)
-            self.logger.info(f"Content typed ({len(content)} chars)")
-
+            self.logger.info(f"Content filled ({len(content)} chars)")
         except Exception as e:
             screenshot = safe_screenshot(page, self.settings.logs_dir, "content_error")
             return PublishResult(ok=False, error=f"Content error: {e}", screenshot_path=screenshot)
 
         sleep_rand(page, 1.5, 2.0)
-        
-        # ================================================================
-        # ШАГ 5: Нажать "Опубликовать"
-        # ================================================================
-        self.logger.info("Step 5: Publishing")
-        publish_selectors = [
-            "button:has-text('Опубликовать')",
-            "button:has-text('Publish')",
-            "[data-testid='publish-button']",
-        ]
-        publish_clicked = False
-        for selector in publish_selectors:
-            try:
-                btn = page.locator(selector).first
-                if btn.is_visible():
-                    btn.click()
-                    sleep_rand(page, 2.0, 3.0)
-                    publish_clicked = True
-                    self.logger.info(f"Publish clicked via: {selector}")
-                    break
-            except Exception:
-                continue
 
-        if not publish_clicked:
+        # ================================================================
+        # ШАГ 4: Нажать «Опубликовать» (data-testid), затем подтвердить в диалоге
+        # ================================================================
+        self.logger.info("Step 4: Publishing")
+        try:
+            publish_btn = page.locator(self.PUBLISH_BTN).first
+            publish_btn.wait_for(state="visible", timeout=30000)
+            publish_btn.click()
+            sleep_rand(page, 2.0, 3.0)
+            self.logger.info("Publish button (testid) clicked")
+        except Exception as e:
             screenshot = safe_screenshot(page, self.settings.logs_dir, "publish_btn_not_found")
-            return PublishResult(ok=False, error="Publish button not found", screenshot_path=screenshot)
+            return PublishResult(ok=False, error=f"Publish button not found: {e}", screenshot_path=screenshot)
 
-        # После первого клика ждём диалог подтверждения
+        # После первого клика может открыться диалог подтверждения с «Опубликовать»
         sleep_rand(page, 2.0, 3.0)
         try:
-            # Ждём появления диалога
-            page.wait_for_selector(
-                "button:has-text('Опубликовать')",
-                timeout=10000
-            )
-            sleep_rand(page, 1.0, 1.5)
-
-            # Берём все кнопки и кликаем последнюю видимую
-            dialog_publish_buttons = page.locator("button:has-text('Опубликовать')").all()
-            self.logger.info(f"Found {len(dialog_publish_buttons)} publish buttons after first click")
-
-            for btn in reversed(dialog_publish_buttons):
+            confirm = page.locator("button:has-text('Опубликовать')").all()
+            self.logger.info(f"Found {len(confirm)} publish buttons after first click")
+            for btn in reversed(confirm):
                 try:
                     if btn.is_visible():
                         btn.click()
                         self.logger.info("Clicked final publish button in dialog")
                         sleep_rand(page, 4.0, 5.0)
                         break
-                except:
+                except Exception:
                     continue
         except Exception as e:
             self.logger.warning(f"Failed to click dialog publish button: {e}")
 
-        # Проверяем URL
+        # ================================================================
+        # ШАГ 5: Проверяем успех
+        # ================================================================
+        sleep_rand(page, 3.0, 5.0)
         final_url = page.url
         self.logger.info(f"Final URL: {final_url}")
 
+        # Признаки успеха (новый редактор может вести себя по-разному — ловим все):
         if "/a/" in final_url:
             self.logger.info("URL contains /a/ — published successfully")
             return PublishResult(ok=True, url=final_url)
 
-        # URL всё ещё /edit — пробуем ещё раз
-        self.logger.warning("URL still /edit — trying one more publish click")
-        try:
-            btn = page.locator("button:has-text('Опубликовать')").first
-            if btn.is_visible():
-                btn.click()
-                sleep_rand(page, 4.0, 5.0)
-                final_url = page.url
-                self.logger.info(f"Final URL after retry: {final_url}")
-        except Exception as e:
-            self.logger.warning(f"Retry publish failed: {e}")
-
-        if "/a/" in final_url:
-            self.logger.info("Published successfully after retry")
-            return PublishResult(ok=True, url=final_url)
-        else:
-            self.logger.warning(f"Published but URL is /edit: {final_url}")
-            return PublishResult(ok=True, url=final_url)
-
-        # ================================================================
-        # ШАГ 6: Проверяем успех
-        # ================================================================
-        sleep_rand(page, 3.0, 5.0)
-        current_url = page.url
-        self.logger.info(f"Final URL: {current_url}")
-
-        success_texts = ["Опубликовано", "Статья опубликована", "Готово"]
+        success_texts = ["Опубликовано", "Статья опубликована", "Публикация доступна"]
         for text in success_texts:
             try:
                 if page.locator(f"text={text}").count() > 0:
                     self.logger.info(f"Success indicator found: {text}")
-                    return PublishResult(ok=True, url=current_url)
+                    return PublishResult(ok=True, url=final_url)
             except Exception:
                 pass
 
-        if current_url != self.settings.dzen_editor_url:
-            self.logger.info("URL changed — likely published successfully")
-            return PublishResult(ok=True, url=current_url)
+        # Публикация могла увести со страницы редактора на список публикаций/канал
+        if "editor" not in final_url:
+            self.logger.info("Left editor page — likely published successfully")
+            return PublishResult(ok=True, url=final_url)
 
         screenshot = safe_screenshot(page, self.settings.logs_dir, "publish_unknown")
         return PublishResult(

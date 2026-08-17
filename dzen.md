@@ -144,7 +144,8 @@ tail -f /var/log/squid/access.log
 
 ## Известные грабли (проверено на практике)
 
-- Редактор статьи Дзена открывается в **новой вкладке**, и на слабом VPS грузится десятки секунд. Искать поля надо во всех `context.pages`, а не в исходной странице, и ждать до минуты (`_wait_for_editor_page()`).
+- **Публикация в Дзен переехала в новую студию (2026-08-17).** Старый путь «главная → аватар → Создать публикацию → Написать статью» умер: dzen перевёл создание в `/profile/editor/new/...` (Quill-редактор). Новый флоу в `dzen_publisher.py`: студия публикаций → кнопка `[class*='publications-layout__button-NT']` → меню «Написать статью» → редактор. Селекторы: заголовок `div[contenteditable][data-placeholder='Заголовок']`, контент `div.ql-editor[contenteditable]`, обложка — прямой `input[type=file]` (`set_input_files`), публикация — `[data-testid='article-publish-btn']`. Редактор грузится в той же вкладке до ~60с (поллим `ql-editor`, `_wait_for_editor()`).
+- `launch_persistent_context()` **не принимает** `storage_state`. Только `new_context`. Для persistent-профиля — `add_cookies()` + localStorage через `evaluate`.
 - `launch_persistent_context()` **не принимает** `storage_state`. Только `new_context`. Для persistent-профиля — `add_cookies()` + localStorage через `evaluate`.
 - Профиль Chromium не переносится между Windows и Linux (шифрование куков ключом ОС).
 - `OpenRouterClient.chat()` принимает **только keyword-аргументы**: `chat(system=..., user=..., max_tokens=...)`. Позиционный список сообщений не пройдёт.

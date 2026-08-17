@@ -54,13 +54,15 @@ main.py → Telegram bot (app/telegram/bot.py)
 
 ## Публикация в Дзен (Playwright)
 
-1. Открыть dzen.ru → профиль → "Создать публикацию" → "Написать статью"
-2. Вставить заголовок через Ctrl+V (pyperclip)
-3. Загрузить обложку через `expect_file_chooser` + `set_files()`
-4. Закрыть popup загрузки (Escape / клик вне)
-5. Вставить контент через Ctrl+V (pyperclip), разделяя абзацы `\n\n`
-6. Нажать "Опубликовать" дважды (первый клик открывает диалог)
-7. Проверить URL: наличие `/a/` = успех
+1. Открыть студию блогера `/profile/editor/new/publications/?state=draft` → кнопка "Создать" (`[class*='publications-layout__button-NT']`) → в меню "Написать статью"
+2. Дождаться Quill-редактора (`div.ql-editor[contenteditable]`, грузится до ~60с)
+3. Вставить заголовок через Ctrl+V в `div[contenteditable][data-placeholder='Заголовок']`
+4. Загрузить обложку через прямой `input[type=file]` → `set_input_files()`
+5. Вставить контент через Ctrl+V в `div.ql-editor` (fallback — печать по абзацам)
+6. Нажать "Опубликовать" (`[data-testid='article-publish-btn']`), при диалоге подтверждения — кликнуть повторно
+7. Проверить URL: наличие `/a/` или индикатор "Опубликовано" = успех
+
+> ⚠️ В 2026-08-17 dzen перевёл создание в новую студию. Старый путь через аватар на главной мёртв — не возвращаться. Подробности в `dzen.md`.
 
 ## Telegram Bot
 
