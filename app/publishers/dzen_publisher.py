@@ -326,72 +326,91 @@ class DzenPublisher:
         sleep_rand(page, 1.5, 2.0)
 
         # ================================================================
-        # ШАГ 4: Нажать «Опубликовать» (data-testid), затем подтвердить в диалоге
+        # ШАГ 4: Нажать «Опубликовать» и провести публикацию.
+        # После первого клика SPA уводит на «Настройки публикации»
+        # (…/article-settings), где есть финальная кнопка [data-testid='publish-btn'].
+        # Иногда публикует сразу, без промежуточной страницы.
         # ================================================================
         self.logger.info("Step 4: Publishing")
+
+        # Ловим ответ финального API публикации: dzen может требовать капчу
+        captcha_hit = {"v": False}
+
+        def _on_resp(resp):
+            try:
+                if "update-publication-content-and-publish" in resp.url and resp.status >= 400:
+                    try:
+                        if "captcha" in (resp.text() or ""):
+                            captcha_hit["v"] = True
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+
+        page.on("response", _on_resp)
+
         try:
             publish_btn = page.locator(self.PUBLISH_BTN).first
             publish_btn.wait_for(state="visible", timeout=30000)
             publish_btn.click()
-            sleep_rand(page, 2.0, 3.0)
-            self.logger.info("Publish button (testid) clicked")
+            sleep_rand(page, 1.5, 2.5)
+            self.logger.info("Publish button (article-publish-btn) clicked")
         except Exception as e:
             screenshot = safe_screenshot(page, self.settings.logs_dir, "publish_btn_not_found")
             return PublishResult(ok=False, error=f"Publish button not found: {e}", screenshot_path=screenshot)
 
-        # После первого клика может открыться диалог подтверждения с «Опубликовать»
-        sleep_rand(page, 2.0, 3.0)
-        try:
-            confirm = page.locator("button:has-text('Опубликовать')").all()
-            self.logger.info(f"Found {len(confirm)} publish buttons after first click")
-            for btn in reversed(confirm):
-                try:
-                    if btn.is_visible():
-                        btn.click()
-                        self.logger.info("Clicked final publish button in dialog")
-                        sleep_rand(page, 4.0, 5.0)
-                        break
-                except Exception:
-                    continue
-        except Exception as e:
-            self.logger.warning(f"Failed to click dialog publish button: {e}")
-
-        # ================================================================
-        # ШАГ 5: Проверяем успех
-        # ================================================================
-        sleep_rand(page, 3.0, 5.0)
-        final_url = page.url
-        self.logger.info(f"Final URL: {final_url}")
-
-        # Признаки успеха (новый редактор может вести себя по-разному — ловим все):
-        if "/a/" in final_url:
-            self.logger.info("URL contains /a/ — published successfully")
-            return PublishResult(ok=True, url=final_url)
-
-        # После публикации dzen уводит из редактора черновика на список публикаций
-        # (…/profile/editor/new/publications?state=published). Это главный признак успеха
-        # в новой студии — проверяем ДО общего «left editor», т.к. здесь есть слово editor.
-        if "/publications" in final_url or "state=published" in final_url:
-            self.logger.info("Left draft editor → returned to publications list — published successfully")
-            return PublishResult(ok=True, url=final_url)
-
+        # Доп. константа финальной кнопки (на странице настроек)
+        final_publish_sel = "[data-testid='publish-btn']"
         success_texts = ["Опубликовано", "Статья опубликована", "Публикация доступна"]
-        for text in success_texts:
-            try:
-                if page.locator(f"text={text}").count() > 0:
-                    self.logger.info(f"Success indicator found: {text}")
-                    return PublishResult(ok=True, url=final_url)
-            except Exception:
-                pass
 
-        # Публикация могла увести со страницы редактора на канал/другой раздел
-        if "editor" not in final_url:
-            self.logger.info("Left editor page — likely published successfully")
-            return PublishResult(ok=True, url=final_url)
+        deadline = time.time() + 90
+        final_clicked = False
+        while time.time() < deadline:
+            url = page.url
 
+            # 1) Признак успеха: ушли с редактора на список/канал/статью
+            if "/a/" in url or "/publications" in url or "state=published" in url:
+                self.logger.info(f"Published — navigated away ({url[:80]})")
+                return PublishResult(ok=True, url=url)
+
+            # 2) Пришли на «Настройки публикации» — жмём финальную кнопку один раз
+            if "article-settings" in url and not final_clicked:
+                try:
+                    fb = page.locator(final_publish_sel).first
+                    if fb.is_visible():
+                        fb.click()
+                        sleep_rand(page, 1.0, 2.0)
+                        final_clicked = True
+                        self.logger.info("Clicked final 'Опубликовать' on article-settings")
+                except Exception:
+                    pass
+
+            # 3) Капча от dzen на финальном API — понятная ошибка
+            if captcha_hit["v"]:
+                screenshot = safe_screenshot(page, self.settings.logs_dir, "publish_captcha")
+                return PublishResult(
+                    ok=False,
+                    error="Dzen запросил капчу (antibot) при публикации. Нужно разблокировать аккаунт (см. dzen.md) и повторить.",
+                    screenshot_path=screenshot,
+                )
+
+            # 4) Индикатор успеха на странице
+            for text in success_texts:
+                try:
+                    if page.locator(f"text={text}").count() > 0:
+                        self.logger.info(f"Success indicator found: {text}")
+                        return PublishResult(ok=True, url=url)
+                except Exception:
+                    pass
+
+            page.wait_for_timeout(2000)
+
+        # Таймаут — неизвестный результат (или капча не поймана). Скриншот на разбор.
+        final_url = page.url
+        self.logger.warning(f"Publish result unknown after timeout. Final URL: {final_url}")
         screenshot = safe_screenshot(page, self.settings.logs_dir, "publish_unknown")
         return PublishResult(
             ok=False,
-            error="Publish result unknown, check screenshot",
+            error=f"Publish result unknown (удейти на {final_url[:80]}). Проверь скриншот.",
             screenshot_path=screenshot,
         )
