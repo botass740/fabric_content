@@ -354,6 +354,13 @@ class DzenPublisher:
             self.logger.info("URL contains /a/ — published successfully")
             return PublishResult(ok=True, url=final_url)
 
+        # После публикации dzen уводит из редактора черновика на список публикаций
+        # (…/profile/editor/new/publications?state=published). Это главный признак успеха
+        # в новой студии — проверяем ДО общего «left editor», т.к. здесь есть слово editor.
+        if "/publications" in final_url or "state=published" in final_url:
+            self.logger.info("Left draft editor → returned to publications list — published successfully")
+            return PublishResult(ok=True, url=final_url)
+
         success_texts = ["Опубликовано", "Статья опубликована", "Публикация доступна"]
         for text in success_texts:
             try:
@@ -363,7 +370,7 @@ class DzenPublisher:
             except Exception:
                 pass
 
-        # Публикация могла увести со страницы редактора на список публикаций/канал
+        # Публикация могла увести со страницы редактора на канал/другой раздел
         if "editor" not in final_url:
             self.logger.info("Left editor page — likely published successfully")
             return PublishResult(ok=True, url=final_url)
