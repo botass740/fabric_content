@@ -1,0 +1,17 @@
+{
+  "https://dzen.ru/profile/editor/637b09c7e1c5d415d437e6ab/statistics": {
+    "status": 404,
+    "final_url": "https://dzen.ru/profile/editor/637b09c7e1c5d415d437e6ab/statistics",
+    "len": 10208
+  },
+  "https://dzen.ru/id/637b09c7e1c5d415d437e6ab/statistics": {
+    "status": 404,
+    "final_url": "https://dzen.ru/id/637b09c7e1c5d415d437e6ab/statistics",
+    "len": 10985
+  },
+  "https://dzen.ru/api/v3/launcher/channel?id=637b09c7e1c5d415d437e6ab": {
+    "status": 404,
+    "final_url": "https://dzen.ru/api/v3/launcher/channel?id=637b09c7e1c5d415d437e6ab",
+    "len": 5824
+  }
+}

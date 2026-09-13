@@ -1,0 +1,187 @@
+{
+  "distribution": {
+    "n": 558,
+    "min": 0,
+    "max": 1339510,
+    "median": 1435,
+    "q25": 266,
+    "q75": 7471,
+    "top10_threshold": 43130
+  },
+  "correlations": [
+    {
+      "name": "text_length_vs_views",
+      "spearman": 0.33,
+      "pearson": 0.054,
+      "n": 558
+    },
+    {
+      "name": "title_chars_vs_views",
+      "spearman": 0.196,
+      "pearson": 0.11,
+      "n": 558
+    },
+    {
+      "name": "title_words_vs_views",
+      "spearman": 0.197,
+      "pearson": 0.146,
+      "n": 558
+    },
+    {
+      "name": "time_to_read_vs_views",
+      "spearman": 0.333,
+      "pearson": 0.055,
+      "n": 558
+    },
+    {
+      "name": "title_has_digit_vs_views",
+      "spearman": -0.026,
+      "pearson": 0.103,
+      "n": 558
+    },
+    {
+      "name": "title_has_rub_vs_views",
+      "spearman": 0.145,
+      "pearson": -0.002,
+      "n": 558
+    },
+    {
+      "name": "title_has_question_vs_views",
+      "spearman": -0.125,
+      "pearson": -0.084,
+      "n": 558
+    },
+    {
+      "name": "title_has_hero_vs_views",
+      "spearman": 0.008,
+      "pearson": -0.014,
+      "n": 558
+    },
+    {
+      "name": "text_has_dialog_vs_views",
+      "spearman": 0.201,
+      "pearson": 0.117,
+      "n": 558
+    },
+    {
+      "name": "text_has_rub_vs_views",
+      "spearman": 0.241,
+      "pearson": 0.124,
+      "n": 558
+    }
+  ],
+  "best_channels_by_median_views": [
+    {
+      "channel_slug": "vzoprodengi",
+      "articles": 59,
+      "median_views": 52451.0,
+      "mean_views": 124341.42372881356
+    },
+    {
+      "channel_slug": "igorfaynman",
+      "articles": 57,
+      "median_views": 21704.0,
+      "mean_views": 70195.43859649122
+    },
+    {
+      "channel_slug": "ekonomim_dengi",
+      "articles": 53,
+      "median_views": 3090.0,
+      "mean_views": 10845.094339622641
+    },
+    {
+      "channel_slug": "igorrybakov",
+      "articles": 50,
+      "median_views": 2303.0,
+      "mean_views": 10267.84
+    },
+    {
+      "channel_slug": "gazprombank",
+      "articles": 55,
+      "median_views": 2172.0,
+      "mean_views": 2417.5454545454545
+    }
+  ],
+  "top10_by_views": [
+    {
+      "id": 21,
+      "channel_slug": "vzoprodengi",
+      "title": "Какие льготы положены пенсионеру после 70 лет",
+      "views": 1339510.0,
+      "likes": 9950.0,
+      "comments": 1636.0
+    },
+    {
+      "id": 46,
+      "channel_slug": "igorfaynman",
+      "title": "Пенсии с 1 августа: кому и на сколько прибавят без заявлений",
+      "views": 795592.0,
+      "likes": 1842.0,
+      "comments": 1111.0
+    },
+    {
+      "id": 38,
+      "channel_slug": "igorfaynman",
+      "title": "Квитанции ЖКХ снова выросли. Что изменилось с 1 июля",
+      "views": 631044.0,
+      "likes": 1268.0,
+      "comments": 925.0
+    },
+    {
+      "id": 23,
+      "channel_slug": "vzoprodengi",
+      "title": "Работал 35 лет, а пенсия — 15 тысяч. Посчитал, сколько стоит один год моей жизни в пенсионных баллах",
+      "views": 519181.0,
+      "likes": 4033.0,
+      "comments": 3268.0
+    },
+    {
+      "id": 134,
+      "channel_slug": "vzoprodengi",
+      "title": "Сын подарил учительнице путёвку в Турцию на две недели. Она вернулась через шесть дней",
+      "views": 463537.0,
+      "likes": 4538.0,
+      "comments": 1682.0
+    },
+    {
+      "id": 155,
+      "channel_slug": "vzoprodengi",
+      "title": "Бабушка перестала раздавать урожай детям бесплатно и стала продавать. Дети обиделись",
+      "views": 446813.0,
+      "likes": 5012.0,
+      "comments": 945.0
+    },
+    {
+      "id": 24,
+      "channel_slug": "vzoprodengi",
+      "title": "Дочь попросила мать переписать на нее квартиру «на всякий случай». Мать отказала — и вот что было дальше",
+      "views": 414479.0,
+      "likes": 3720.0,
+      "comments": 832.0
+    },
+    {
+      "id": 122,
+      "channel_slug": "vzoprodengi",
+      "title": "В 1985 я шёл на работу и знал, что мне заплатят. В 2026 мой сын не знает, дадут ли зарплату в этом месяце",
+      "views": 357051.0,
+      "likes": 3734.0,
+      "comments": 3832.0
+    },
+    {
+      "id": 22,
+      "channel_slug": "vzoprodengi",
+      "title": "Работа есть, а квартиры нет: почему молодые не могут купить жилье",
+      "views": 350618.0,
+      "likes": 2621.0,
+      "comments": 4196.0
+    },
+    {
+      "id": 55,
+      "channel_slug": "igorfaynman",
+      "title": "Россияне массово забирают деньги из банков. Что происходит",
+      "views": 310659.0,
+      "likes": 1578.0,
+      "comments": 1376.0
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "source": "research.db (id=40,31,30,29,28)",
+  "our_article_ids": [
+    40,
+    31,
+    30,
+    29,
+    28
+  ],
+  "n_our_titles_in_txt": 5,
+  "our": {
+    "n": 5,
+    "pct_with_digit": 20.0,
+    "pct_with_question": 0.0,
+    "pct_with_hero": 0.0,
+    "pct_with_rub": 0.0,
+    "median_title_words": 9,
+    "median_title_chars": 57,
+    "median_text_length": 3660,
+    "avg_text_length": 3399,
+    "median_paragraphs": 17,
+    "pct_with_dialog": 100.0,
+    "pct_with_rub_in_text": 80.0,
+    "median_views": 27496,
+    "median_time_to_read_sec": 180
+  },
+  "competitors": {
+    "n": 555,
+    "pct_with_digit": 32.6,
+    "pct_with_question": 12.4,
+    "pct_with_hero": 0.4,
+    "pct_with_rub": 2.7,
+    "median_title_words": 9,
+    "median_title_chars": 59,
+    "median_text_length": 3290,
+    "avg_text_length": 3836,
+    "median_paragraphs": 19,
+    "pct_with_dialog": 59.1,
+    "pct_with_rub_in_text": 29.7,
+    "median_views": 1414,
+    "median_time_to_read_sec": 162
+  }
+}

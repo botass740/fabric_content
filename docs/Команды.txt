@@ -1,0 +1,12 @@
+Чтобы запустить снова
+
+ssh -p 41480 botas@132.243.214.3
+sudo systemctl start dzen-bot.service
+sudo systemctl status dzen-bot.service --no-pager
+
+Команды на будущее
+
+- Остановить: sudo systemctl stop dzen-bot.service
+- Запустить: sudo systemctl start dzen-bot.service
+- Перезапустить: sudo systemctl restart dzen-bot.service
+- Логи в реальном времени: sudo journalctl -u dzen-bot -f

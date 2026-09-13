@@ -1,0 +1,27 @@
+{
+  "all": {
+    "n": 560,
+    "avg_text_length": 3832,
+    "median_text_length": 3297,
+    "q25_text_length": 2028,
+    "q75_text_length": 5184,
+    "avg_paragraphs": 22.2,
+    "median_paragraphs": 19,
+    "pct_with_dialog": 59.5,
+    "pct_with_rub": 30.2,
+    "pct_ends_with_question": 8.9
+  },
+  "top20pct_by_views": {
+    "n": 112,
+    "threshold_views": 12702,
+    "avg_text_length": 4959,
+    "median_text_length": 4854,
+    "q25_text_length": 2690,
+    "q75_text_length": 6309,
+    "avg_paragraphs": 20.3,
+    "median_paragraphs": 18,
+    "pct_with_dialog": 70.5,
+    "pct_with_rub": 43.8,
+    "pct_ends_with_question": 5.4
+  }
+}
